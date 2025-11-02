@@ -1,0 +1,24 @@
+package com.firebase.sneakov.data.model
+
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.PropertyName
+import java.util.Date
+
+data class User(
+    val id: String,
+    val name: String,
+    val email: String,
+    val role: String = "user",
+    val avatarUrl: String = "",
+    val createdAt: Date = Date(),
+    val phone: String = "",
+    val address: Address = Address()
+)
+
+
+data class Address(
+    val province: String = "",
+    val district: String = "",
+    val municipality: String = "",
+    val detail: String = ""
+)

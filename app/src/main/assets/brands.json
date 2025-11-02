@@ -1,0 +1,51 @@
+[
+  {
+    "id": "adidas",
+    "name": "Adidas",
+    "thumbnail": "https://res.cloudinary.com/dj24vxzqz/image/upload/v1761917365/adidas_lwomyj.png",
+    "description": "Thương hiệu thể thao nổi tiếng của Đức",
+    "created_at": { ".sv": "timestamp" }
+  },
+  {
+    "id": "balenciaga",
+    "name": "Balenciaga",
+    "thumbnail": "https://res.cloudinary.com/dj24vxzqz/image/upload/v1761917365/Balenciaga_e3z2fe.png",
+    "description": "Thương hiệu thời trang cao cấp của Tây Ban Nha",
+    "created_at": { ".sv": "timestamp" }
+  },
+  {
+    "id": "converse",
+    "name": "Converse",
+    "thumbnail": "https://res.cloudinary.com/dj24vxzqz/image/upload/v1761917366/Converse_shbnyf.png",
+    "description": "Giày sneaker kinh điển từ Mỹ",
+    "created_at": { ".sv": "timestamp" }
+  },
+  {
+    "id": "mcqueen",
+    "name": "McQueen",
+    "thumbnail": "https://res.cloudinary.com/dj24vxzqz/image/upload/v1761917367/mcqueen_qaovq8.png",
+    "description": "Thương hiệu thời trang cao cấp từ Anh",
+    "created_at": { ".sv": "timestamp" }
+  },
+  {
+    "id": "nike",
+    "name": "Nike",
+    "thumbnail": "https://res.cloudinary.com/dj24vxzqz/image/upload/v1761917365/nike_g07ylf.jpg",
+    "description": "Thương hiệu thể thao hàng đầu thế giới",
+    "created_at": { ".sv": "timestamp" }
+  },
+  {
+    "id": "puma",
+    "name": "Puma",
+    "thumbnail": "https://res.cloudinary.com/dj24vxzqz/image/upload/v1761917365/puma_yys7zi.png",
+    "description": "Thương hiệu giày thể thao nổi tiếng của Đức",
+    "created_at": { ".sv": "timestamp" }
+  },
+  {
+    "id": "vans",
+    "name": "Vans",
+    "thumbnail": "https://res.cloudinary.com/dj24vxzqz/image/upload/v1761917365/vans_hst3cz.png",
+    "description": "Thương hiệu giày trượt ván Mỹ nổi tiếng",
+    "created_at": { ".sv": "timestamp" }
+  }
+]
