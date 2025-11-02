@@ -6,6 +6,7 @@ import com.firebase.sneakov.data.repository.BrandRepository
 import com.firebase.sneakov.data.repository.ProductRepository
 import com.firebase.sneakov.viewmodel.AuthViewModel
 import com.firebase.sneakov.viewmodel.BrandViewModel
+import com.firebase.sneakov.viewmodel.DetailViewModel
 import com.firebase.sneakov.viewmodel.ProductViewModel
 import com.firebase.sneakov.viewmodel.UserViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -29,6 +30,6 @@ val appModule = module {
     viewModel { AuthViewModel(get()) }
     viewModel { UserViewModel(get()) }
     viewModel { ProductViewModel(get()) }
-    //viewModel { HomeViewModel(get()) }
+    viewModel { DetailViewModel(get()) }
 
 }

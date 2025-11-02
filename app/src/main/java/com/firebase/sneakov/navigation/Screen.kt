@@ -20,7 +20,7 @@ sealed class Screen(val route: String){
             return "searchResult/$encodedKeyword/$sortField/$sortDirection/$page/$pageSize"
         }
     }
-    object ProductDetail: Screen("detail/{id}"){
+    object Detail: Screen("detail/{id}"){
         fun createRoute(id: String) = "detail/$id"
     }
 }

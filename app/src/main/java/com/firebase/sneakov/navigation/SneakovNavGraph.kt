@@ -8,9 +8,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.firebase.sneakov.ui.screen.AuthScreen
+import com.firebase.sneakov.ui.screen.DetailScreen
 import com.firebase.sneakov.ui.screen.HomeScreen
 import com.firebase.sneakov.ui.screen.OnboardingScreen
-import com.firebase.sneakov.ui.screen.ProductDetailScreen
 
 @Composable
 fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
@@ -42,9 +42,17 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
                     navController.navigate(Screen.Search.route)
                 },
                 onProductClick = { product ->
-                    navController.navigate(Screen.ProductDetail.createRoute(product.id))
+                    navController.navigate(Screen.Detail.createRoute(product.id))
                 }
             )
+        }
+
+        composable(
+            route = Screen.Detail.route,
+            arguments = listOf(navArgument("id"){type = NavType.StringType})
+        ){ backStackEntry ->
+            val id = backStackEntry.arguments?.getString("id") ?: ""
+            DetailScreen(id = id)
         }
 
 //        composable(Screen.Search.route) {
@@ -80,13 +88,7 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
 //            )
 //        }
 //
-        composable(
-            route = Screen.ProductDetail.route,
-            arguments = listOf(navArgument("id"){type = NavType.StringType})
-        ){ backStackEntry ->
-            val id = backStackEntry.arguments?.getString("id") ?: ""
-            ProductDetailScreen(id = id)
-        }
+
 
     }
 }

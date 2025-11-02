@@ -1,5 +1,6 @@
 package com.firebase.sneakov.data.repository
 
+import android.util.Log.e
 import com.firebase.sneakov.data.model.Product
 import com.firebase.sneakov.data.model.ProductVariant
 import com.firebase.sneakov.utils.CollectionName
@@ -69,6 +70,32 @@ class ProductRepository(private val db: FirebaseFirestore) {
             Result.Success(productsWithVariants)
         } catch (e: Exception){
             Result.Error(message = e.message ?: "Lỗi không xác định $e")
+        }
+    }
+
+    suspend fun getProduct(id: String): Result<Product> {
+        return try {
+            val snapshot = db.collection(CollectionName.PRODUCTS)
+                .document(id)
+                .get()
+                .await()
+
+            if(!snapshot.exists()) return Result.Error("Sản phẩm không tồn tại!")
+
+            val product = snapshot.toObject(Product::class.java)
+
+            val variantsSnapshot = db.collection(CollectionName.PRODUCTS)
+                .document(product!!.id)
+                .collection(CollectionName.VARIANTS)
+                .get()
+                .await()
+
+            val variants = variantsSnapshot.toObjects(ProductVariant::class.java)
+            val productWithVariants = product.copy(variants = variants)
+
+            Result.Success(productWithVariants)
+        } catch (e: Exception) {
+            Result.Error(e.message ?: "Lỗi không xác định $e")
         }
     }
 }

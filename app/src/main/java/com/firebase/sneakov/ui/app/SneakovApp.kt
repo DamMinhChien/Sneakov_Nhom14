@@ -22,7 +22,7 @@ fun SneakovApp() {
 
     // Danh sách các màn không hiển thị top/bottom bar
     val noTopBarScreens = listOf(Screen.Onboarding.route, Screen.Auth.route)
-    val noBottomBarScreens = listOf(Screen.Onboarding.route,  Screen.Auth.route)
+    val noBottomBarScreens = listOf(Screen.Onboarding.route, Screen.Auth.route, Screen.Detail.route)
 
     SneakovTheme {
         Scaffold(
@@ -38,8 +38,13 @@ fun SneakovApp() {
                     //BottomBar(navController)
                 }
             }
-            ) { innerPadding ->
-            SneakovNavGraph(navController = navController, modifier = Modifier.fillMaxSize().padding(innerPadding))
+        ) { innerPadding ->
+            SneakovNavGraph(
+                navController = navController,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding)
+            )
         }
     }
 }
@@ -47,7 +52,7 @@ fun SneakovApp() {
 @Preview
 @Composable
 fun SneakovAppPreview() {
-    SneakovTheme{
+    SneakovTheme {
         SneakovApp()
     }
 }
