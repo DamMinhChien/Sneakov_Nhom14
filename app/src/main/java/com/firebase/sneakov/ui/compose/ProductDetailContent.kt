@@ -1,5 +1,6 @@
 package com.firebase.sneakov.ui.compose
 
+import android.R.attr.fontWeight
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -89,7 +90,7 @@ fun ProductDetailContent(product: Product) {
             Spacer(Modifier.height(8.dp))
 
             Text(
-                text = "Thương hiệu: ${product.name}",
+                text = product.name,
                 style = MaterialTheme.typography.headlineSmall,
                 fontWeight = FontWeight.Bold
             )
@@ -97,7 +98,7 @@ fun ProductDetailContent(product: Product) {
             Spacer(Modifier.height(8.dp))
 
             Text(
-                text = product.brand,
+                text = "Thương hiệu:  ${product.brand}",
                 color = MaterialTheme.colorScheme.secondary,
                 fontWeight = FontWeight.Bold
             )
