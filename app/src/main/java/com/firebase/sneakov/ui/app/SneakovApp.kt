@@ -29,7 +29,7 @@ fun SneakovApp() {
             modifier = Modifier.fillMaxSize(),
             topBar = {
                 if (currentRoute !in noTopBarScreens) {
-                    TopBar()
+                    TopBar(navController)
                 }
             },
             bottomBar = {

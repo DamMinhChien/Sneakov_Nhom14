@@ -9,6 +9,11 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material.icons.outlined.Favorite
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Notifications
+import androidx.compose.material.icons.outlined.Person
+import androidx.compose.material.icons.outlined.ShoppingCart
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Icon
@@ -35,11 +40,11 @@ import com.firebase.sneakov.utils.BottomNavItem
 @Composable
 fun BottomBar(navController: NavHostController) {
     val items = listOf(
-        BottomNavItem(Screen.Home.route, "Trang chủ", Icons.Filled.Home),
-        BottomNavItem(Screen.Wishlist.route, "Yêu thích", Icons.Filled.Favorite),
-        BottomNavItem(Screen.Home.route, "Giỏ hàng", Icons.Filled.ShoppingCart),
-        BottomNavItem(Screen.Home.route, "Thông báo", Icons.Filled.Notifications),
-        BottomNavItem(Screen.Home.route, "Tài khoản", Icons.Filled.Person)
+        BottomNavItem(Screen.Home.route, "Trang chủ", Icons.Outlined.Home),
+        BottomNavItem(Screen.Wishlist.route, "Yêu thích", Icons.Outlined.Favorite),
+        BottomNavItem(Screen.Home.route, "Giỏ hàng", Icons.Outlined.ShoppingCart),
+        BottomNavItem(Screen.Home.route, "Thông báo", Icons.Outlined.Notifications),
+        BottomNavItem(Screen.Home.route, "Tài khoản", Icons.Outlined.Person)
     )
 
     Surface(
@@ -56,7 +61,7 @@ fun BottomBar(navController: NavHostController) {
 
             items.forEach { item ->
                 val selected = currentRoute == item.route
-                val scale by animateFloatAsState(if (selected) 1.5f else 1f, label = "")
+                val scale by animateFloatAsState(if (selected) 1.3f else 1f, label = "")
 
                 NavigationBarItem(
                     icon = {
