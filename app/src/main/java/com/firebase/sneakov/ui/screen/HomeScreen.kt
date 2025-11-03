@@ -29,6 +29,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -47,7 +50,9 @@ import com.firebase.sneakov.ui.compose.ProductCard
 import com.firebase.sneakov.ui.compose.RefreshableLayout
 import com.firebase.sneakov.ui.theme.SneakovTheme
 import com.firebase.sneakov.viewmodel.BrandViewModel
+import com.firebase.sneakov.viewmodel.HelperViewModel
 import com.firebase.sneakov.viewmodel.ProductViewModel
+import com.firebase.sneakov.viewmodel.WishlistViewModel
 import compose.icons.FontAwesomeIcons
 import compose.icons.fontawesomeicons.Solid
 import compose.icons.fontawesomeicons.solid.Search
@@ -58,10 +63,13 @@ fun HomeScreen(
     brandViewModel: BrandViewModel = koinViewModel(),
     navigateToSearchScreen: () -> Unit,
     productViewModel: ProductViewModel = koinViewModel(),
-    onProductClick: (Product) -> Unit
+    onProductClick: (Product) -> Unit,
+    helperViewModel: HelperViewModel = koinViewModel(),
+    wishlistViewModel: WishlistViewModel = koinViewModel()
 ) {
     val brandState by brandViewModel.uiState.collectAsState()
     val productState by productViewModel.uiState.collectAsState()
+    val helperState by helperViewModel.uiState.collectAsState()
     val context = LocalContext.current
 
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
@@ -75,6 +83,10 @@ fun HomeScreen(
         Log.d("Check", "Search LaunchedEffect chạy")
         productViewModel.fetch10NewestProducts()
     }
+    LaunchedEffect(Unit) {
+        helperViewModel.fetchWishlistIds()
+    }
+
     RefreshableLayout(
         isRefreshing = brandState.isLoading || productState.isLoading,
         modifier = Modifier
@@ -86,9 +98,11 @@ fun HomeScreen(
             productViewModel.fetch10NewestProducts()
         }
     ) {
-        Column(modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+        ) {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -115,6 +129,8 @@ fun HomeScreen(
             Spacer(modifier = Modifier.height(20.dp))
             //            Text("abcwwkfhs: ${uiState.result}")
             Text("Danh mục sản phẩm", style = MaterialTheme.typography.bodyLarge)
+
+            Spacer(modifier = Modifier.height(8.dp))
 
 //             Danh sách danh mục
             if (!brandState.data.isNullOrEmpty()) {
@@ -156,18 +172,25 @@ fun HomeScreen(
             Log.d("products", "products: ${productState.data}")
             if (!productState.data.isNullOrEmpty()) {
                 val products = productState.data!!
+                val wishlistIds = helperState.data.orEmpty()
                 LazyRow(
                     modifier = Modifier.fillMaxWidth(),
                     contentPadding = PaddingValues(8.dp),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     items(items = products) { product ->
-                        Log.d("Check", "product: $product")
+                        var isFavorite by remember { mutableStateOf(wishlistIds.contains(product.id)) }
                         ProductCard(
                             modifier = Modifier
                                 .width(itemWidth),
                             product = product,
-                            onClick = onProductClick
+                            onClick = onProductClick,
+                            isFavorite = isFavorite,
+                            onFavoriteClick = {
+                                // Add to wishlist
+                                isFavorite = !isFavorite
+                                if (isFavorite) wishlistViewModel.addToWishlist(product.id) else wishlistViewModel.removeFromWishlist(product.id)
+                            }
                         )
                     }
 

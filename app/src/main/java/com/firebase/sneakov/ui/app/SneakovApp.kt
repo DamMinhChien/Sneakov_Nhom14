@@ -34,8 +34,7 @@ fun SneakovApp() {
             },
             bottomBar = {
                 if (currentRoute !in noBottomBarScreens) {
-                    BottomBar()
-                    //BottomBar(navController)
+                    BottomBar(navController)
                 }
             }
         ) { innerPadding ->
