@@ -1,6 +1,5 @@
 package com.firebase.sneakov.ui.compose
 
-import android.R.attr.fontWeight
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -111,7 +110,7 @@ fun ProductDetailContent(product: Product) {
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
-                    text = "Giá: ${priceFormatted}",
+                    text = "Giá: $priceFormatted",
                     style = MaterialTheme.typography.titleMedium,
                     color = Color(0xFF007BFF)
                 )

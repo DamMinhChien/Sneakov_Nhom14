@@ -11,6 +11,7 @@ import com.firebase.sneakov.ui.screen.AuthScreen
 import com.firebase.sneakov.ui.screen.DetailScreen
 import com.firebase.sneakov.ui.screen.HomeScreen
 import com.firebase.sneakov.ui.screen.OnboardingScreen
+import com.firebase.sneakov.ui.screen.WishlistScreen
 
 @Composable
 fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
@@ -53,6 +54,14 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
         ){ backStackEntry ->
             val id = backStackEntry.arguments?.getString("id") ?: ""
             DetailScreen(id = id)
+        }
+
+        composable(route = Screen.Wishlist.route){
+            WishlistScreen(
+                onProductClick = { product ->
+                    navController.navigate(Screen.Detail.createRoute(product.id))
+                }
+            )
         }
 
 //        composable(Screen.Search.route) {

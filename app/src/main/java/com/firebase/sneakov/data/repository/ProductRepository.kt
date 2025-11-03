@@ -1,6 +1,5 @@
 package com.firebase.sneakov.data.repository
 
-import android.util.Log.e
 import com.firebase.sneakov.data.model.Product
 import com.firebase.sneakov.data.model.ProductVariant
 import com.firebase.sneakov.utils.CollectionName
@@ -11,7 +10,6 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.tasks.await
-import kotlin.jvm.java
 
 class ProductRepository(private val db: FirebaseFirestore) {
     suspend fun getProducts(): Result<List<Product>> = coroutineScope {
