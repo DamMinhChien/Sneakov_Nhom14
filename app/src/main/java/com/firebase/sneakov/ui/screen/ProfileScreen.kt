@@ -35,6 +35,7 @@ import com.firebase.sneakov.data.request.UpdateUserRequest
 import com.firebase.sneakov.ui.compose.Dialog
 import com.firebase.sneakov.ui.compose.RefreshableLayout
 import com.firebase.sneakov.viewmodel.AuthViewModel
+import com.firebase.sneakov.viewmodel.CloudinaryViewModel
 import com.firebase.sneakov.viewmodel.UserViewModel
 import compose.icons.FontAwesomeIcons
 import compose.icons.fontawesomeicons.Solid
@@ -51,37 +52,33 @@ import java.util.*
 fun ProfileScreen(
     authViewModel: AuthViewModel = koinViewModel(),
     userViewModel: UserViewModel = koinViewModel(),
+    cloudinaryViewModel: CloudinaryViewModel = koinViewModel(),
     onNavigateToAuth: () -> Unit
 ) {
     val context = LocalContext.current
 
     val authState by authViewModel.uiState.collectAsState()
     val userState by userViewModel.uiState.collectAsState()
+    val cloudinaryState by cloudinaryViewModel.uiState.collectAsState()
 
     var showDialog by remember { mutableStateOf(false) }
     var showDialogNav by remember { mutableStateOf(false) }
 
-    // 👉 Thêm biến này để biết hành động cuối cùng
+    // 👉 Theo dõi hành động cuối cùng
     var lastAction by remember { mutableStateOf<String?>(null) }
 
     LaunchedEffect(Unit) {
         userViewModel.fetchCurrentUser()
     }
 
-    // 👉 Sửa phần này lại để xử lý theo lastAction
+    // 👉 Xử lý phản hồi theo hành động cuối cùng
     LaunchedEffect(authState.data, authState.error) {
         when {
             authState.data != null -> {
                 when (lastAction) {
-                    "update" -> {
-                        Toast.makeText(context, "Cập nhật thông tin thành công", Toast.LENGTH_SHORT).show()
-                    }
-                    "changePassword" -> {
-                        Toast.makeText(context, "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show()
-                    }
-                    "delete" -> {
-                        showDialogNav = true
-                    }
+                    "update" -> Toast.makeText(context, "Cập nhật thông tin thành công", Toast.LENGTH_SHORT).show()
+                    "changePassword" -> Toast.makeText(context, "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show()
+                    "delete" -> showDialogNav = true
                 }
             }
 
@@ -119,26 +116,37 @@ fun ProfileScreen(
     var newPasswordError by remember { mutableStateOf<String?>(null) }
     var confirmPasswordError by remember { mutableStateOf<String?>(null) }
 
-    // Ẩn/hiện mật khẩu
     var showOldPassword by remember { mutableStateOf(false) }
     var showNewPassword by remember { mutableStateOf(false) }
     var showConfirmPassword by remember { mutableStateOf(false) }
 
     val scrollState = rememberScrollState()
 
-
     val imagePicker = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.GetContent(),
         onResult = { uri ->
             if (uri != null) {
-                avatarUrl = uri.toString() // Gán lại để hiển thị ảnh mới
+                avatarUrl = uri.toString()
+                cloudinaryViewModel.uploadImage(context = context, uri = uri)
             }
         }
     )
 
+    LaunchedEffect(cloudinaryState.data, cloudinaryState.error) {
+        when {
+            cloudinaryState.data != null -> {
+                avatarUrl = cloudinaryState.data!!
+                Toast.makeText(context, "Upload ảnh thành công", Toast.LENGTH_SHORT).show()
+            }
+            cloudinaryState.error != null -> {
+                Toast.makeText(context, cloudinaryState.error, Toast.LENGTH_LONG).show()
+                cloudinaryViewModel.dismissError()
+            }
+        }
+    }
 
     RefreshableLayout(
-        isRefreshing = userState.isLoading || authState.isLoading,
+        isRefreshing = userState.isLoading || authState.isLoading || cloudinaryState.isLoading,
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
@@ -147,13 +155,8 @@ fun ProfileScreen(
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
             when {
-                userState.error != null -> {
-                    Toast.makeText(context, userState.error, Toast.LENGTH_LONG).show()
-                }
-
-                authState.error != null -> {
-                    Toast.makeText(context, authState.error, Toast.LENGTH_LONG).show()
-                }
+                userState.error != null -> Toast.makeText(context, userState.error, Toast.LENGTH_LONG).show()
+                authState.error != null -> Toast.makeText(context, authState.error, Toast.LENGTH_LONG).show()
 
                 user != null -> {
                     Column(
@@ -164,11 +167,9 @@ fun ProfileScreen(
                     ) {
                         // --- Avatar ---
                         Box(
-                            modifier = Modifier
-                                .size(120.dp),
+                            modifier = Modifier.size(120.dp),
                             contentAlignment = Alignment.Center
                         ) {
-                            // Ảnh đại diện
                             Image(
                                 painter = rememberAsyncImagePainter(
                                     model = avatarUrl.ifBlank { R.drawable.men }
@@ -181,7 +182,6 @@ fun ProfileScreen(
                                 contentScale = ContentScale.Crop
                             )
 
-                            // Icon cây bút ở góc phải dưới
                             Box(
                                 modifier = Modifier
                                     .align(Alignment.BottomEnd)
@@ -189,9 +189,7 @@ fun ProfileScreen(
                                     .clip(CircleShape)
                                     .background(MaterialTheme.colorScheme.primary)
                                     .border(2.dp, MaterialTheme.colorScheme.surface, CircleShape)
-                                    .clickable {
-                                        imagePicker.launch("image/*")
-                                    },
+                                    .clickable { imagePicker.launch("image/*") },
                                 contentAlignment = Alignment.Center
                             ) {
                                 Icon(
@@ -203,17 +201,16 @@ fun ProfileScreen(
                             }
                         }
 
-
                         Spacer(Modifier.height(18.dp))
                         Text(
                             "Đã tham gia vào ngày ${
-                                SimpleDateFormat("dd/MM/yyyy", Locale("vi", "VN"))
-                                    .format(user.createdAt)
+                                SimpleDateFormat("dd/MM/yyyy", Locale("vi", "VN")).format(user.createdAt)
                             }",
                             textAlign = TextAlign.Center
                         )
 
                         Spacer(Modifier.height(8.dp))
+
                         OutlinedTextField(
                             value = user.email,
                             onValueChange = {},
@@ -225,9 +222,14 @@ fun ProfileScreen(
                         )
 
                         Spacer(Modifier.height(8.dp))
+
+                        // --- Họ tên (validate trực tiếp) ---
                         OutlinedTextField(
                             value = name,
-                            onValueChange = { name = it },
+                            onValueChange = {
+                                name = it
+                                nameError = if (it.isBlank()) "Không được để trống" else null
+                            },
                             label = { Text("Họ và tên") },
                             leadingIcon = { Icon(Icons.Default.Person, null) },
                             isError = nameError != null,
@@ -237,9 +239,19 @@ fun ProfileScreen(
                             modifier = Modifier.fillMaxWidth()
                         )
 
+                        Spacer(Modifier.height(8.dp))
+
+                        // --- Số điện thoại (validate trực tiếp) ---
                         OutlinedTextField(
                             value = phone,
-                            onValueChange = { phone = it },
+                            onValueChange = {
+                                phone = it
+                                phoneError = when {
+                                    it.isBlank() -> "Không được để trống"
+                                    !Regex("^0\\d{9}$").matches(it) -> "Số điện thoại không hợp lệ"
+                                    else -> null
+                                }
+                            },
                             label = { Text("Số điện thoại") },
                             leadingIcon = { Icon(Icons.Default.Phone, null) },
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
@@ -294,16 +306,15 @@ fun ProfileScreen(
                         Button(
                             onClick = {
                                 nameError = if (name.isBlank()) "Không được để trống" else null
-                                phoneError = if (phone.isBlank()) "Không được để trống" else null
+                                phoneError = when {
+                                    phone.isBlank() -> "Không được để trống"
+                                    !Regex("^0\\d{9}$").matches(phone) -> "Số điện thoại không hợp lệ"
+                                    else -> null
+                                }
 
                                 if (nameError == null && phoneError == null) {
                                     val address = Address(province, district, municipality, detail)
-                                    val request = UpdateUserRequest(
-                                        name = name,
-                                        phone = phone,
-                                        avatarUrl = avatarUrl,
-                                        address = address
-                                    )
+                                    val request = UpdateUserRequest(name, phone, avatarUrl, address)
                                     lastAction = "update"
                                     authViewModel.updateUser(request)
                                 }
@@ -317,7 +328,7 @@ fun ProfileScreen(
                             Text("Lưu thông tin cá nhân")
                         }
 
-                        Spacer(Modifier.height(24.dp))
+                        Spacer(Modifier.height(8.dp))
 
                         OutlinedButton(
                             onClick = { showPasswordFields = !showPasswordFields },
@@ -344,36 +355,45 @@ fun ProfileScreen(
                                     trailingIcon = {
                                         IconButton(onClick = { showOldPassword = !showOldPassword }) {
                                             Icon(
-                                                if (showOldPassword) FontAwesomeIcons.Solid.EyeSlash
-                                                else FontAwesomeIcons.Solid.Eye,
-                                                null,
-                                                modifier = Modifier.size(24.dp),
+                                                if (showOldPassword) FontAwesomeIcons.Solid.Eye
+                                                else FontAwesomeIcons.Solid.EyeSlash,
+                                                null
                                             )
                                         }
                                     },
-                                    visualTransformation = if (showOldPassword)
-                                        VisualTransformation.None else PasswordVisualTransformation(),
+                                    visualTransformation =
+                                        if (showOldPassword) VisualTransformation.None else PasswordVisualTransformation(),
                                     modifier = Modifier.fillMaxWidth()
                                 )
 
                                 Spacer(Modifier.height(8.dp))
+
                                 OutlinedTextField(
                                     value = newPassword,
-                                    onValueChange = { newPassword = it },
+                                    onValueChange = {
+                                        newPassword = it
+                                        newPasswordError = when {
+                                            it.isBlank() -> "Không được để trống"
+                                            it.length < 6 -> "Tối thiểu 6 ký tự"
+                                            else -> null
+                                        }
+                                        confirmPasswordError = if (
+                                            confirmPassword.isNotBlank() && confirmPassword != newPassword
+                                        ) "Mật khẩu xác nhận không khớp" else null
+                                    },
                                     label = { Text("Mật khẩu mới") },
                                     leadingIcon = { Icon(Icons.Default.Lock, null) },
                                     trailingIcon = {
                                         IconButton(onClick = { showNewPassword = !showNewPassword }) {
                                             Icon(
-                                                if (showNewPassword) FontAwesomeIcons.Solid.EyeSlash
-                                                else FontAwesomeIcons.Solid.Eye,
-                                                null,
-                                                modifier = Modifier.size(24.dp),
+                                                if (showNewPassword) FontAwesomeIcons.Solid.Eye
+                                                else FontAwesomeIcons.Solid.EyeSlash,
+                                                null
                                             )
                                         }
                                     },
-                                    visualTransformation = if (showNewPassword)
-                                        VisualTransformation.None else PasswordVisualTransformation(),
+                                    visualTransformation =
+                                        if (showNewPassword) VisualTransformation.None else PasswordVisualTransformation(),
                                     isError = newPasswordError != null,
                                     supportingText = {
                                         newPasswordError?.let {
@@ -384,23 +404,27 @@ fun ProfileScreen(
                                 )
 
                                 Spacer(Modifier.height(8.dp))
+
                                 OutlinedTextField(
                                     value = confirmPassword,
-                                    onValueChange = { confirmPassword = it },
+                                    onValueChange = {
+                                        confirmPassword = it
+                                        confirmPasswordError = if (it != newPassword)
+                                            "Mật khẩu xác nhận không khớp" else null
+                                    },
                                     label = { Text("Xác nhận mật khẩu mới") },
                                     leadingIcon = { Icon(Icons.Default.Check, null) },
                                     trailingIcon = {
                                         IconButton(onClick = { showConfirmPassword = !showConfirmPassword }) {
                                             Icon(
-                                                if (showConfirmPassword) FontAwesomeIcons.Solid.EyeSlash
-                                                else FontAwesomeIcons.Solid.Eye,
-                                                null,
-                                                modifier = Modifier.size(24.dp)
+                                                if (showConfirmPassword) FontAwesomeIcons.Solid.Eye
+                                                else FontAwesomeIcons.Solid.EyeSlash,
+                                                null
                                             )
                                         }
                                     },
-                                    visualTransformation = if (showConfirmPassword)
-                                        VisualTransformation.None else PasswordVisualTransformation(),
+                                    visualTransformation =
+                                        if (showConfirmPassword) VisualTransformation.None else PasswordVisualTransformation(),
                                     isError = confirmPasswordError != null,
                                     supportingText = {
                                         confirmPasswordError?.let {
@@ -442,9 +466,7 @@ fun ProfileScreen(
 
                         //  Nút Xóa tài khoản
                         TextButton(
-                            onClick = {
-                                showDialog = true
-                            },
+                            onClick = { showDialog = true },
                             modifier = Modifier.fillMaxWidth(),
                             colors = ButtonDefaults.textButtonColors(
                                 contentColor = MaterialTheme.colorScheme.error
@@ -463,9 +485,7 @@ fun ProfileScreen(
                         Dialog(
                             showDialog = showDialog,
                             title = "Xác nhận",
-                            onDismiss = {
-                                showDialog = false
-                            },
+                            onDismiss = { showDialog = false },
                             onConfirm = {
                                 lastAction = "delete"
                                 authViewModel.deleteUser()
@@ -478,7 +498,7 @@ fun ProfileScreen(
                     // Dialog điều hướng sau khi xóa
                     if (showDialogNav) {
                         Dialog(
-                            showDialog = showDialog,
+                            showDialog = showDialogNav,
                             title = "Xác nhận",
                             onDismiss = {
                                 showDialogNav = false
@@ -494,14 +514,8 @@ fun ProfileScreen(
                     }
                 }
 
-                else -> {
-                    Text(
-                        text = "Không có dữ liệu người dùng",
-                        modifier = Modifier.align(Alignment.Center)
-                    )
-                }
+                else -> Text("Không có dữ liệu người dùng", modifier = Modifier.align(Alignment.Center))
             }
         }
     }
 }
-

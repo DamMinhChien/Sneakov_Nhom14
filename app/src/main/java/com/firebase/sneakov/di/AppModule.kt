@@ -1,11 +1,15 @@
 package com.firebase.sneakov.di
 
+import com.firebase.sneakov.data.api.CloudinaryApi
 import com.firebase.sneakov.data.repository.AuthRepository
 import com.firebase.sneakov.data.repository.BrandRepository
+import com.firebase.sneakov.data.repository.CloudinaryRepository
 import com.firebase.sneakov.data.repository.ProductRepository
 import com.firebase.sneakov.data.repository.WishlistRepository
+import com.firebase.sneakov.utils.Cloudinary
 import com.firebase.sneakov.viewmodel.AuthViewModel
 import com.firebase.sneakov.viewmodel.BrandViewModel
+import com.firebase.sneakov.viewmodel.CloudinaryViewModel
 import com.firebase.sneakov.viewmodel.DetailViewModel
 import com.firebase.sneakov.viewmodel.HelperViewModel
 import com.firebase.sneakov.viewmodel.ProductViewModel
@@ -13,11 +17,60 @@ import com.firebase.sneakov.viewmodel.UserViewModel
 import com.firebase.sneakov.viewmodel.WishlistViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
+import kotlin.jvm.java
 
 //val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "app_preferences")
 val appModule = module {
+    // Logging
+    single {
+        val logging = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
+        OkHttpClient.Builder()
+            .addInterceptor(logging)
+            .build()
+    }
+
+    // Moshi
+    single {
+        Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
+    }
+
+    // Cloudinary Retrofit
+    single(named("cloudinary")) {
+        Retrofit.Builder()
+            .baseUrl(Cloudinary.BASE_URL)
+            .addConverterFactory(MoshiConverterFactory.create(get()))
+            .build()
+    }
+
+    // Backend Retrofit
+    single(named("backend")) {
+        Retrofit.Builder()
+            .baseUrl("https://api.yourbackend.com/") // đổi theo backend bạn
+            .addConverterFactory(MoshiConverterFactory.create(get()))
+            .build()
+    }
+
+    // API Service
+    single {
+        get<Retrofit>(named("cloudinary")).create(CloudinaryApi::class.java)
+    }
+
+//    single {
+//        get<Retrofit>(named("backend")).create(BackendApi::class.java)
+//    }
 
     // Firebase Instance
     single { FirebaseFirestore.getInstance() }
@@ -28,6 +81,7 @@ val appModule = module {
     single { AuthRepository(get(), get()) }
     single { ProductRepository(get()) }
     single { WishlistRepository(get(), get()) }
+    single { CloudinaryRepository(get()) }
     // ViewModel
     viewModel { BrandViewModel(get()) }
     viewModel { AuthViewModel(get()) }
@@ -36,5 +90,6 @@ val appModule = module {
     viewModel { DetailViewModel(get()) }
     viewModel { WishlistViewModel(get(), get()) }
     viewModel { HelperViewModel(get()) }
+    viewModel { CloudinaryViewModel(get()) }
 
 }
