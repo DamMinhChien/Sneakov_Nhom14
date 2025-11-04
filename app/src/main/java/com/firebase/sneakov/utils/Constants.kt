@@ -20,3 +20,7 @@ object Cloudinary {
     const val PRESET_NAME = "unsigned_avatar_upload"
     const val BASE_URL = "https://api.cloudinary.com/"
 }
+
+object Provinces {
+    const val BASE_URL = "https://damminhchien.github.io/VietNam_Address_Data/"
+}

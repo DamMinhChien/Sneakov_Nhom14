@@ -19,6 +19,7 @@ class BrandViewModel(private val repo: BrandRepository) : BaseViewModel<List<Bra
             setLoading(false)
         }
     }
+
     fun dismissError(){
         clearError()
     }

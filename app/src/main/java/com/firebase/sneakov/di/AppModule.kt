@@ -1,17 +1,21 @@
 package com.firebase.sneakov.di
 
 import com.firebase.sneakov.data.api.CloudinaryApi
+import com.firebase.sneakov.data.api.LocationApi
 import com.firebase.sneakov.data.repository.AuthRepository
 import com.firebase.sneakov.data.repository.BrandRepository
 import com.firebase.sneakov.data.repository.CloudinaryRepository
+import com.firebase.sneakov.data.repository.LocationRepository
 import com.firebase.sneakov.data.repository.ProductRepository
 import com.firebase.sneakov.data.repository.WishlistRepository
 import com.firebase.sneakov.utils.Cloudinary
+import com.firebase.sneakov.utils.Provinces
 import com.firebase.sneakov.viewmodel.AuthViewModel
 import com.firebase.sneakov.viewmodel.BrandViewModel
 import com.firebase.sneakov.viewmodel.CloudinaryViewModel
 import com.firebase.sneakov.viewmodel.DetailViewModel
 import com.firebase.sneakov.viewmodel.HelperViewModel
+import com.firebase.sneakov.viewmodel.LocationViewModel
 import com.firebase.sneakov.viewmodel.ProductViewModel
 import com.firebase.sneakov.viewmodel.UserViewModel
 import com.firebase.sneakov.viewmodel.WishlistViewModel
@@ -56,9 +60,9 @@ val appModule = module {
     }
 
     // Backend Retrofit
-    single(named("backend")) {
+    single(named("provinces")) {
         Retrofit.Builder()
-            .baseUrl("https://api.yourbackend.com/") // đổi theo backend bạn
+            .baseUrl(Provinces.BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create(get()))
             .build()
     }
@@ -68,9 +72,9 @@ val appModule = module {
         get<Retrofit>(named("cloudinary")).create(CloudinaryApi::class.java)
     }
 
-//    single {
-//        get<Retrofit>(named("backend")).create(BackendApi::class.java)
-//    }
+    single {
+        get<Retrofit>(named("provinces")).create(LocationApi::class.java)
+    }
 
     // Firebase Instance
     single { FirebaseFirestore.getInstance() }
@@ -82,6 +86,7 @@ val appModule = module {
     single { ProductRepository(get()) }
     single { WishlistRepository(get(), get()) }
     single { CloudinaryRepository(get()) }
+    single { LocationRepository(get()) }
     // ViewModel
     viewModel { BrandViewModel(get()) }
     viewModel { AuthViewModel(get()) }
@@ -91,5 +96,6 @@ val appModule = module {
     viewModel { WishlistViewModel(get(), get()) }
     viewModel { HelperViewModel(get()) }
     viewModel { CloudinaryViewModel(get()) }
+    viewModel { LocationViewModel(get()) }
 
 }
