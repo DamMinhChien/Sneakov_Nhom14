@@ -1,23 +1,15 @@
 package com.firebase.sneakov.ui.app
 
-import androidx.appcompat.R
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.FavoriteBorder
-import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.ShoppingCart
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -41,8 +33,9 @@ fun TopBar(
         "search" to "Tìm kiếm",
         Screen.Wishlist.route to "Yêu thích",
         "cart" to "Giỏ hàng",
-        "settings" to "Hồ sơ",
-        Screen.Detail.route to "Chi tiết sản phẩm"
+        "settings" to "Tài khoản",
+        Screen.Detail.route to "Chi tiết sản phẩm",
+        Screen.Profile.route to "Cá nhân"
     )
     val title = routeTitleMap[currentRoute] ?: currentRoute
 

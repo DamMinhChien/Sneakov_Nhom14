@@ -11,6 +11,7 @@ import com.firebase.sneakov.ui.screen.AuthScreen
 import com.firebase.sneakov.ui.screen.DetailScreen
 import com.firebase.sneakov.ui.screen.HomeScreen
 import com.firebase.sneakov.ui.screen.OnboardingScreen
+import com.firebase.sneakov.ui.screen.ProfileScreen
 import com.firebase.sneakov.ui.screen.WishlistScreen
 
 @Composable
@@ -18,7 +19,7 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
 
     NavHost(
         navController = navController,
-        startDestination = Screen.Home.route,
+        startDestination = Screen.Auth.route,
         modifier = modifier
     ) {
         composable(Screen.Onboarding.route) {
@@ -60,6 +61,16 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
             WishlistScreen(
                 onProductClick = { product ->
                     navController.navigate(Screen.Detail.createRoute(product.id))
+                }
+            )
+        }
+
+        composable(route = Screen.Profile.route){
+            ProfileScreen(
+                onNavigateToAuth = {
+                    navController.navigate(Screen.Auth.route){
+                        popUpTo(Screen.Profile.route) { inclusive = true }
+                    }
                 }
             )
         }
