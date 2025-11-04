@@ -1,5 +1,6 @@
 package com.firebase.sneakov.ui.screen
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.background
@@ -58,6 +59,7 @@ import compose.icons.fontawesomeicons.Solid
 import compose.icons.fontawesomeicons.solid.Search
 import org.koin.androidx.compose.koinViewModel
 
+@SuppressLint("ConfigurationScreenWidthHeight")
 @Composable
 fun HomeScreen(
     brandViewModel: BrandViewModel = koinViewModel(),

@@ -1,0 +1,507 @@
+package com.firebase.sneakov.ui.screen
+
+import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import coil.compose.rememberAsyncImagePainter
+import com.firebase.sneakov.R
+import com.firebase.sneakov.data.model.Address
+import com.firebase.sneakov.data.request.UpdateUserRequest
+import com.firebase.sneakov.ui.compose.Dialog
+import com.firebase.sneakov.ui.compose.RefreshableLayout
+import com.firebase.sneakov.viewmodel.AuthViewModel
+import com.firebase.sneakov.viewmodel.UserViewModel
+import compose.icons.FontAwesomeIcons
+import compose.icons.fontawesomeicons.Solid
+import compose.icons.fontawesomeicons.solid.Camera
+import compose.icons.fontawesomeicons.solid.Eye
+import compose.icons.fontawesomeicons.solid.EyeSlash
+import compose.icons.fontawesomeicons.solid.Save
+import org.koin.androidx.compose.koinViewModel
+import java.text.SimpleDateFormat
+import java.util.*
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ProfileScreen(
+    authViewModel: AuthViewModel = koinViewModel(),
+    userViewModel: UserViewModel = koinViewModel(),
+    onNavigateToAuth: () -> Unit
+) {
+    val context = LocalContext.current
+
+    val authState by authViewModel.uiState.collectAsState()
+    val userState by userViewModel.uiState.collectAsState()
+
+    var showDialog by remember { mutableStateOf(false) }
+    var showDialogNav by remember { mutableStateOf(false) }
+
+    // 👉 Thêm biến này để biết hành động cuối cùng
+    var lastAction by remember { mutableStateOf<String?>(null) }
+
+    LaunchedEffect(Unit) {
+        userViewModel.fetchCurrentUser()
+    }
+
+    // 👉 Sửa phần này lại để xử lý theo lastAction
+    LaunchedEffect(authState.data, authState.error) {
+        when {
+            authState.data != null -> {
+                when (lastAction) {
+                    "update" -> {
+                        Toast.makeText(context, "Cập nhật thông tin thành công", Toast.LENGTH_SHORT).show()
+                    }
+                    "changePassword" -> {
+                        Toast.makeText(context, "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show()
+                    }
+                    "delete" -> {
+                        showDialogNav = true
+                    }
+                }
+            }
+
+            authState.error != null -> {
+                when (lastAction) {
+                    "update" -> Toast.makeText(context, "Lỗi khi lưu thông tin", Toast.LENGTH_LONG).show()
+                    "changePassword" -> Toast.makeText(context, "Lỗi khi đổi mật khẩu", Toast.LENGTH_LONG).show()
+                    "delete" -> Toast.makeText(context, "Lỗi khi xóa tài khoản", Toast.LENGTH_LONG).show()
+                    else -> Toast.makeText(context, "Lỗi: ${authState.error}", Toast.LENGTH_LONG).show()
+                }
+                authViewModel.dismissError()
+            }
+        }
+    }
+
+    val user = userState.data
+
+    // --- State ---
+    var name by remember(user) { mutableStateOf(user?.name.orEmpty()) }
+    var phone by remember(user) { mutableStateOf(user?.phone.orEmpty()) }
+    var avatarUrl by remember(user) { mutableStateOf(user?.avatarUrl.orEmpty()) }
+    var province by remember(user) { mutableStateOf(user?.address?.province.orEmpty()) }
+    var district by remember(user) { mutableStateOf(user?.address?.district.orEmpty()) }
+    var municipality by remember(user) { mutableStateOf(user?.address?.municipality.orEmpty()) }
+    var detail by remember(user) { mutableStateOf(user?.address?.detail.orEmpty()) }
+
+    var nameError by remember { mutableStateOf<String?>(null) }
+    var phoneError by remember { mutableStateOf<String?>(null) }
+
+    var showPasswordFields by remember { mutableStateOf(false) }
+    var oldPassword by remember { mutableStateOf("") }
+    var newPassword by remember { mutableStateOf("") }
+    var confirmPassword by remember { mutableStateOf("") }
+
+    var newPasswordError by remember { mutableStateOf<String?>(null) }
+    var confirmPasswordError by remember { mutableStateOf<String?>(null) }
+
+    // Ẩn/hiện mật khẩu
+    var showOldPassword by remember { mutableStateOf(false) }
+    var showNewPassword by remember { mutableStateOf(false) }
+    var showConfirmPassword by remember { mutableStateOf(false) }
+
+    val scrollState = rememberScrollState()
+
+
+    val imagePicker = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.GetContent(),
+        onResult = { uri ->
+            if (uri != null) {
+                avatarUrl = uri.toString() // Gán lại để hiển thị ảnh mới
+            }
+        }
+    )
+
+
+    RefreshableLayout(
+        isRefreshing = userState.isLoading || authState.isLoading,
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
+            .padding(24.dp),
+        onRefresh = { userViewModel.fetchCurrentUser() }
+    ) {
+        Box(modifier = Modifier.fillMaxSize()) {
+            when {
+                userState.error != null -> {
+                    Toast.makeText(context, userState.error, Toast.LENGTH_LONG).show()
+                }
+
+                authState.error != null -> {
+                    Toast.makeText(context, authState.error, Toast.LENGTH_LONG).show()
+                }
+
+                user != null -> {
+                    Column(
+                        modifier = Modifier
+                            .verticalScroll(scrollState)
+                            .fillMaxWidth(),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        // --- Avatar ---
+                        Box(
+                            modifier = Modifier
+                                .size(120.dp),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            // Ảnh đại diện
+                            Image(
+                                painter = rememberAsyncImagePainter(
+                                    model = avatarUrl.ifBlank { R.drawable.men }
+                                ),
+                                contentDescription = "Avatar",
+                                modifier = Modifier
+                                    .size(120.dp)
+                                    .clip(CircleShape)
+                                    .border(3.dp, MaterialTheme.colorScheme.primary, CircleShape),
+                                contentScale = ContentScale.Crop
+                            )
+
+                            // Icon cây bút ở góc phải dưới
+                            Box(
+                                modifier = Modifier
+                                    .align(Alignment.BottomEnd)
+                                    .size(36.dp)
+                                    .clip(CircleShape)
+                                    .background(MaterialTheme.colorScheme.primary)
+                                    .border(2.dp, MaterialTheme.colorScheme.surface, CircleShape)
+                                    .clickable {
+                                        imagePicker.launch("image/*")
+                                    },
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Icon(
+                                    imageVector = FontAwesomeIcons.Solid.Camera,
+                                    contentDescription = "Chỉnh sửa ảnh",
+                                    tint = MaterialTheme.colorScheme.surface,
+                                    modifier = Modifier.size(18.dp)
+                                )
+                            }
+                        }
+
+
+                        Spacer(Modifier.height(18.dp))
+                        Text(
+                            "Đã tham gia vào ngày ${
+                                SimpleDateFormat("dd/MM/yyyy", Locale("vi", "VN"))
+                                    .format(user.createdAt)
+                            }",
+                            textAlign = TextAlign.Center
+                        )
+
+                        Spacer(Modifier.height(8.dp))
+                        OutlinedTextField(
+                            value = user.email,
+                            onValueChange = {},
+                            label = { Text("Email") },
+                            leadingIcon = { Icon(Icons.Default.Email, null) },
+                            enabled = false,
+                            readOnly = true,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+
+                        Spacer(Modifier.height(8.dp))
+                        OutlinedTextField(
+                            value = name,
+                            onValueChange = { name = it },
+                            label = { Text("Họ và tên") },
+                            leadingIcon = { Icon(Icons.Default.Person, null) },
+                            isError = nameError != null,
+                            supportingText = {
+                                nameError?.let { Text(it, color = MaterialTheme.colorScheme.error) }
+                            },
+                            modifier = Modifier.fillMaxWidth()
+                        )
+
+                        OutlinedTextField(
+                            value = phone,
+                            onValueChange = { phone = it },
+                            label = { Text("Số điện thoại") },
+                            leadingIcon = { Icon(Icons.Default.Phone, null) },
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
+                            isError = phoneError != null,
+                            supportingText = {
+                                phoneError?.let { Text(it, color = MaterialTheme.colorScheme.error) }
+                            },
+                            modifier = Modifier.fillMaxWidth()
+                        )
+
+                        Spacer(Modifier.height(12.dp))
+                        Text("Địa chỉ", style = MaterialTheme.typography.titleMedium)
+                        Spacer(Modifier.height(8.dp))
+
+                        OutlinedTextField(
+                            value = province,
+                            onValueChange = { province = it },
+                            label = { Text("Tỉnh/Thành phố") },
+                            leadingIcon = { Icon(Icons.Default.LocationOn, null) },
+                            modifier = Modifier.fillMaxWidth()
+                        )
+
+                        Spacer(Modifier.height(8.dp))
+                        OutlinedTextField(
+                            value = district,
+                            onValueChange = { district = it },
+                            label = { Text("Quận/Huyện") },
+                            leadingIcon = { Icon(Icons.Default.LocationOn, null) },
+                            modifier = Modifier.fillMaxWidth()
+                        )
+
+                        Spacer(Modifier.height(8.dp))
+                        OutlinedTextField(
+                            value = municipality,
+                            onValueChange = { municipality = it },
+                            label = { Text("Phường/Xã") },
+                            leadingIcon = { Icon(Icons.Default.LocationOn, null) },
+                            modifier = Modifier.fillMaxWidth()
+                        )
+
+                        Spacer(Modifier.height(8.dp))
+                        OutlinedTextField(
+                            value = detail,
+                            onValueChange = { detail = it },
+                            label = { Text("Chi tiết") },
+                            leadingIcon = { Icon(Icons.Default.Home, null) },
+                            modifier = Modifier.fillMaxWidth()
+                        )
+
+                        Spacer(Modifier.height(24.dp))
+
+                        Button(
+                            onClick = {
+                                nameError = if (name.isBlank()) "Không được để trống" else null
+                                phoneError = if (phone.isBlank()) "Không được để trống" else null
+
+                                if (nameError == null && phoneError == null) {
+                                    val address = Address(province, district, municipality, detail)
+                                    val request = UpdateUserRequest(
+                                        name = name,
+                                        phone = phone,
+                                        avatarUrl = avatarUrl,
+                                        address = address
+                                    )
+                                    lastAction = "update"
+                                    authViewModel.updateUser(request)
+                                }
+                            },
+                            modifier = Modifier.fillMaxWidth(),
+                            shape = RoundedCornerShape(12.dp),
+                            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
+                        ) {
+                            Icon(FontAwesomeIcons.Solid.Save, null, Modifier.size(24.dp))
+                            Spacer(Modifier.width(8.dp))
+                            Text("Lưu thông tin cá nhân")
+                        }
+
+                        Spacer(Modifier.height(24.dp))
+
+                        OutlinedButton(
+                            onClick = { showPasswordFields = !showPasswordFields },
+                            modifier = Modifier.fillMaxWidth(),
+                            shape = RoundedCornerShape(12.dp)
+                        ) {
+                            Icon(
+                                if (showPasswordFields) Icons.Default.KeyboardArrowUp else Icons.Default.Lock,
+                                null
+                            )
+                            Spacer(Modifier.width(8.dp))
+                            Text(if (showPasswordFields) "Ẩn đổi mật khẩu" else "Đổi mật khẩu")
+                        }
+
+                        AnimatedVisibility(showPasswordFields) {
+                            Column {
+                                Spacer(Modifier.height(12.dp))
+
+                                OutlinedTextField(
+                                    value = oldPassword,
+                                    onValueChange = { oldPassword = it },
+                                    label = { Text("Mật khẩu cũ") },
+                                    leadingIcon = { Icon(Icons.Default.Lock, null) },
+                                    trailingIcon = {
+                                        IconButton(onClick = { showOldPassword = !showOldPassword }) {
+                                            Icon(
+                                                if (showOldPassword) FontAwesomeIcons.Solid.EyeSlash
+                                                else FontAwesomeIcons.Solid.Eye,
+                                                null,
+                                                modifier = Modifier.size(24.dp),
+                                            )
+                                        }
+                                    },
+                                    visualTransformation = if (showOldPassword)
+                                        VisualTransformation.None else PasswordVisualTransformation(),
+                                    modifier = Modifier.fillMaxWidth()
+                                )
+
+                                Spacer(Modifier.height(8.dp))
+                                OutlinedTextField(
+                                    value = newPassword,
+                                    onValueChange = { newPassword = it },
+                                    label = { Text("Mật khẩu mới") },
+                                    leadingIcon = { Icon(Icons.Default.Lock, null) },
+                                    trailingIcon = {
+                                        IconButton(onClick = { showNewPassword = !showNewPassword }) {
+                                            Icon(
+                                                if (showNewPassword) FontAwesomeIcons.Solid.EyeSlash
+                                                else FontAwesomeIcons.Solid.Eye,
+                                                null,
+                                                modifier = Modifier.size(24.dp),
+                                            )
+                                        }
+                                    },
+                                    visualTransformation = if (showNewPassword)
+                                        VisualTransformation.None else PasswordVisualTransformation(),
+                                    isError = newPasswordError != null,
+                                    supportingText = {
+                                        newPasswordError?.let {
+                                            Text(it, color = MaterialTheme.colorScheme.error)
+                                        }
+                                    },
+                                    modifier = Modifier.fillMaxWidth()
+                                )
+
+                                Spacer(Modifier.height(8.dp))
+                                OutlinedTextField(
+                                    value = confirmPassword,
+                                    onValueChange = { confirmPassword = it },
+                                    label = { Text("Xác nhận mật khẩu mới") },
+                                    leadingIcon = { Icon(Icons.Default.Check, null) },
+                                    trailingIcon = {
+                                        IconButton(onClick = { showConfirmPassword = !showConfirmPassword }) {
+                                            Icon(
+                                                if (showConfirmPassword) FontAwesomeIcons.Solid.EyeSlash
+                                                else FontAwesomeIcons.Solid.Eye,
+                                                null,
+                                                modifier = Modifier.size(24.dp)
+                                            )
+                                        }
+                                    },
+                                    visualTransformation = if (showConfirmPassword)
+                                        VisualTransformation.None else PasswordVisualTransformation(),
+                                    isError = confirmPasswordError != null,
+                                    supportingText = {
+                                        confirmPasswordError?.let {
+                                            Text(it, color = MaterialTheme.colorScheme.error)
+                                        }
+                                    },
+                                    modifier = Modifier.fillMaxWidth()
+                                )
+
+                                Spacer(Modifier.height(8.dp))
+                                Button(
+                                    onClick = {
+                                        newPasswordError = when {
+                                            newPassword.isBlank() -> "Không được để trống"
+                                            newPassword.length < 6 -> "Tối thiểu 6 ký tự"
+                                            else -> null
+                                        }
+                                        confirmPasswordError =
+                                            if (confirmPassword != newPassword)
+                                                "Mật khẩu xác nhận không khớp"
+                                            else null
+
+                                        if (newPasswordError == null && confirmPasswordError == null) {
+                                            lastAction = "changePassword"
+                                            authViewModel.changePassword(oldPassword, newPassword)
+                                        }
+                                    },
+                                    modifier = Modifier.fillMaxWidth(),
+                                    shape = RoundedCornerShape(12.dp)
+                                ) {
+                                    Icon(FontAwesomeIcons.Solid.Save, null, Modifier.size(24.dp))
+                                    Spacer(Modifier.width(8.dp))
+                                    Text("Cập nhật mật khẩu")
+                                }
+                            }
+                        }
+
+                        Spacer(Modifier.height(32.dp))
+
+                        //  Nút Xóa tài khoản
+                        TextButton(
+                            onClick = {
+                                showDialog = true
+                            },
+                            modifier = Modifier.fillMaxWidth(),
+                            colors = ButtonDefaults.textButtonColors(
+                                contentColor = MaterialTheme.colorScheme.error
+                            )
+                        ) {
+                            Icon(Icons.Default.Delete, contentDescription = null)
+                            Spacer(Modifier.width(8.dp))
+                            Text("Xóa tài khoản", color = MaterialTheme.colorScheme.error)
+                        }
+
+                        Spacer(Modifier.height(100.dp))
+                    }
+
+                    // Dialog xác nhận xóa
+                    if (showDialog) {
+                        Dialog(
+                            showDialog = showDialog,
+                            title = "Xác nhận",
+                            onDismiss = {
+                                showDialog = false
+                            },
+                            onConfirm = {
+                                lastAction = "delete"
+                                authViewModel.deleteUser()
+                            }
+                        ) {
+                            Text(text = "Bạn có chắc muốn xóa tài khoản ${user.name} này không?")
+                        }
+                    }
+
+                    // Dialog điều hướng sau khi xóa
+                    if (showDialogNav) {
+                        Dialog(
+                            showDialog = showDialog,
+                            title = "Xác nhận",
+                            onDismiss = {
+                                showDialogNav = false
+                                onNavigateToAuth()
+                            },
+                            onConfirm = {
+                                showDialogNav = false
+                                onNavigateToAuth()
+                            }
+                        ) {
+                            Text(text = "Đã xóa tài khoản thành công, chuyển đến màn hình đăng nhập!")
+                        }
+                    }
+                }
+
+                else -> {
+                    Text(
+                        text = "Không có dữ liệu người dùng",
+                        modifier = Modifier.align(Alignment.Center)
+                    )
+                }
+            }
+        }
+    }
+}
+

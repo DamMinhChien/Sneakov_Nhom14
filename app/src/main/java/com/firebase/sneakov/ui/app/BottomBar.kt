@@ -1,14 +1,8 @@
 package com.firebase.sneakov.ui.app
 
-import android.R.attr.onClick
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Notifications
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Notifications
@@ -25,9 +19,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.font.FontWeight
@@ -44,7 +35,7 @@ fun BottomBar(navController: NavHostController) {
         BottomNavItem(Screen.Wishlist.route, "Yêu thích", Icons.Outlined.Favorite),
         BottomNavItem(Screen.Home.route, "Giỏ hàng", Icons.Outlined.ShoppingCart),
         BottomNavItem(Screen.Home.route, "Thông báo", Icons.Outlined.Notifications),
-        BottomNavItem(Screen.Home.route, "Tài khoản", Icons.Outlined.Person)
+        BottomNavItem(Screen.Profile.route, "Tài khoản", Icons.Outlined.Person)
     )
 
     Surface(

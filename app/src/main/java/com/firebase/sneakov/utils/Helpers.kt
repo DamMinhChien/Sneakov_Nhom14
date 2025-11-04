@@ -3,6 +3,7 @@ package com.firebase.sneakov.utils
 import androidx.compose.ui.graphics.Color
 import com.google.firebase.Timestamp
 import java.text.NumberFormat
+import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.util.Locale
@@ -42,3 +43,16 @@ fun Color.Companion.fromHex(hex: String): Color {
     }
     return Color(argbHex.toLong(16))
 }
+
+fun formatDateString(raw: String): String {
+    return try {
+        val inputFormat = SimpleDateFormat("EEE MMM dd 'GMT'Z yyyy", Locale.ENGLISH)
+        val date = inputFormat.parse(raw)
+        val outputFormat = SimpleDateFormat("dd/MM/yyyy", Locale("vi", "VN"))
+        outputFormat.format(date!!)
+    } catch (e: Exception) {
+        raw // nếu lỗi thì trả lại chuỗi gốc
+    }
+}
+
+
