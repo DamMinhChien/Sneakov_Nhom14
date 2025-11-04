@@ -9,8 +9,14 @@ object CollectionName {
     const val WISHLIST = "wishlist"
 }
 
-object FieldName{
+object FieldName {
     const val USER_ID = "userId"
     const val ADDED_AT = "added_at"
     const val PRODUCT_ID = "productId"
+}
+
+object Cloudinary {
+    const val CLOUD_NAME = "dj24vxzqz"
+    const val PRESET_NAME = "unsigned_avatar_upload"
+    const val BASE_URL = "https://api.cloudinary.com/"
 }
