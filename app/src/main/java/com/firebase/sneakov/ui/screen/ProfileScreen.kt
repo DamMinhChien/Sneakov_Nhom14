@@ -31,11 +31,15 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import com.firebase.sneakov.R
 import com.firebase.sneakov.data.model.Address
+import com.firebase.sneakov.data.model.District
+import com.firebase.sneakov.data.model.Province
+import com.firebase.sneakov.data.model.Ward
 import com.firebase.sneakov.data.request.UpdateUserRequest
 import com.firebase.sneakov.ui.compose.Dialog
 import com.firebase.sneakov.ui.compose.RefreshableLayout
 import com.firebase.sneakov.viewmodel.AuthViewModel
 import com.firebase.sneakov.viewmodel.CloudinaryViewModel
+import com.firebase.sneakov.viewmodel.LocationViewModel
 import com.firebase.sneakov.viewmodel.UserViewModel
 import compose.icons.FontAwesomeIcons
 import compose.icons.fontawesomeicons.Solid
@@ -53,6 +57,7 @@ fun ProfileScreen(
     authViewModel: AuthViewModel = koinViewModel(),
     userViewModel: UserViewModel = koinViewModel(),
     cloudinaryViewModel: CloudinaryViewModel = koinViewModel(),
+    locationViewModel: LocationViewModel = koinViewModel(),
     onNavigateToAuth: () -> Unit
 ) {
     val context = LocalContext.current
@@ -60,6 +65,7 @@ fun ProfileScreen(
     val authState by authViewModel.uiState.collectAsState()
     val userState by userViewModel.uiState.collectAsState()
     val cloudinaryState by cloudinaryViewModel.uiState.collectAsState()
+    val locationState by locationViewModel.uiState.collectAsState()
 
     var showDialog by remember { mutableStateOf(false) }
     var showDialogNav by remember { mutableStateOf(false) }
@@ -120,6 +126,15 @@ fun ProfileScreen(
     var showNewPassword by remember { mutableStateOf(false) }
     var showConfirmPassword by remember { mutableStateOf(false) }
 
+    var provinces by remember { mutableStateOf<List<Province>>(emptyList()) }
+    var districts by remember { mutableStateOf<List<District>>(emptyList()) }
+    var wards by remember { mutableStateOf<List<Ward>>(emptyList()) }
+
+    var provinceExpanded by remember { mutableStateOf(false) }
+    var districtExpanded by remember { mutableStateOf(false) }
+    var wardExpanded by remember { mutableStateOf(false) }
+
+
     val scrollState = rememberScrollState()
 
     val imagePicker = rememberLauncherForActivityResult(
@@ -145,8 +160,25 @@ fun ProfileScreen(
         }
     }
 
+    LaunchedEffect(Unit) {
+        locationViewModel.getProvinces()
+    }
+
+    // Cập nhật dữ liệu khi uiState đổi
+    LaunchedEffect(locationState.data) {
+        when (val data = locationState.data) {
+            is List<*> -> {
+                when {
+                    data.firstOrNull() is Province -> provinces = data.filterIsInstance<Province>()
+                    data.firstOrNull() is District -> districts = data.filterIsInstance<District>()
+                    data.firstOrNull() is Ward -> wards = data.filterIsInstance<Ward>()
+                }
+            }
+        }
+    }
+
     RefreshableLayout(
-        isRefreshing = userState.isLoading || authState.isLoading || cloudinaryState.isLoading,
+        isRefreshing = userState.isLoading || authState.isLoading || cloudinaryState.isLoading || locationState.isLoading,
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
@@ -157,6 +189,8 @@ fun ProfileScreen(
             when {
                 userState.error != null -> Toast.makeText(context, userState.error, Toast.LENGTH_LONG).show()
                 authState.error != null -> Toast.makeText(context, authState.error, Toast.LENGTH_LONG).show()
+                cloudinaryState.error != null -> Toast.makeText(context, cloudinaryState.error, Toast.LENGTH_LONG).show()
+                locationState.error != null -> Toast.makeText(context, locationState.error, Toast.LENGTH_LONG).show()
 
                 user != null -> {
                     Column(
@@ -266,31 +300,107 @@ fun ProfileScreen(
                         Text("Địa chỉ", style = MaterialTheme.typography.titleMedium)
                         Spacer(Modifier.height(8.dp))
 
-                        OutlinedTextField(
-                            value = province,
-                            onValueChange = { province = it },
-                            label = { Text("Tỉnh/Thành phố") },
-                            leadingIcon = { Icon(Icons.Default.LocationOn, null) },
-                            modifier = Modifier.fillMaxWidth()
-                        )
+                        // --- Tỉnh/Thành phố ---
+                        ExposedDropdownMenuBox(
+                            expanded = provinceExpanded,
+                            onExpandedChange = { provinceExpanded = !provinceExpanded }
+                        ) {
+                            OutlinedTextField(
+                                value = province,
+                                onValueChange = {},
+                                readOnly = true,
+                                label = { Text("Tỉnh/Thành phố") },
+                                leadingIcon = { Icon(Icons.Default.LocationOn, null) },
+                                trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = provinceExpanded) },
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .menuAnchor()
+                            )
+                            ExposedDropdownMenu(
+                                expanded = provinceExpanded,
+                                onDismissRequest = { provinceExpanded = false }
+                            ) {
+                                provinces.forEach {
+                                    DropdownMenuItem(
+                                        text = { Text(it.name) },
+                                        onClick = {
+                                            province = it.name
+                                            provinceExpanded = false
+                                            district = ""
+                                            municipality = ""
+                                            locationViewModel.getDistrictsByProvince(it.code)
+                                        }
+                                    )
+                                }
+                            }
+                        }
 
-                        Spacer(Modifier.height(8.dp))
-                        OutlinedTextField(
-                            value = district,
-                            onValueChange = { district = it },
-                            label = { Text("Quận/Huyện") },
-                            leadingIcon = { Icon(Icons.Default.LocationOn, null) },
-                            modifier = Modifier.fillMaxWidth()
-                        )
+                        // --- Quận/Huyện ---
+                        ExposedDropdownMenuBox(
+                            expanded = districtExpanded,
+                            onExpandedChange = { districtExpanded = !districtExpanded }
+                        ) {
+                            OutlinedTextField(
+                                value = district,
+                                onValueChange = {},
+                                readOnly = true,
+                                label = { Text("Quận/Huyện") },
+                                leadingIcon = { Icon(Icons.Default.LocationOn, null) },
+                                trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = districtExpanded) },
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .menuAnchor()
+                            )
+                            ExposedDropdownMenu(
+                                expanded = districtExpanded,
+                                onDismissRequest = { districtExpanded = false }
+                            ) {
+                                districts.forEach {
+                                    DropdownMenuItem(
+                                        text = { Text(it.name) },
+                                        onClick = {
+                                            district = it.name
+                                            districtExpanded = false
+                                            municipality = ""
+                                            locationViewModel.getWardsByDistrict(it.code)
+                                        }
+                                    )
+                                }
+                            }
+                        }
 
-                        Spacer(Modifier.height(8.dp))
-                        OutlinedTextField(
-                            value = municipality,
-                            onValueChange = { municipality = it },
-                            label = { Text("Phường/Xã") },
-                            leadingIcon = { Icon(Icons.Default.LocationOn, null) },
-                            modifier = Modifier.fillMaxWidth()
-                        )
+                        // --- Phường/Xã ---
+                        ExposedDropdownMenuBox(
+                            expanded = wardExpanded,
+                            onExpandedChange = { wardExpanded = !wardExpanded }
+                        ) {
+                            OutlinedTextField(
+                                value = municipality,
+                                onValueChange = {},
+                                readOnly = true,
+                                label = { Text("Phường/Xã") },
+                                leadingIcon = { Icon(Icons.Default.LocationOn, null) },
+                                trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = wardExpanded) },
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .menuAnchor()
+                            )
+                            ExposedDropdownMenu(
+                                expanded = wardExpanded,
+                                onDismissRequest = { wardExpanded = false }
+                            ) {
+                                wards.forEach {
+                                    DropdownMenuItem(
+                                        text = { Text(it.name) },
+                                        onClick = {
+                                            municipality = it.name
+                                            wardExpanded = false
+                                        }
+                                    )
+                                }
+                            }
+                        }
+
 
                         Spacer(Modifier.height(8.dp))
                         OutlinedTextField(
