@@ -23,7 +23,7 @@ import com.firebase.sneakov.ui.compose.AuthCard
 import com.firebase.sneakov.ui.theme.SneakovTheme
 
 @Composable
-fun AuthScreen(onNavigateToHome: () -> Unit) {
+fun AuthScreen(onNavigateToHome: () -> Unit, goToResetPasswordScreen: () -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -50,16 +50,9 @@ fun AuthScreen(onNavigateToHome: () -> Unit) {
         }
         AuthCard(
             modifier = Modifier.align(Alignment.BottomCenter),
-            onNavigateToHome = onNavigateToHome
+            onNavigateToHome = onNavigateToHome,
+            goToResetPasswordScreen = goToResetPasswordScreen
         )
     }
 
-}
-
-@Composable
-@Preview(showSystemUi = true, showBackground = true)
-fun SneakovAppPreview() {
-    SneakovTheme {
-        AuthScreen(onNavigateToHome = {})
-    }
 }

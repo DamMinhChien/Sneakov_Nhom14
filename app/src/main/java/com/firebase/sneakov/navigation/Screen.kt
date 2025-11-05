@@ -24,4 +24,5 @@ sealed class Screen(val route: String) {
 
     object Wishlist : Screen("wishlist")
     object Profile : Screen("profile")
+    object ResetPassword : Screen("reset_password")
 }

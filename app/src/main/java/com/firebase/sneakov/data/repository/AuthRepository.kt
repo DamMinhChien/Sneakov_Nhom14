@@ -6,6 +6,7 @@ import com.firebase.sneakov.data.request.RegisterRequest
 import com.firebase.sneakov.data.request.UpdateUserRequest
 import com.firebase.sneakov.utils.CollectionName
 import com.firebase.sneakov.utils.Result
+import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
@@ -161,6 +162,20 @@ class AuthRepository(private val db: FirebaseFirestore, private val auth: Fireba
             Result.Error("Lỗi khi xóa dữ liệu từ Firestore: ${e.message}")
         } catch (e: Exception) {
             Result.Error("Có lỗi xảy ra: ${e.message ?: "Lỗi không xác định"}")
+        }
+    }
+    suspend fun sendResetPassword(email: String): Result<Unit> {
+        return try {
+            auth.sendPasswordResetEmail(email).await()
+            Result.Success(Unit)
+        } catch (e: FirebaseAuthInvalidUserException) {
+            Result.Error("Email này chưa được đăng ký hoặc đã bị vô hiệu hóa.")
+        } catch (e: FirebaseAuthInvalidCredentialsException) {
+            Result.Error("Định dạng email không hợp lệ.")
+        } catch (e: FirebaseNetworkException) {
+            Result.Error("Không có kết nối Internet.")
+        } catch (e: Exception) {
+            Result.Error("Có lỗi xảy ra khi gửi email khôi phục: ${e.message ?: "Lỗi không xác định"}")
         }
     }
     fun logout() {

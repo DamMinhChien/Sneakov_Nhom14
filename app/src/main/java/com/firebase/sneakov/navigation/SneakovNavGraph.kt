@@ -12,6 +12,7 @@ import com.firebase.sneakov.ui.screen.DetailScreen
 import com.firebase.sneakov.ui.screen.HomeScreen
 import com.firebase.sneakov.ui.screen.OnboardingScreen
 import com.firebase.sneakov.ui.screen.ProfileScreen
+import com.firebase.sneakov.ui.screen.ResetPasswordScreen
 import com.firebase.sneakov.ui.screen.SearchScreen
 import com.firebase.sneakov.ui.screen.WishlistScreen
 
@@ -20,7 +21,7 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
 
     NavHost(
         navController = navController,
-        startDestination = Screen.Home.route,
+        startDestination = Screen.Auth.route,
         modifier = modifier
     ) {
         composable(Screen.Onboarding.route) {
@@ -32,11 +33,15 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
         }
 
         composable(Screen.Auth.route) {
-            AuthScreen(onNavigateToHome = {
-                navController.navigate(Screen.Home.route) {
-                    popUpTo(Screen.Auth.route) { inclusive = true }
-                }
-            })
+            AuthScreen(
+                onNavigateToHome = {
+                    navController.navigate(Screen.Home.route) {
+                        popUpTo(Screen.Auth.route) { inclusive = true }
+                    }
+                },
+                goToResetPasswordScreen = {
+                    navController.navigate(Screen.ResetPassword.route)
+                })
         }
 
         composable(Screen.Home.route) {
@@ -113,6 +118,8 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
                 }
             )
         }
-
+        composable(route = Screen.ResetPassword.route) {
+            ResetPasswordScreen()
+        }
     }
 }
