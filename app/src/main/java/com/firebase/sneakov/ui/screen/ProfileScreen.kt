@@ -1,5 +1,6 @@
 package com.firebase.sneakov.ui.screen
 
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -27,13 +28,18 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.KeyboardArrowUp
+import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -138,7 +144,7 @@ fun ProfileScreen(
     // --- State ---
     var name by remember(user) { mutableStateOf(user?.name.orEmpty()) }
     var phone by remember(user) { mutableStateOf(user?.phone.orEmpty()) }
-    var avatarUrl by remember(user) { mutableStateOf(user?.avatarUrl.orEmpty()) }
+    var avatarUrl by remember(user) { mutableStateOf(user?.avatar_url.orEmpty()) }
     var province by remember(user) { mutableStateOf(user?.address?.province.orEmpty()) }
     var district by remember(user) { mutableStateOf(user?.address?.district.orEmpty()) }
     var municipality by remember(user) { mutableStateOf(user?.address?.municipality.orEmpty()) }
@@ -233,6 +239,7 @@ fun ProfileScreen(
                     .fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                Log.d("ProfileScreen", "avatarUrl: $avatarUrl")
                 // --- Avatar ---
                 Box(modifier = Modifier.size(120.dp), contentAlignment = Alignment.Center) {
                     Image(
@@ -315,6 +322,112 @@ fun ProfileScreen(
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
                     isError = phoneError != null,
                     supportingText = { phoneError?.let { Text(it, color = MaterialTheme.colorScheme.error) } },
+                    modifier = Modifier.fillMaxWidth()
+                )
+                // --- Tỉnh/Thành phố ---
+                ExposedDropdownMenuBox(
+                    expanded = provinceExpanded,
+                    onExpandedChange = { provinceExpanded = !provinceExpanded }
+                ) {
+                    OutlinedTextField(
+                        value = province,
+                        onValueChange = {},
+                        readOnly = true,
+                        label = { Text("Tỉnh/Thành phố") },
+                        leadingIcon = { Icon(Icons.Default.LocationOn, null) },
+                        trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = provinceExpanded) },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .menuAnchor()
+                    )
+                    ExposedDropdownMenu(
+                        expanded = provinceExpanded,
+                        onDismissRequest = { provinceExpanded = false }
+                    ) {
+                        provinces.forEach {
+                            DropdownMenuItem(
+                                text = { Text(it.name) },
+                                onClick = {
+                                    province = it.name
+                                    provinceExpanded = false
+                                    district = ""
+                                    municipality = ""
+                                    locationViewModel.getDistrictsByProvince(it.code)
+                                }
+                            )
+                        }
+                    }
+                }
+                // --- Quận/Huyện ---
+                ExposedDropdownMenuBox(
+                    expanded = districtExpanded,
+                    onExpandedChange = { districtExpanded = !districtExpanded }
+                ) {
+                    OutlinedTextField(
+                        value = district,
+                        onValueChange = {},
+                        readOnly = true,
+                        label = { Text("Quận/Huyện") },
+                        leadingIcon = { Icon(Icons.Default.LocationOn, null) },
+                        trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = districtExpanded) },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .menuAnchor()
+                    )
+                    ExposedDropdownMenu(
+                        expanded = districtExpanded,
+                        onDismissRequest = { districtExpanded = false }
+                    ) {
+                        districts.forEach {
+                            DropdownMenuItem(
+                                text = { Text(it.name) },
+                                onClick = {
+                                    district = it.name
+                                    districtExpanded = false
+                                    municipality = ""
+                                    locationViewModel.getWardsByDistrict(it.code)
+                                }
+                            )
+                        }
+                    }
+                }
+                // --- Phường/Xã ---
+                ExposedDropdownMenuBox(
+                    expanded = wardExpanded,
+                    onExpandedChange = { wardExpanded = !wardExpanded }
+                ) {
+                    OutlinedTextField(
+                        value = municipality,
+                        onValueChange = {},
+                        readOnly = true,
+                        label = { Text("Phường/Xã") },
+                        leadingIcon = { Icon(Icons.Default.LocationOn, null) },
+                        trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = wardExpanded) },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .menuAnchor()
+                    )
+                    ExposedDropdownMenu(
+                        expanded = wardExpanded,
+                        onDismissRequest = { wardExpanded = false }
+                    ) {
+                        wards.forEach {
+                            DropdownMenuItem(
+                                text = { Text(it.name) },
+                                onClick = {
+                                    municipality = it.name
+                                    wardExpanded = false
+                                }
+                            )
+                        }
+                    }
+                }
+                // Địa chỉ chi tiết
+                OutlinedTextField(
+                    value = detail,
+                    onValueChange = { detail = it },
+                    label = { Text("Chi tiết") },
+                    leadingIcon = { Icon(Icons.Default.Home, null) },
                     modifier = Modifier.fillMaxWidth()
                 )
 

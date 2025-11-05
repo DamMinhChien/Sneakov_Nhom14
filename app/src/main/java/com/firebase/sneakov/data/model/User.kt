@@ -14,7 +14,7 @@ data class User(
     val email: String= "",
     val role: String = "user",
     @PropertyName("avatar_url")
-    val avatarUrl: String = "",
+    val avatar_url: String = "",
     val createdAt: Date = Date(),
     val phone: String = "",
     val address: Address = Address()

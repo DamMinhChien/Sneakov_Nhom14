@@ -21,7 +21,7 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
 
     NavHost(
         navController = navController,
-        startDestination = Screen.Auth.route,
+        startDestination = Screen.Home.route,
         modifier = modifier
     ) {
         composable(Screen.Onboarding.route) {
