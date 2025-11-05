@@ -194,7 +194,6 @@ fun HomeScreen(
                                 Log.d("HomeScreen", "Variant stock = ${defaultVarian?.stock}")
                                 if(defaultVarian != null) {
                                     cartViewModel.addToCart(
-                                        userId = "user_001",
                                         productId = selectedProd.id,
                                         variantId = defaultVarian.id,
                                         quantity = 1

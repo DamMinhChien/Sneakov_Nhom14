@@ -11,6 +11,7 @@ import kotlin.math.log
 class CartRepository(
     private val firestore: FirebaseFirestore
 ) {
+
     private val cartCollection = firestore.collection("carts")
     private val productCollection = firestore.collection("products")
 

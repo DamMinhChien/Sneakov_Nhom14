@@ -21,9 +21,10 @@ fun SneakovApp() {
     val currentRoute = currentBackStackEntry?.destination?.route
 
     // Danh sách các màn không hiển thị top/bottom bar
-    val noTopBarScreens = listOf(Screen.Onboarding.route, Screen.Auth.route, Screen.Cart.route, Screen.ResetPassword.route)
+    val noTopBarScreens = listOf(Screen.Onboarding.route, Screen.Auth.route, Screen.ResetPassword.route)
     val noBottomBarScreens = listOf(Screen.Onboarding.route,  Screen.Auth.route, Screen.Cart.route, Screen.Detail.route, Screen.Search.route,
-        Screen.ResetPassword.route)
+        Screen.ResetPassword.route,
+        Screen.Order.route)
 
     SneakovTheme {
         Scaffold(

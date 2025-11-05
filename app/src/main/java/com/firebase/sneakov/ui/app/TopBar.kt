@@ -32,7 +32,8 @@ fun TopBar(
         Screen.Home.route to "Sneakov",
         Screen.Search.route to "Tìm kiếm",
         Screen.Wishlist.route to "Yêu thích",
-        "cart" to "Giỏ hàng",
+        Screen.Cart.route to "Giỏ hàng",
+        Screen.Order.route to "Thanh toán",
         "settings" to "Tài khoản",
         Screen.Detail.route to "Chi tiết sản phẩm",
         Screen.Profile.route to "Cá nhân"
@@ -90,6 +91,7 @@ fun TopBar(
                 )
             }
         }
+
 
         // Các màn khác (search, settings, cart...) sẽ chỉ có nút back, không có action
     }

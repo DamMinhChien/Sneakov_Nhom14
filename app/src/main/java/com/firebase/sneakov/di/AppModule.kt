@@ -112,7 +112,7 @@ val appModule = module {
     viewModel { BrandsNameViewModel(get()) }
     viewModel { ColorViewModel(get()) }
     //viewModel { HomeViewModel(get()) }
-    viewModel { CartViewModel(get(), get()) }
-    viewModel { OrderViewModel(get(), get()) }
+    viewModel { CartViewModel(get(), get(), get()) }
+    viewModel { OrderViewModel(get(), get(), get()) }
 
 }

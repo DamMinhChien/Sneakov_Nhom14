@@ -1,14 +1,17 @@
 package com.firebase.sneakov.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import androidx.navigation.navigation
 import com.firebase.sneakov.ui.screen.AuthScreen
 import com.firebase.sneakov.ui.screen.CartScreen
+import com.firebase.sneakov.ui.screen.CheckoutScreen
 import com.firebase.sneakov.ui.screen.DetailScreen
 import com.firebase.sneakov.ui.screen.HomeScreen
 import com.firebase.sneakov.ui.screen.OnboardingScreen
@@ -16,6 +19,13 @@ import com.firebase.sneakov.ui.screen.ProfileScreen
 import com.firebase.sneakov.ui.screen.ResetPasswordScreen
 import com.firebase.sneakov.ui.screen.SearchScreen
 import com.firebase.sneakov.ui.screen.WishlistScreen
+import com.firebase.sneakov.viewmodel.OrderViewModel
+import com.google.common.graph.Graph
+import org.koin.androidx.compose.koinViewModel
+
+object Graph {
+    const val CHECKOUT = "checkout_graph"
+}
 
 @Composable
 fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
@@ -123,10 +133,46 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
         composable(route = Screen.ResetPassword.route) {
             ResetPasswordScreen()
         }
-        composable(Screen.Cart.route) {
-            CartScreen(
-                onCheckout = { navController.navigate(Screen.Order.route) }
-            )
+
+        navigation(
+            startDestination = Screen.Cart.route,
+            route = com.firebase.sneakov.navigation.Graph.CHECKOUT
+        ){
+            composable(Screen.Cart.route) { backStackEntry ->
+                val parentEntry = remember(backStackEntry) {
+                    navController.getBackStackEntry(com.firebase.sneakov.navigation.Graph.CHECKOUT)
+                }
+                val orderViewModel: OrderViewModel = koinViewModel(
+                    viewModelStoreOwner = parentEntry
+                )
+                CartScreen(
+                    orderViewModel = orderViewModel,
+                    onCheckout = { navController.navigate(Screen.Order.route)},
+                    onBack = { navController.popBackStack()}
+                )
+
+            }
+            composable(Screen.Order.route) { backStackEntry ->
+                val parentEntry = remember(backStackEntry) {
+                    navController.getBackStackEntry(com.firebase.sneakov.navigation.Graph.CHECKOUT)
+                }
+                val orderViewModel: OrderViewModel = koinViewModel(
+                    viewModelStoreOwner = parentEntry
+                )
+                CheckoutScreen(
+                    orderViewModel = orderViewModel,
+                    onBack = { navController.popBackStack()},
+                    onCheckoutSuccess = { orderId ->
+                        navController.navigate(Screen.Home.route) {
+                            popUpTo(com.firebase.sneakov.navigation.Graph.CHECKOUT) { inclusive = true }
+                        }
+
+                    }
+                )
+
+            }
+
         }
+
     }
 }

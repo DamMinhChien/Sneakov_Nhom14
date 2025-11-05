@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Arrangement
@@ -39,7 +40,10 @@ fun CartItemRow(
     product: Product?,
     onPlus: () -> Unit,
     onMinus: () -> Unit,
-    onRemove: () -> Unit
+    onRemove: () -> Unit,
+    isSelected: Boolean,
+    onItemSelected: (Boolean) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val offsetX = remember { Animatable(0f) }
     val scope = rememberCoroutineScope()
@@ -149,6 +153,7 @@ fun CartItemRow(
                     .offset { IntOffset(offsetX.value.roundToInt(), 0) }
                     .clip(RoundedCornerShape(12.dp))
                     .background(MaterialTheme.colorScheme.surface)
+                    .clickable { onItemSelected(!isSelected)}
                     .pointerInput(Unit) {
                         detectDragGestures(
                             onDragEnd = {
@@ -175,6 +180,10 @@ fun CartItemRow(
                     .padding(8.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
+                Checkbox(
+                    checked = isSelected,
+                    onCheckedChange = onItemSelected
+                )
                 AsyncImage(
                     model = product?.thumbnail,
                     contentDescription = null,
