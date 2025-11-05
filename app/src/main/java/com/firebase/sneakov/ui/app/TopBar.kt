@@ -30,7 +30,7 @@ fun TopBar(
     // 🏷️ Map route → tiêu đề tiếng Việt
     val routeTitleMap = mapOf(
         Screen.Home.route to "Sneakov",
-        "search" to "Tìm kiếm",
+        Screen.Search.route to "Tìm kiếm",
         Screen.Wishlist.route to "Yêu thích",
         "cart" to "Giỏ hàng",
         "settings" to "Tài khoản",

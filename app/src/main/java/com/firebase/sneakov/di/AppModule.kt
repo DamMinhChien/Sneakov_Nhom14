@@ -1,5 +1,6 @@
 package com.firebase.sneakov.di
 
+import androidx.lifecycle.ViewModel
 import com.firebase.sneakov.data.api.CloudinaryApi
 import com.firebase.sneakov.data.api.LocationApi
 import com.firebase.sneakov.data.repository.AuthRepository
@@ -12,11 +13,14 @@ import com.firebase.sneakov.utils.Cloudinary
 import com.firebase.sneakov.utils.Provinces
 import com.firebase.sneakov.viewmodel.AuthViewModel
 import com.firebase.sneakov.viewmodel.BrandViewModel
+import com.firebase.sneakov.viewmodel.BrandsNameViewModel
 import com.firebase.sneakov.viewmodel.CloudinaryViewModel
+import com.firebase.sneakov.viewmodel.ColorViewModel
 import com.firebase.sneakov.viewmodel.DetailViewModel
 import com.firebase.sneakov.viewmodel.HelperViewModel
 import com.firebase.sneakov.viewmodel.LocationViewModel
 import com.firebase.sneakov.viewmodel.ProductViewModel
+import com.firebase.sneakov.viewmodel.SearchViewModel
 import com.firebase.sneakov.viewmodel.UserViewModel
 import com.firebase.sneakov.viewmodel.WishlistViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -97,5 +101,8 @@ val appModule = module {
     viewModel { HelperViewModel(get()) }
     viewModel { CloudinaryViewModel(get()) }
     viewModel { LocationViewModel(get()) }
+    viewModel { SearchViewModel(get()) }
+    viewModel { BrandsNameViewModel(get()) }
+    viewModel { ColorViewModel(get()) }
 
 }

@@ -1,18 +1,18 @@
 package com.firebase.sneakov.viewmodel
 
 import androidx.lifecycle.viewModelScope
-import com.firebase.sneakov.data.repository.WishlistRepository
+import com.firebase.sneakov.data.repository.ProductRepository
 import com.firebase.sneakov.utils.BaseViewModel
-import com.firebase.sneakov.utils.Result
 import kotlinx.coroutines.launch
+import com.firebase.sneakov.utils.Result
 
-class HelperViewModel(
-    private val wishlistRepository: WishlistRepository,
+class ColorViewModel(
+    private val productRepository: ProductRepository
 ) : BaseViewModel<List<String>>() {
-    fun fetchWishlistIds() {
+    fun getColorsName() {
         viewModelScope.launch {
             setLoading(true)
-            when (val result = wishlistRepository.getWishlistProductIds()) {
+            when (val result = productRepository.getColorsName()) {
                 is Result.Success -> setData(result.data)
                 is Result.Error -> setError(result.message)
             }

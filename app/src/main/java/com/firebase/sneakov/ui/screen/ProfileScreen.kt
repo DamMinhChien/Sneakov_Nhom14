@@ -151,6 +151,12 @@ fun ProfileScreen(
         when {
             cloudinaryState.data != null -> {
                 avatarUrl = cloudinaryState.data!!
+                userState.data?.let { user ->
+                    val address = Address(province, district, municipality, detail)
+                    val request = UpdateUserRequest(name, phone, avatarUrl, address)
+                    lastAction = "update"
+                    authViewModel.updateUser(request)
+                }
                 Toast.makeText(context, "Upload ảnh thành công", Toast.LENGTH_SHORT).show()
             }
             cloudinaryState.error != null -> {

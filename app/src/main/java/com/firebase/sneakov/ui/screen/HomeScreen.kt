@@ -1,13 +1,11 @@
 package com.firebase.sneakov.ui.screen
 
+import android.R.attr.text
 import android.annotation.SuppressLint
 import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -21,11 +19,10 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -33,7 +30,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
@@ -42,28 +38,28 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.firebase.sneakov.R
+import com.firebase.sneakov.data.model.Brand
 import com.firebase.sneakov.data.model.Product
 import com.firebase.sneakov.ui.compose.BaseCard
 import com.firebase.sneakov.ui.compose.ProductCard
 import com.firebase.sneakov.ui.compose.RefreshableLayout
+import com.firebase.sneakov.ui.compose.SearchBar
 import com.firebase.sneakov.ui.theme.SneakovTheme
 import com.firebase.sneakov.viewmodel.BrandViewModel
 import com.firebase.sneakov.viewmodel.HelperViewModel
 import com.firebase.sneakov.viewmodel.ProductViewModel
 import com.firebase.sneakov.viewmodel.WishlistViewModel
-import compose.icons.FontAwesomeIcons
-import compose.icons.fontawesomeicons.Solid
-import compose.icons.fontawesomeicons.solid.Search
 import org.koin.androidx.compose.koinViewModel
 
 @SuppressLint("ConfigurationScreenWidthHeight")
 @Composable
 fun HomeScreen(
     brandViewModel: BrandViewModel = koinViewModel(),
-    navigateToSearchScreen: () -> Unit,
+    goToSearchScreen: (query: String) -> Unit,
+    goToSearchScreenWithBrand: (brand: Brand) -> Unit,
+    goToSearchScreenWithLatest: () -> Unit,
     productViewModel: ProductViewModel = koinViewModel(),
     onProductClick: (Product) -> Unit,
     helperViewModel: HelperViewModel = koinViewModel(),
@@ -76,6 +72,8 @@ fun HomeScreen(
 
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
     val itemWidth = screenWidth / 2
+
+    var query by remember { mutableStateOf("") }
 
     LaunchedEffect(Unit) {
         Log.d("Check", "Category LaunchedEffect chạy")
@@ -105,29 +103,14 @@ fun HomeScreen(
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
         ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .border(1.dp, MaterialTheme.colorScheme.onSurface, RoundedCornerShape(8.dp))
-                    .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(8.dp))
-                    .clickable { navigateToSearchScreen() }
-                    .padding(horizontal = 16.dp, vertical = 12.dp)
-            ) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Icon(
-                        FontAwesomeIcons.Solid.Search,
-                        contentDescription = null,
-                        modifier = Modifier.size(24.dp),
-                        tint = MaterialTheme.colorScheme.onSurface
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(
-                        text = "Tìm kiếm...",
-                        color = MaterialTheme.colorScheme.onSurface,
-                        fontSize = 16.sp
-                    )
-                }
-            }
+            SearchBar(
+                query = query,
+                onQueryChange = { query = it },
+                onSearch = {
+                    goToSearchScreen(query)
+                },
+                modifier = Modifier.padding(0.dp)
+            )
             Spacer(modifier = Modifier.height(20.dp))
             //            Text("abcwwkfhs: ${uiState.result}")
             Text("Danh mục sản phẩm", style = MaterialTheme.typography.bodyLarge)
@@ -142,7 +125,11 @@ fun HomeScreen(
                     horizontalArrangement = Arrangement.spacedBy(10.dp)
                 ) {
                     items(items = brands) { brand ->
-                        BaseCard {
+                        BaseCard(
+                            onClick = {
+                                goToSearchScreenWithBrand(brand)
+                            }
+                        ) {
                             AsyncImage(
                                 model = brand.thumbnail,
                                 contentDescription = brand.name,
@@ -165,11 +152,18 @@ fun HomeScreen(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text("Hàng mới về", style = MaterialTheme.typography.bodyLarge)
-                Text(
-                    "Xem tất cả",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.primary
-                )
+
+                TextButton(
+                    onClick = {
+                        goToSearchScreenWithLatest()
+                    }
+                ){
+                    Text(
+                        text = "Xem tất cả",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                }
             }
             Log.d("products", "products: ${productState.data}")
             if (!productState.data.isNullOrEmpty()) {
@@ -208,15 +202,17 @@ fun HomeScreen(
     }
 }
 
-@Composable
-@Preview(showSystemUi = true, showBackground = true)
-fun HomePreViewNice() {
-    SneakovTheme {
-        HomeScreen(
-            brandViewModel = TODO(),
-            navigateToSearchScreen = TODO(),
-            productViewModel = TODO(),
-            onProductClick = TODO()
-        )
-    }
-}
+//@Composable
+//@Preview(showSystemUi = true, showBackground = true)
+//fun HomePreViewNice() {
+//    SneakovTheme {
+//        HomeScreen(
+//            brandViewModel = TODO(),
+//            goToSearchScreen = TODO(),
+//            productViewModel = TODO(),
+//            onProductClick = TODO(),
+//            helperViewModel = TODO(),
+//            wishlistViewModel = TODO()
+//        )
+//    }
+//}
