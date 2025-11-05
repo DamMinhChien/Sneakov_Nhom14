@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -62,8 +63,9 @@ fun FilterBottomSheet(
             ) {
                 Text(
                     "Bộ lọc nâng cao",
-                    style = MaterialTheme.typography.bodyMedium,
-                    textAlign = TextAlign.Center
+                    style = MaterialTheme.typography.titleLarge,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth()
                 )
 
                 // --- Thương hiệu ---
@@ -155,7 +157,16 @@ fun FilterBottomSheet(
 
                 Spacer(modifier = Modifier.height(12.dp))
 
-                Row(modifier = Modifier.weight(1f)) {
+                Row(modifier = Modifier.fillMaxWidth()) {
+                    OutlinedButton(
+                        onClick = onReset,
+                        modifier = Modifier.weight(1f)
+                    ) {
+                        Text("Thiết lập lại")
+                    }
+
+                    Spacer(modifier = Modifier.width(12.dp))
+
                     Button(
                         onClick = {
                             onApply(
@@ -168,17 +179,11 @@ fun FilterBottomSheet(
                                 )
                             )
                         },
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.weight(1f)
                     ) {
                         Text("Áp dụng")
                     }
 
-                    OutlinedButton(
-                        onClick = onReset,
-                        modifier = Modifier.weight(1f)
-                    ) {
-                        Text("Thiết lập lại")
-                    }
                 }
 
 

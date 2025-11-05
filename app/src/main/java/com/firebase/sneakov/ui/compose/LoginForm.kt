@@ -21,6 +21,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -52,7 +53,8 @@ import org.koin.androidx.compose.koinViewModel
 fun LoginForm(
     viewModel: AuthViewModel = koinViewModel(),
     onNavigateToHome: () -> Unit,
-    onNavigateToRegister: () -> Unit
+    onNavigateToRegister: () -> Unit,
+    goToResetPasswordScreen: () -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val context = LocalContext.current
@@ -159,8 +161,14 @@ fun LoginForm(
                 Checkbox(checked = rememberMe, onCheckedChange = { rememberMe = it })
                 Text("Nhớ mật khẩu")
             }
-            Text(
-                "Quên mật khẩu?", color = Color.Blue, modifier = Modifier.clickable { /* TODO */ })
+            TextButton(
+                onClick = {
+                    goToResetPasswordScreen()
+                }
+            ) {
+                Text("Quên mật khẩu?", color = Color.Blue)
+            }
+
         }
 
         Spacer(Modifier.height(24.dp))
@@ -210,14 +218,5 @@ fun LoginForm(
             uiState.data != null -> Toast.makeText(context, "Đăng nhập thành công!", Toast.LENGTH_LONG)
                 .show()
         }
-    }
-}
-
-
-@Composable
-@Preview(showSystemUi = true, showBackground = true)
-fun LoginCardPreview() {
-    SneakovTheme {
-        AuthScreen(onNavigateToHome = {})
     }
 }
