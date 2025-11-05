@@ -47,6 +47,7 @@ import com.firebase.sneakov.ui.compose.ProductCard
 import com.firebase.sneakov.ui.compose.RefreshableLayout
 import com.firebase.sneakov.ui.theme.SneakovTheme
 import com.firebase.sneakov.viewmodel.BrandViewModel
+import com.firebase.sneakov.viewmodel.CartViewModel
 import com.firebase.sneakov.viewmodel.ProductViewModel
 import compose.icons.FontAwesomeIcons
 import compose.icons.fontawesomeicons.Solid
@@ -58,6 +59,7 @@ fun HomeScreen(
     brandViewModel: BrandViewModel = koinViewModel(),
     navigateToSearchScreen: () -> Unit,
     productViewModel: ProductViewModel = koinViewModel(),
+    cartViewModel: CartViewModel = koinViewModel(),
     onProductClick: (Product) -> Unit
 ) {
     val brandState by brandViewModel.uiState.collectAsState()
@@ -163,11 +165,24 @@ fun HomeScreen(
                 ) {
                     items(items = products) { product ->
                         Log.d("Check", "product: $product")
+                        Log.d("HomeScreen", "Variant stock = ${product?.variants?.firstOrNull()?.stock}")
                         ProductCard(
                             modifier = Modifier
                                 .width(itemWidth),
                             product = product,
-                            onClick = onProductClick
+                            onClick = onProductClick,
+                            onAddToCart = { selectedProd ->
+                                val defaultVarian = selectedProd?.variants?.firstOrNull()
+                                Log.d("HomeScreen", "Variant stock = ${defaultVarian?.stock}")
+                                if(defaultVarian != null) {
+                                    cartViewModel.addToCart(
+                                        userId = "user_001",
+                                        productId = selectedProd.id,
+                                        variantId = defaultVarian.id,
+                                        quantity = 1
+                                    )
+                                }
+                            }
                         )
                     }
 

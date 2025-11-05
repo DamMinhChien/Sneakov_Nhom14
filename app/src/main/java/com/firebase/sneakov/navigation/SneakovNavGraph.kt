@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.firebase.sneakov.ui.screen.AuthScreen
+import com.firebase.sneakov.ui.screen.CartScreen
 import com.firebase.sneakov.ui.screen.HomeScreen
 import com.firebase.sneakov.ui.screen.OnboardingScreen
 import com.firebase.sneakov.ui.screen.ProductDetailScreen
@@ -17,7 +18,7 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
 
     NavHost(
         navController = navController,
-        startDestination = Screen.Home.route,
+        startDestination = Screen.Cart.route,
         modifier = modifier
     ) {
         composable(Screen.Onboarding.route) {
@@ -87,6 +88,13 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
             val id = backStackEntry.arguments?.getString("id") ?: ""
             ProductDetailScreen(id = id)
         }
+
+        composable(Screen.Cart.route) {
+            CartScreen(
+                onCheckout = { navController.navigate(Screen.Order.route) }
+            )
+        }
+
 
     }
 }

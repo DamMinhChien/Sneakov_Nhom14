@@ -3,9 +3,13 @@ package com.firebase.sneakov.di
 import androidx.lifecycle.ViewModel
 import com.firebase.sneakov.data.repository.AuthRepository
 import com.firebase.sneakov.data.repository.BrandRepository
+import com.firebase.sneakov.data.repository.CartRepository
+import com.firebase.sneakov.data.repository.OrderRepository
 import com.firebase.sneakov.data.repository.ProductRepository
 import com.firebase.sneakov.viewmodel.AuthViewModel
 import com.firebase.sneakov.viewmodel.BrandViewModel
+import com.firebase.sneakov.viewmodel.CartViewModel
+import com.firebase.sneakov.viewmodel.OrderViewModel
 import com.firebase.sneakov.viewmodel.ProductViewModel
 import com.firebase.sneakov.viewmodel.UserViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -24,11 +28,16 @@ val appModule = module {
     single { BrandRepository(get()) }
     single { AuthRepository(get(),get()) }
     single { ProductRepository(get()) }
+    single { CartRepository(get()) }
+    single { OrderRepository(get()) }
+
     // ViewModel
     viewModel { BrandViewModel(get()) }
     viewModel { AuthViewModel(get()) }
     viewModel { UserViewModel(get()) }
     viewModel { ProductViewModel(get()) }
     //viewModel { HomeViewModel(get()) }
+    viewModel { CartViewModel(get(), get()) }
+    viewModel { OrderViewModel(get(), get()) }
 
 }
