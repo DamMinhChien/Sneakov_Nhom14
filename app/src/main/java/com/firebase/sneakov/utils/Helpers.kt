@@ -8,14 +8,8 @@ import java.time.LocalDateTime
 import java.time.ZoneId
 import java.util.Locale
 
-//fun Timestamp.toLocalDateTime(zoneId: ZoneId = ZoneId.systemDefault()): LocalDateTime {
-//    return LocalDateTime.ofInstant(this.toDate().toInstant(), zoneId)
-//}
-//
-//fun LocalDateTime.toTimestamp(zoneId: ZoneId = ZoneId.systemDefault()): Timestamp {
-//    val instant = this.atZone(zoneId).toInstant()
-//    return Timestamp(instant.epochSecond, instant.nano)
-//}
+fun String.capitalizeFirst(): String =
+    this.replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
 
 fun Double.formatMoney(): String {
     val formatter = NumberFormat.getCurrencyInstance(Locale.forLanguageTag("vi-VN"))

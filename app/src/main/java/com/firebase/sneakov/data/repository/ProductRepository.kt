@@ -3,6 +3,7 @@ package com.firebase.sneakov.data.repository
 import com.firebase.sneakov.data.model.Product
 import com.firebase.sneakov.data.model.ProductVariant
 import com.firebase.sneakov.utils.CollectionName
+import com.firebase.sneakov.utils.FieldName
 import com.firebase.sneakov.utils.Result
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
@@ -40,7 +41,6 @@ class ProductRepository(private val db: FirebaseFirestore) {
         }
     }
 
-
     suspend fun get10NewestProducts(): Result<List<Product>> = coroutineScope {
         return@coroutineScope try {
             val snapshot = db.collection(CollectionName.PRODUCTS)
@@ -66,7 +66,7 @@ class ProductRepository(private val db: FirebaseFirestore) {
             }.awaitAll()
 
             Result.Success(productsWithVariants)
-        } catch (e: Exception){
+        } catch (e: Exception) {
             Result.Error(message = e.message ?: "Lỗi không xác định $e")
         }
     }
@@ -78,7 +78,7 @@ class ProductRepository(private val db: FirebaseFirestore) {
                 .get()
                 .await()
 
-            if(!snapshot.exists()) return Result.Error("Sản phẩm không tồn tại!")
+            if (!snapshot.exists()) return Result.Error("Sản phẩm không tồn tại!")
 
             val product = snapshot.toObject(Product::class.java)
 
@@ -94,6 +94,27 @@ class ProductRepository(private val db: FirebaseFirestore) {
             Result.Success(productWithVariants)
         } catch (e: Exception) {
             Result.Error(e.message ?: "Lỗi không xác định $e")
+        }
+    }
+
+    suspend fun getColorsName(): Result<List<String>> {
+        return try {
+            val snapshot = db.collection(CollectionName.PRODUCTS)
+                .get()
+                .await()
+
+            val colorNames = snapshot.documents.flatMap { doc ->
+                when (val rawColors = doc.get(FieldName.COLORS)) {
+                    is List<*> -> rawColors.mapNotNull { colorItem ->
+                        // mỗi item là Map<*, *> chứa "name"
+                        (colorItem as? Map<*, *>)?.get("name") as? String
+                    }
+                    else -> emptyList()
+                }
+            }.distinct()
+            Result.Success(data = colorNames)
+        } catch (e: Exception) {
+            Result.Error(message = e.message ?: "Lỗi không xác định $e")
         }
     }
 }

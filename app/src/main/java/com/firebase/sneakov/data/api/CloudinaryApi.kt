@@ -15,6 +15,6 @@ interface CloudinaryApi {
     suspend fun uploadImage(
         @Url url: String,
         @Part file: MultipartBody.Part,
-        @Part(Cloudinary.PRESET_NAME) uploadPreset: RequestBody
+        @Part("upload_preset") uploadPreset: RequestBody
     ): CloudinaryResponse
 }

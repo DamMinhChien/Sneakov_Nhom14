@@ -13,6 +13,8 @@ object FieldName {
     const val USER_ID = "userId"
     const val ADDED_AT = "added_at"
     const val PRODUCT_ID = "productId"
+    const val NAME = "name"
+    const val COLORS = "colors"
 }
 
 object Cloudinary {
