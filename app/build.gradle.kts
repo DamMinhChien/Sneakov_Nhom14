@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -20,6 +22,17 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // ✅ Lấy biến từ local.properties
+        val props = gradleLocalProperties(rootDir, providers)
+        val cloudName = props.getProperty("CLOUDINARY_CLOUD_NAME") ?: ""
+        val preset = props.getProperty("CLOUDINARY_PRESET_NAME") ?: ""
+        val baseUrl = props.getProperty("CLOUDINARY_BASE_URL") ?: ""
+
+        // ✅ Truyền vào BuildConfig
+        buildConfigField("String", "CLOUDINARY_CLOUD_NAME", "\"$cloudName\"")
+        buildConfigField("String", "CLOUDINARY_PRESET_NAME", "\"$preset\"")
+        buildConfigField("String", "CLOUDINARY_BASE_URL", "\"$baseUrl\"")
     }
 
     buildTypes {
@@ -40,6 +53,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 

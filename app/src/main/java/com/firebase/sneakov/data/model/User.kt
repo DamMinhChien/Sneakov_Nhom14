@@ -1,14 +1,19 @@
 package com.firebase.sneakov.data.model
 
-import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.DocumentId
+import com.google.firebase.firestore.IgnoreExtraProperties
 import com.google.firebase.firestore.PropertyName
 import java.util.Date
 
+@IgnoreExtraProperties
 data class User(
-    val id: String,
-    val name: String,
-    val email: String,
+    @DocumentId
+    val id: String= "",
+    val name: String= "",
+    @PropertyName("email")
+    val email: String= "",
     val role: String = "user",
+    @PropertyName("avatar_url")
     val avatarUrl: String = "",
     val createdAt: Date = Date(),
     val phone: String = "",

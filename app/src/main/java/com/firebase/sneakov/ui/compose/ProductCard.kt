@@ -15,6 +15,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.ShoppingCart
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -41,11 +43,12 @@ import compose.icons.FontAwesomeIcons
 import compose.icons.fontawesomeicons.Regular
 import compose.icons.fontawesomeicons.Solid
 import compose.icons.fontawesomeicons.regular.Heart
-import compose.icons.fontawesomeicons.solid.CartPlus
+import compose.icons.fontawesomeicons.solid.Heart
 
 @Composable
 fun ProductCard(
     product: Product,
+    isFavorite: Boolean = false,
     modifier: Modifier = Modifier,
     onClick: (Product) -> Unit = {},
     onAddToCart: (Product) -> Unit = {},
@@ -54,7 +57,7 @@ fun ProductCard(
     val min = product.variants.minOfOrNull { it.price } ?: 0
     val max = product.variants.maxOfOrNull { it.price } ?: 0
     val range: String =
-        if (min == max) min.formatMoney() else "${min.formatMoney()} - ${max.formatMoney()}"
+        if (min == max) min.formatMoney() else "${min.formatMoney().replace("₫", "").trim()} - ${max.formatMoney()}"
     val colors = product.colors.map { it.hex }
 
     Card(
@@ -94,10 +97,16 @@ fun ProductCard(
                     .size(28.dp)
             ) {
                 Icon(
-                    imageVector = FontAwesomeIcons.Regular.Heart,
+                    imageVector = if (isFavorite)
+                        FontAwesomeIcons.Solid.Heart
+                    else
+                        FontAwesomeIcons.Regular.Heart,
+                    contentDescription = if (isFavorite) "Remove from wishlist" else "Add to wishlist",
                     modifier = Modifier.size(24.dp),
-                    contentDescription = "Favorite",
-                    tint = MaterialTheme.colorScheme.onSurface
+                    tint = if (isFavorite)
+                        MaterialTheme.colorScheme.error
+                    else
+                        MaterialTheme.colorScheme.onSurface
                 )
             }
         }
@@ -139,12 +148,15 @@ fun ProductCard(
                 Box(
                     modifier = Modifier
                         .size(36.dp)
-                        .background(MaterialTheme.colorScheme.primary, shape = RoundedCornerShape(10.dp))
+                        .background(
+                            MaterialTheme.colorScheme.primary,
+                            shape = RoundedCornerShape(10.dp)
+                        )
                         .clickable { onAddToCart(product) },
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
-                        imageVector = FontAwesomeIcons.Solid.CartPlus,
+                        imageVector = Icons.Outlined.ShoppingCart,
                         modifier = Modifier.size(24.dp),
                         contentDescription = "Add to cart",
                         tint = Color.White

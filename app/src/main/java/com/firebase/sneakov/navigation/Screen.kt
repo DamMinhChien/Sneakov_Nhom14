@@ -1,29 +1,31 @@
 package com.firebase.sneakov.navigation
 
+import com.firebase.sneakov.viewmodel.ProductFilter
 import java.net.URLEncoder
 
-sealed class Screen(val route: String){
-    object Onboarding: Screen("onboarding")
-    object Auth: Screen("auth")
-    object Home: Screen("home")
-    object Search: Screen("search")
-    object SearchResult: Screen("searchResult/{keyword}/{sortField}/{sortDirection}/{page}/{pageSize}"){
-        fun createRoute(
-            keyword: String = "",
-            sortField: String = "name",
-            sortDirection: String = "ASC",
-            page: Int = 1,
-            pageSize: Int = 20
-        ): String {
-            // encode keyword để tránh lỗi khi có dấu cách, ký tự đặc biệt
-            val encodedKeyword = URLEncoder.encode(keyword, "UTF-8")
-            return "searchResult/$encodedKeyword/$sortField/$sortDirection/$page/$pageSize"
+sealed class Screen(val route: String) {
+    object Onboarding : Screen("onboarding")
+    object Auth : Screen("auth")
+    object Home : Screen("home")
+    object Search : Screen("search?keyword={keyword}&brand={brand}&latest={latest}") {
+        fun createRoute(keyword: String? = null, brand: String? = null, latest: Boolean = false): String {
+            val params = buildList {
+                if (!keyword.isNullOrBlank()) add("keyword=${URLEncoder.encode(keyword, "UTF-8")}")
+                if (!brand.isNullOrBlank()) add("brand=${URLEncoder.encode(brand, "UTF-8")}")
+                if (latest) add("latest=true")
+            }
+            return if (params.isEmpty()) "search" else "search?${params.joinToString("&")}"
         }
     }
-    object ProductDetail: Screen("detail/{id}"){
+
+    object Detail : Screen("detail/{id}") {
         fun createRoute(id: String) = "detail/$id"
     }
     object Cart: Screen("cart")
     object Order: Screen("order")
 
+
+    object Wishlist : Screen("wishlist")
+    object Profile : Screen("profile")
+    object ResetPassword : Screen("reset_password")
 }

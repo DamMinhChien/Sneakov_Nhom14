@@ -3,11 +3,15 @@ package com.firebase.sneakov.data.repository
 import com.firebase.sneakov.data.model.User
 import com.firebase.sneakov.data.request.LoginRequest
 import com.firebase.sneakov.data.request.RegisterRequest
+import com.firebase.sneakov.data.request.UpdateUserRequest
 import com.firebase.sneakov.utils.CollectionName
 import com.firebase.sneakov.utils.Result
+import com.google.firebase.FirebaseNetworkException
+import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
+import com.google.firebase.auth.FirebaseAuthRecentLoginRequiredException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.firestore.FieldValue
@@ -53,7 +57,6 @@ class AuthRepository(private val db: FirebaseFirestore, private val auth: Fireba
             Result.Error("Có lỗi xảy ra: ${e.message ?: "Lỗi không xác định"}")
         }
     }
-
     suspend fun login(request: LoginRequest): Result<Unit> {
         return try {
             auth.signInWithEmailAndPassword(request.email, request.password).await()
@@ -67,7 +70,6 @@ class AuthRepository(private val db: FirebaseFirestore, private val auth: Fireba
             Result.Error("Có lỗi xảy ra: ${e.message ?: "Lỗi không xác định"}")
         }
     }
-
     suspend fun getCurrentUser(): Result<User> {
         return try {
             val userId = auth.currentUser?.uid
@@ -84,6 +86,96 @@ class AuthRepository(private val db: FirebaseFirestore, private val auth: Fireba
             Result.Success(user)
         } catch (e: Exception) {
             Result.Error("Có lỗi xảy ra: ${e.message ?: "Lỗi không xác định"}")
+        }
+    }
+    suspend fun changePassword(oldPassword: String, newPassword: String): Result<Unit> {
+        return try {
+            if (oldPassword.isBlank() || newPassword.isBlank()) {
+                return Result.Error("Vui lòng nhập đầy đủ mật khẩu cũ và mới")
+            }
+
+            val user = FirebaseAuth.getInstance().currentUser
+                ?: return Result.Error("Người dùng chưa đăng nhập")
+
+            val email = user.email
+                ?: return Result.Error("Không tìm thấy email của người dùng")
+
+            // B1: Xác thực lại bằng mật khẩu cũ
+            val credential = EmailAuthProvider.getCredential(email, oldPassword)
+            user.reauthenticate(credential).await()
+
+            // B2: Cập nhật mật khẩu mới
+            user.updatePassword(newPassword).await()
+
+            Result.Success(Unit)
+        } catch (e: FirebaseAuthWeakPasswordException) {
+            Result.Error("Mật khẩu quá yếu: ${e.reason}")
+        } catch (e: FirebaseAuthInvalidCredentialsException) {
+            // Khi mật khẩu cũ sai
+            Result.Error("Mật khẩu cũ không chính xác")
+        } catch (e: FirebaseAuthRecentLoginRequiredException) {
+            // Phòng trường hợp Firebase vẫn yêu cầu reauthenticate
+            Result.Error("Vui lòng đăng nhập lại trước khi đổi mật khẩu")
+        } catch (e: Exception) {
+            Result.Error("Có lỗi xảy ra: ${e.message ?: "Lỗi không xác định"}")
+        }
+    }
+    suspend fun updateUser(request: UpdateUserRequest): Result<Unit> {
+        return try {
+            val userId = auth.currentUser?.uid
+                ?: return Result.Error("Người dùng chưa đăng nhập")
+
+            val updates = mutableMapOf<String, Any?>()
+
+            request.name?.let { updates["name"] = it }
+            request.phone?.let { updates["phone"] = it }
+            request.avatarUrl?.let { updates["avatar_url"] = it }
+
+            request.address?.let { address ->
+                updates["address.province"] = address.province
+                updates["address.district"] = address.district
+                updates["address.municipality"] = address.municipality
+                updates["address.detail"] = address.detail
+            }
+
+            db.collection(CollectionName.USERS)
+                .document(userId)
+                .update(updates)
+                .await()
+
+            Result.Success(Unit)
+        } catch (e: FirebaseFirestoreException) {
+            Result.Error("Lỗi khi lưu dữ liệu vào Firestore: ${e.message}")
+        } catch (e: Exception) {
+            Result.Error("Có lỗi xảy ra: ${e.message ?: "Lỗi không xác định"}")
+        }
+    }
+    suspend fun deleteUser(): Result<Unit> {
+        return try {
+            val user = FirebaseAuth.getInstance().currentUser
+                ?: return Result.Error("Người dùng chưa đăng nhập")
+
+            user.delete().await()
+
+            Result.Success(Unit)
+        } catch (e: FirebaseFirestoreException) {
+            Result.Error("Lỗi khi xóa dữ liệu từ Firestore: ${e.message}")
+        } catch (e: Exception) {
+            Result.Error("Có lỗi xảy ra: ${e.message ?: "Lỗi không xác định"}")
+        }
+    }
+    suspend fun sendResetPassword(email: String): Result<Unit> {
+        return try {
+            auth.sendPasswordResetEmail(email).await()
+            Result.Success(Unit)
+        } catch (e: FirebaseAuthInvalidUserException) {
+            Result.Error("Email này chưa được đăng ký hoặc đã bị vô hiệu hóa.")
+        } catch (e: FirebaseAuthInvalidCredentialsException) {
+            Result.Error("Định dạng email không hợp lệ.")
+        } catch (e: FirebaseNetworkException) {
+            Result.Error("Không có kết nối Internet.")
+        } catch (e: Exception) {
+            Result.Error("Có lỗi xảy ra khi gửi email khôi phục: ${e.message ?: "Lỗi không xác định"}")
         }
     }
     fun logout() {

@@ -1,17 +1,17 @@
 package com.firebase.sneakov.viewmodel
 
 import androidx.lifecycle.viewModelScope
-import com.firebase.sneakov.data.model.Brand
-import com.firebase.sneakov.data.repository.BrandRepository
+import com.firebase.sneakov.data.model.Product
+import com.firebase.sneakov.data.repository.ProductRepository
 import com.firebase.sneakov.utils.BaseViewModel
 import com.firebase.sneakov.utils.Result
 import kotlinx.coroutines.launch
 
-class BrandViewModel(private val repo: BrandRepository) : BaseViewModel<List<Brand>>() {
-    fun fetchBrands() {
+class DetailViewModel(private val repo: ProductRepository): BaseViewModel<Product>() {
+    fun fetchProduct(id: String) {
         viewModelScope.launch{
             setLoading(true)
-            val result = repo.getBrands()
+            val result = repo.getProduct(id)
             when(result) {
                 is Result.Success -> setData(result.data)
                 is Result.Error -> setError(result.message)
