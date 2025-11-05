@@ -1,5 +1,6 @@
 package com.firebase.sneakov.data.repository
 
+import android.util.Log
 import com.firebase.sneakov.data.model.User
 import com.firebase.sneakov.data.request.LoginRequest
 import com.firebase.sneakov.data.request.RegisterRequest
@@ -82,6 +83,8 @@ class AuthRepository(private val db: FirebaseFirestore, private val auth: Fireba
 
             val user = snapshot.toObject(User::class.java)
                 ?: return Result.Error("Không tìm thấy thông tin user")
+
+            Log.d("AuthRepository", "User: $user")
 
             Result.Success(user)
         } catch (e: Exception) {
