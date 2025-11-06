@@ -3,7 +3,6 @@ package com.firebase.sneakov.ui.app
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Notifications
@@ -23,6 +22,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -53,7 +53,7 @@ fun BottomBar(navController: NavHostController) {
 
             items.forEach { item ->
                 val selected = currentRoute == item.route
-                val scale by animateFloatAsState(if (selected) 1.3f else 1f, label = "")
+                val scale by animateFloatAsState(if (selected) 1.2f else 1f, label = "")
 
                 NavigationBarItem(
                     icon = {
@@ -91,8 +91,13 @@ fun BottomBar(navController: NavHostController) {
                         }
                     },
                     label = {
-                        if (selected){
-                            Text(item.label,style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold))
+                        if (selected) {
+                            Text(
+                                item.label,
+                                style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis
+                            )
                         }
                     },
                     selected = selected,
