@@ -250,7 +250,9 @@ fun ProductDetailContent(product: Product) {
                 .padding(16.dp)
         ) {
             IconButton(
-                onClick = { /* TODO: Yêu thích */ },
+                onClick = {
+
+                },
                 modifier = Modifier
                     .background(
                         color = MaterialTheme.colorScheme.secondary.copy(0.2f),

@@ -1,6 +1,5 @@
 package com.firebase.sneakov.ui.screen
 
-import android.R.attr.text
 import android.annotation.SuppressLint
 import android.util.Log
 import android.widget.Toast
@@ -36,7 +35,6 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.firebase.sneakov.R
@@ -46,10 +44,9 @@ import com.firebase.sneakov.ui.compose.BaseCard
 import com.firebase.sneakov.ui.compose.ProductCard
 import com.firebase.sneakov.ui.compose.RefreshableLayout
 import com.firebase.sneakov.ui.compose.SearchBar
-import com.firebase.sneakov.ui.theme.SneakovTheme
 import com.firebase.sneakov.viewmodel.BrandViewModel
-import com.firebase.sneakov.viewmodel.HelperViewModel
 import com.firebase.sneakov.viewmodel.CartViewModel
+import com.firebase.sneakov.viewmodel.HelperViewModel
 import com.firebase.sneakov.viewmodel.ProductViewModel
 import com.firebase.sneakov.viewmodel.WishlistViewModel
 import org.koin.androidx.compose.koinViewModel
