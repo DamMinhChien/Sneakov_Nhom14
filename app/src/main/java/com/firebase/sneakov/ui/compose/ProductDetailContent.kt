@@ -48,10 +48,12 @@ import com.firebase.sneakov.ui.theme.SneakovTheme
 import com.firebase.sneakov.utils.formatMoney
 import compose.icons.FontAwesomeIcons
 import compose.icons.fontawesomeicons.Regular
+import compose.icons.fontawesomeicons.Solid
 import compose.icons.fontawesomeicons.regular.Heart
+import compose.icons.fontawesomeicons.solid.Heart
 
 @Composable
-fun ProductDetailContent(product: Product) {
+fun ProductDetailContent(product: Product, isFavorite: Boolean = false, onFavoriteClick: () -> Unit) {
     var selectedColor by remember { mutableStateOf(product.colors.firstOrNull()) }
     var selectedSize by remember {
         mutableStateOf(
@@ -251,7 +253,7 @@ fun ProductDetailContent(product: Product) {
         ) {
             IconButton(
                 onClick = {
-
+                    onFavoriteClick()
                 },
                 modifier = Modifier
                     .background(
@@ -262,9 +264,16 @@ fun ProductDetailContent(product: Product) {
                     .size(38.dp)
             ) {
                 Icon(
-                    imageVector = FontAwesomeIcons.Regular.Heart,
-                    contentDescription = "Favorite",
-                    modifier = Modifier.size(24.dp)
+                    imageVector = if (isFavorite)
+                        FontAwesomeIcons.Solid.Heart
+                    else
+                        FontAwesomeIcons.Regular.Heart,
+                    contentDescription = if (isFavorite) "Remove from wishlist" else "Add to wishlist",
+                    modifier = Modifier.size(24.dp),
+                    tint = if (isFavorite)
+                        MaterialTheme.colorScheme.error
+                    else
+                        MaterialTheme.colorScheme.onSurface
                 )
             }
 

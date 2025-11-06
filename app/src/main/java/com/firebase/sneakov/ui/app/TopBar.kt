@@ -87,7 +87,9 @@ fun TopBar(
                 SurfaceIcon(
                     icon = Icons.Outlined.FavoriteBorder,
                     contentDescription = "Yêu thích",
-                    onClick = { /* TODO: thêm vào wishlist */ }
+                    onClick = {
+                        navController.navigate(Screen.Wishlist.route)
+                    }
                 )
             }
         }

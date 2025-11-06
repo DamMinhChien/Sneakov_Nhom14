@@ -187,7 +187,7 @@ fun HomeScreen(
                                 if (isFavorite) wishlistViewModel.addToWishlist(product.id) else wishlistViewModel.removeFromWishlist(product.id)
                             },
                             onAddToCart = { selectedProd ->
-                                val defaultVarian = selectedProd?.variants?.firstOrNull()
+                                val defaultVarian = selectedProd.variants.firstOrNull()
                                 Log.d("HomeScreen", "Variant stock = ${defaultVarian?.stock}")
                                 if(defaultVarian != null) {
                                     cartViewModel.addToCart(
