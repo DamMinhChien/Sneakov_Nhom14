@@ -21,6 +21,10 @@ open class BaseViewModel<T>: ViewModel() {
         _uiState.update { it.copy(error = message, isLoading = false) }
     }
 
+    protected fun setAction(action: String?) {
+        _uiState.update { it.copy(action = action) }
+    }
+
     protected fun clearError() {
         _uiState.update { it.copy(error = null) }
     }

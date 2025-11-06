@@ -7,6 +7,7 @@ object CollectionName {
     const val BRANDS = "brands"
     const val ORDERS = "orders"
     const val WISHLIST = "wishlist"
+    const val REVIEWS = "reviews"
 }
 
 object FieldName {

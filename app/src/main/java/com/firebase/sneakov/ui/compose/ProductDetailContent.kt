@@ -238,7 +238,14 @@ fun ProductDetailContent(product: Product, isFavorite: Boolean = false, onFavori
                 }
             }
 
-            Spacer(Modifier.height(100.dp)) // chừa thêm cho footer
+            Text(
+                text = "Đánh giá sản phẩm",
+                style = MaterialTheme.typography.titleLarge,
+                modifier = Modifier.padding(8.dp)
+            )
+
+            //Bình luận
+            ReviewSection(productId = product.id)
         }
 
         // 🔹 Phần nút cố định dưới
