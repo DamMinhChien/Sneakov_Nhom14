@@ -49,6 +49,7 @@ import com.firebase.sneakov.ui.compose.SearchBar
 import com.firebase.sneakov.ui.theme.SneakovTheme
 import com.firebase.sneakov.viewmodel.BrandViewModel
 import com.firebase.sneakov.viewmodel.HelperViewModel
+import com.firebase.sneakov.viewmodel.CartViewModel
 import com.firebase.sneakov.viewmodel.ProductViewModel
 import com.firebase.sneakov.viewmodel.WishlistViewModel
 import org.koin.androidx.compose.koinViewModel
@@ -61,6 +62,7 @@ fun HomeScreen(
     goToSearchScreenWithBrand: (brand: Brand) -> Unit,
     goToSearchScreenWithLatest: () -> Unit,
     productViewModel: ProductViewModel = koinViewModel(),
+    cartViewModel: CartViewModel = koinViewModel(),
     onProductClick: (Product) -> Unit,
     helperViewModel: HelperViewModel = koinViewModel(),
     wishlistViewModel: WishlistViewModel = koinViewModel()
@@ -186,6 +188,17 @@ fun HomeScreen(
                                 // Add to wishlist
                                 isFavorite = !isFavorite
                                 if (isFavorite) wishlistViewModel.addToWishlist(product.id) else wishlistViewModel.removeFromWishlist(product.id)
+                            },
+                            onAddToCart = { selectedProd ->
+                                val defaultVarian = selectedProd?.variants?.firstOrNull()
+                                Log.d("HomeScreen", "Variant stock = ${defaultVarian?.stock}")
+                                if(defaultVarian != null) {
+                                    cartViewModel.addToCart(
+                                        productId = selectedProd.id,
+                                        variantId = defaultVarian.id,
+                                        quantity = 1
+                                    )
+                                }
                             }
                         )
                     }

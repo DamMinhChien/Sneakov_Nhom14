@@ -22,6 +22,12 @@ import com.google.firebase.firestore.SetOptions
 import kotlinx.coroutines.tasks.await
 
 class AuthRepository(private val db: FirebaseFirestore, private val auth: FirebaseAuth) {
+    /**
+     * Cung cấp ID của người dùng hiện tại một cách nhanh chóng.
+     * Trả về null nếu không có ai đăng nhập.
+     */
+    val currentUserId: String?
+        get() = auth.currentUser?.uid
     suspend fun register(request: RegisterRequest): Result<Unit> {
         return try {
             val result =

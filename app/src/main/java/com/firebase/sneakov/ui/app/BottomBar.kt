@@ -34,7 +34,7 @@ fun BottomBar(navController: NavHostController) {
     val items = listOf(
         BottomNavItem(Screen.Home.route, "Trang chủ", Icons.Outlined.Home),
         BottomNavItem(Screen.Wishlist.route, "Yêu thích", Icons.Outlined.FavoriteBorder),
-        BottomNavItem(Screen.Home.route, "Giỏ hàng", Icons.Outlined.ShoppingCart),
+        BottomNavItem(Screen.Cart.route, "Giỏ hàng", Icons.Outlined.ShoppingCart),
         BottomNavItem(Screen.Home.route, "Thông báo", Icons.Outlined.Notifications),
         BottomNavItem(Screen.Profile.route, "Tài khoản", Icons.Outlined.Person)
     )
