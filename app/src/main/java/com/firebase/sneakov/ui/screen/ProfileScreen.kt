@@ -615,7 +615,7 @@ fun ProfileScreen(
                     Text("Xóa tài khoản", color = MaterialTheme.colorScheme.error)
                 }
 
-                Spacer(Modifier.height(100.dp))
+                Spacer(Modifier.height(10.dp))
             }
 
             // --- Dialog xác nhận xóa ---
