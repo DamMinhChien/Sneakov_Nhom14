@@ -27,3 +27,8 @@ object Cloudinary {
 object Provinces {
     const val BASE_URL = "https://damminhchien.github.io/VietNam_Address_Data/"
 }
+
+object Prefs {
+    const val APP = "AppPrefs"
+    const val IS_SEEN_ONBOARDING = "isSeenOnboarding"
+}

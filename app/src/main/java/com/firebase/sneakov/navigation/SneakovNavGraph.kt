@@ -3,6 +3,7 @@ package com.firebase.sneakov.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -19,8 +20,11 @@ import com.firebase.sneakov.ui.screen.ProfileScreen
 import com.firebase.sneakov.ui.screen.ResetPasswordScreen
 import com.firebase.sneakov.ui.screen.SearchScreen
 import com.firebase.sneakov.ui.screen.WishlistScreen
+import com.firebase.sneakov.utils.isOnboardingSeen
+import com.firebase.sneakov.utils.setOnboardingSeen
 import com.firebase.sneakov.viewmodel.OrderViewModel
 import com.google.common.graph.Graph
+import com.google.firebase.auth.FirebaseAuth
 import org.koin.androidx.compose.koinViewModel
 
 object Graph {
@@ -30,13 +34,19 @@ object Graph {
 @Composable
 fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
 
+    val context = LocalContext.current
     NavHost(
         navController = navController,
-        startDestination = Screen.Home.route,
+        startDestination = when{
+            !isOnboardingSeen(context) -> Screen.Onboarding.route
+            FirebaseAuth.getInstance().currentUser != null -> Screen.Home.route
+            else -> Screen.Auth.route
+        },
         modifier = modifier
     ) {
         composable(Screen.Onboarding.route) {
             OnboardingScreen {
+                setOnboardingSeen(context, true)
                 navController.navigate(Screen.Auth.route) {
                     popUpTo(Screen.Onboarding.route) { inclusive = true }
                 }
