@@ -18,9 +18,12 @@ import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -28,9 +31,20 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.firebase.sneakov.navigation.Screen
 import com.firebase.sneakov.utils.BottomNavItem
+import com.firebase.sneakov.utils.Prefs
+import com.firebase.sneakov.utils.loadPrefsInteger
+import com.firebase.sneakov.viewmodel.HelperViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun BottomBar(navController: NavHostController) {
+fun BottomBar(navController: NavHostController, helperViewModel: HelperViewModel = koinViewModel()) {
+    val helperState by helperViewModel.uiState.collectAsState()
+    val wishListCount = helperState.data?.size ?: 0
+
+    LaunchedEffect(wishListCount) {
+        helperViewModel.fetchWishlistIds()
+    }
+
     val items = listOf(
         BottomNavItem(Screen.Home.route, "Trang chủ", Icons.Outlined.Home),
         BottomNavItem(Screen.Wishlist.route, "Yêu thích", Icons.Outlined.FavoriteBorder),
@@ -61,10 +75,10 @@ fun BottomBar(navController: NavHostController) {
                         if (item.route == Screen.Wishlist.route) {
                             BadgedBox(
                                 badge = {
-                                    if (selected) {
+                                    if (!selected) {
                                         Badge(
                                             containerColor = MaterialTheme.colorScheme.primary
-                                        ) { Text("3") }
+                                        ) { Text("$wishListCount") }
                                     }
                                 }
                             ) {

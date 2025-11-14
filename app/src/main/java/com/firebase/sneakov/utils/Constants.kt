@@ -31,4 +31,6 @@ object Provinces {
 object Prefs {
     const val APP = "AppPrefs"
     const val IS_SEEN_ONBOARDING = "isSeenOnboarding"
+
+    const val WISH_LIST_COUNT = "wishlist_count"
 }

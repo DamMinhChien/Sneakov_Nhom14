@@ -1,6 +1,13 @@
 package com.firebase.sneakov.navigation
 
 import android.net.Uri
+import androidx.compose.animation.AnimatedContentTransitionScope.SlideDirection
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -34,7 +41,8 @@ object Graph {
 
 @Composable
 fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
-
+    val durationTime = 350
+    val fadeTime = 300
     val context = LocalContext.current
     NavHost(
         navController = navController,
@@ -43,7 +51,31 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
             FirebaseAuth.getInstance().currentUser != null -> Screen.Home.route
             else -> Screen.Auth.route
         },
-        modifier = modifier
+        modifier = modifier,
+        enterTransition = {
+            slideIntoContainer(
+                SlideDirection.End,
+                animationSpec = tween(durationTime, easing = FastOutSlowInEasing)
+            ) + fadeIn(tween(fadeTime))
+        },
+        exitTransition = {
+            slideOutOfContainer(
+                SlideDirection.Start,
+                animationSpec = tween(durationTime, easing = FastOutSlowInEasing)
+            ) + fadeOut(tween(fadeTime))
+        },
+        popEnterTransition = {
+            slideIntoContainer(
+                SlideDirection.Start,
+                animationSpec = tween(durationTime, easing = FastOutSlowInEasing)
+            ) + fadeIn(tween(fadeTime))
+        },
+        popExitTransition = {
+            slideOutOfContainer(
+                SlideDirection.End,
+                animationSpec = tween(durationTime, easing = FastOutSlowInEasing)
+            ) + fadeOut(tween(fadeTime))
+        }
     ) {
         composable(Screen.Onboarding.route) {
             OnboardingScreen {
@@ -54,7 +86,7 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
             }
         }
 
-        composable(Screen.Auth.route) {
+        composable(Screen.Auth.route, enterTransition = { fadeIn(tween(durationTime)) }) {
             AuthScreen(
                 onNavigateToHome = {
                     navController.navigate(Screen.Home.route) {
@@ -66,7 +98,7 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
                 })
         }
 
-        composable(Screen.Home.route) {
+        composable(Screen.Home.route, enterTransition = { fadeIn(tween(durationTime)) }) {
             HomeScreen(
                 onProductClick = { product ->
                     navController.navigate(Screen.Detail.createRoute(product.id))
@@ -85,6 +117,19 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
 
         composable(
             route = Screen.Detail.route,
+            enterTransition = {
+                slideIntoContainer(
+                    SlideDirection.Up,
+                    tween(durationTime, easing = FastOutSlowInEasing)
+                ) + fadeIn(tween(fadeTime))
+            },
+
+                    exitTransition = {
+                slideOutOfContainer(
+                    SlideDirection.Down,
+                    tween(durationTime, easing = FastOutSlowInEasing)
+                ) + fadeOut(tween(fadeTime))
+            },
             arguments = listOf(navArgument("id") { type = NavType.StringType })
         ) { backStackEntry ->
             val id = backStackEntry.arguments?.getString("id") ?: ""
@@ -166,11 +211,11 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
 
         navigation(
             startDestination = Screen.Cart.route,
-            route = com.firebase.sneakov.navigation.Graph.CHECKOUT
+            route = Graph.CHECKOUT
         ) {
             composable(Screen.Cart.route) { backStackEntry ->
                 val parentEntry = remember(backStackEntry) {
-                    navController.getBackStackEntry(com.firebase.sneakov.navigation.Graph.CHECKOUT)
+                    navController.getBackStackEntry(Graph.CHECKOUT)
                 }
                 val orderViewModel: OrderViewModel = koinViewModel(
                     viewModelStoreOwner = parentEntry
@@ -184,7 +229,7 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
             }
             composable(Screen.Order.route) { backStackEntry ->
                 val parentEntry = remember(backStackEntry) {
-                    navController.getBackStackEntry(com.firebase.sneakov.navigation.Graph.CHECKOUT)
+                    navController.getBackStackEntry(Graph.CHECKOUT)
                 }
                 val orderViewModel: OrderViewModel = koinViewModel(
                     viewModelStoreOwner = parentEntry
@@ -192,9 +237,9 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
                 CheckoutScreen(
                     orderViewModel = orderViewModel,
                     onBack = { navController.popBackStack() },
-                    onCheckoutSuccess = { orderId ->
+                    onCheckoutSuccess = { _ ->
                         navController.navigate(Screen.Home.route) {
-                            popUpTo(com.firebase.sneakov.navigation.Graph.CHECKOUT) {
+                            popUpTo(Graph.CHECKOUT) {
                                 inclusive = true
                             }
                         }
