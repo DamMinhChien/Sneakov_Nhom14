@@ -33,4 +33,5 @@ object Prefs {
     const val IS_SEEN_ONBOARDING = "isSeenOnboarding"
 
     const val WISH_LIST_COUNT = "wishlist_count"
+    const val DARK_MODE = "dark_mode"
 }
