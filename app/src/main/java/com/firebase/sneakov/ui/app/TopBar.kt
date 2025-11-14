@@ -4,7 +4,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Menu
-import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.ShoppingCart
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -25,11 +24,7 @@ import org.koin.androidx.compose.koinViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(
-    navController: NavController, helperViewModel: HelperViewModel = koinViewModel()
-) {
-    val helperState by helperViewModel.uiState.collectAsState()
-    val wishListCount = helperState.data?.size ?: 0
-
+    navController: NavController,onMenuClick: () -> Unit) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route ?: ""
 
@@ -63,7 +58,7 @@ fun TopBar(
                 SurfaceIcon(
                     icon = Icons.Outlined.Menu,
                     contentDescription = "Menu",
-                    onClick = { /* TODO: mở menu hoặc drawer */ }
+                    onClick = onMenuClick
                 )
             }
             actionIcon = {
