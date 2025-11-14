@@ -28,6 +28,7 @@ fun DetailScreen(
     viewModel: DetailViewModel = koinViewModel(),
     helperViewModel: HelperViewModel = koinViewModel(),
     wishlistViewModel: WishlistViewModel = koinViewModel(),
+    view3DModel: (String) -> Unit,
     id: String
 ) {
     val context = LocalContext.current
@@ -43,12 +44,14 @@ fun DetailScreen(
     }
 
     RefreshableLayout(
-        modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background),
         isRefreshing = uiState.isLoading,
         onRefresh = {
             viewModel.fetchProduct(id)
         }) {
-        Box(modifier = Modifier.fillMaxSize()){
+        Box(modifier = Modifier.fillMaxSize()) {
             when {
                 uiState.error != null -> {
                     Toast.makeText(context, uiState.error, Toast.LENGTH_LONG).show()
@@ -57,10 +60,17 @@ fun DetailScreen(
                 uiState.data != null -> {
                     val wishlistIds = helperState.data.orEmpty()
                     var isFavorite by remember { mutableStateOf(wishlistIds.contains(uiState.data!!.id)) }
-                    ProductDetailContent(product = uiState.data!!, isFavorite = isFavorite, onFavoriteClick = {
-                        isFavorite = !isFavorite
-                        if (isFavorite) wishlistViewModel.addToWishlist(uiState.data!!.id) else wishlistViewModel.removeFromWishlist(uiState.data!!.id)
-                    })
+                    ProductDetailContent(
+                        product = uiState.data!!,
+                        isFavorite = isFavorite,
+                        onFavoriteClick = {
+                            isFavorite = !isFavorite
+                            if (isFavorite) wishlistViewModel.addToWishlist(uiState.data!!.id) else wishlistViewModel.removeFromWishlist(
+                                uiState.data!!.id
+                            )
+                        },
+                        view3DModel = view3DModel
+                    )
                 }
 
                 else -> {

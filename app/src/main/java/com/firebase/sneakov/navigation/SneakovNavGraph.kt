@@ -1,5 +1,6 @@
 package com.firebase.sneakov.navigation
 
+import android.net.Uri
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -15,6 +16,7 @@ import com.firebase.sneakov.ui.screen.CartScreen
 import com.firebase.sneakov.ui.screen.CheckoutScreen
 import com.firebase.sneakov.ui.screen.DetailScreen
 import com.firebase.sneakov.ui.screen.HomeScreen
+import com.firebase.sneakov.ui.screen.Model3DScreen
 import com.firebase.sneakov.ui.screen.OnboardingScreen
 import com.firebase.sneakov.ui.screen.ProfileScreen
 import com.firebase.sneakov.ui.screen.ResetPasswordScreen
@@ -23,7 +25,6 @@ import com.firebase.sneakov.ui.screen.WishlistScreen
 import com.firebase.sneakov.utils.isOnboardingSeen
 import com.firebase.sneakov.utils.setOnboardingSeen
 import com.firebase.sneakov.viewmodel.OrderViewModel
-import com.google.common.graph.Graph
 import com.google.firebase.auth.FirebaseAuth
 import org.koin.androidx.compose.koinViewModel
 
@@ -37,7 +38,7 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
     val context = LocalContext.current
     NavHost(
         navController = navController,
-        startDestination = when{
+        startDestination = when {
             !isOnboardingSeen(context) -> Screen.Onboarding.route
             FirebaseAuth.getInstance().currentUser != null -> Screen.Home.route
             else -> Screen.Auth.route
@@ -87,7 +88,26 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
             arguments = listOf(navArgument("id") { type = NavType.StringType })
         ) { backStackEntry ->
             val id = backStackEntry.arguments?.getString("id") ?: ""
-            DetailScreen(id = id)
+            DetailScreen(
+                id = id,
+                view3DModel = {
+                    navController.navigate(Screen.Model3D.createRoute(it))
+                }
+            )
+        }
+
+        composable(
+            route = Screen.Model3D.route,
+            arguments = listOf(navArgument("glbUrl") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val encodedUrl = backStackEntry.arguments?.getString("glbUrl") ?: ""
+            val decodedUrl = Uri.decode(encodedUrl)
+            Model3DScreen(
+                glbUrl = decodedUrl,
+                onBackClick = {
+                    navController.popBackStack()
+                }
+            )
         }
 
         composable(route = Screen.Wishlist.route) {
@@ -147,7 +167,7 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
         navigation(
             startDestination = Screen.Cart.route,
             route = com.firebase.sneakov.navigation.Graph.CHECKOUT
-        ){
+        ) {
             composable(Screen.Cart.route) { backStackEntry ->
                 val parentEntry = remember(backStackEntry) {
                     navController.getBackStackEntry(com.firebase.sneakov.navigation.Graph.CHECKOUT)
@@ -157,8 +177,8 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
                 )
                 CartScreen(
                     orderViewModel = orderViewModel,
-                    onCheckout = { navController.navigate(Screen.Order.route)},
-                    onBack = { navController.popBackStack()}
+                    onCheckout = { navController.navigate(Screen.Order.route) },
+                    onBack = { navController.popBackStack() }
                 )
 
             }
@@ -171,10 +191,12 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
                 )
                 CheckoutScreen(
                     orderViewModel = orderViewModel,
-                    onBack = { navController.popBackStack()},
+                    onBack = { navController.popBackStack() },
                     onCheckoutSuccess = { orderId ->
                         navController.navigate(Screen.Home.route) {
-                            popUpTo(com.firebase.sneakov.navigation.Graph.CHECKOUT) { inclusive = true }
+                            popUpTo(com.firebase.sneakov.navigation.Graph.CHECKOUT) {
+                                inclusive = true
+                            }
                         }
 
                     }

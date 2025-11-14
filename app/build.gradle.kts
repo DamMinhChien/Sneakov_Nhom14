@@ -22,17 +22,6 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
-        // ✅ Lấy biến từ local.properties
-        val props = gradleLocalProperties(rootDir, providers)
-        val cloudName = props.getProperty("CLOUDINARY_CLOUD_NAME") ?: ""
-        val preset = props.getProperty("CLOUDINARY_PRESET_NAME") ?: ""
-        val baseUrl = props.getProperty("CLOUDINARY_BASE_URL") ?: ""
-
-        // ✅ Truyền vào BuildConfig
-        buildConfigField("String", "CLOUDINARY_CLOUD_NAME", "\"$cloudName\"")
-        buildConfigField("String", "CLOUDINARY_PRESET_NAME", "\"$preset\"")
-        buildConfigField("String", "CLOUDINARY_BASE_URL", "\"$baseUrl\"")
     }
 
     buildTypes {
@@ -45,15 +34,14 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
-        buildConfig = true
     }
 }
 
@@ -80,7 +68,7 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.11.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
-    // 🟢 Moshi (KSP codegen)
+    // Moshi (KSP codegen)
     implementation("com.squareup.moshi:moshi:1.15.2")
     implementation("com.squareup.moshi:moshi-kotlin:1.15.2")
     ksp("com.squareup.moshi:moshi-kotlin-codegen:1.15.2")
@@ -88,8 +76,6 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
     // Coil
     implementation("io.coil-kt:coil-compose:2.7.0")
-
-    //kapt("com.squareup.moshi:moshi-kotlin-codegen:1.15.0")
     // Koin DI
     implementation("io.insert-koin:koin-core:3.4.3")
     implementation("io.insert-koin:koin-android:3.4.3")
@@ -99,13 +85,12 @@ dependencies {
     implementation("br.com.devsrsouza.compose.icons:font-awesome:1.1.1")
     // Datastore
     implementation("androidx.datastore:datastore-preferences:1.1.7")
-
     // Firebase Auth
     implementation("com.google.firebase:firebase-auth-ktx:23.2.1")
-
     // Firebase Firestore
     implementation("com.google.firebase:firebase-firestore-ktx:25.1.4")
-
     // Firebase Analytics
     implementation("com.google.firebase:firebase-analytics:23.0.0")
+    // Scene View
+    implementation("io.github.sceneview:sceneview:2.3.0")
 }

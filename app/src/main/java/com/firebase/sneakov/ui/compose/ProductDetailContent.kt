@@ -1,5 +1,6 @@
 package com.firebase.sneakov.ui.compose
 
+import android.net.Uri
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -46,14 +47,16 @@ import com.firebase.sneakov.data.model.Product
 import com.firebase.sneakov.ui.screen.DetailScreen
 import com.firebase.sneakov.ui.theme.SneakovTheme
 import com.firebase.sneakov.utils.formatMoney
+import compose.icons.AllIcons
 import compose.icons.FontAwesomeIcons
 import compose.icons.fontawesomeicons.Regular
 import compose.icons.fontawesomeicons.Solid
 import compose.icons.fontawesomeicons.regular.Heart
+import compose.icons.fontawesomeicons.solid.Cube
 import compose.icons.fontawesomeicons.solid.Heart
 
 @Composable
-fun ProductDetailContent(product: Product, isFavorite: Boolean = false, onFavoriteClick: () -> Unit) {
+fun ProductDetailContent(product: Product, isFavorite: Boolean = false, onFavoriteClick: () -> Unit, view3DModel: (String) -> Unit) {
     var selectedColor by remember { mutableStateOf(product.colors.firstOrNull()) }
     var selectedSize by remember {
         mutableStateOf(
@@ -248,7 +251,7 @@ fun ProductDetailContent(product: Product, isFavorite: Boolean = false, onFavori
             ReviewSection(productId = product.id)
         }
 
-        // 🔹 Phần nút cố định dưới
+        // Phần nút cố định dưới
         Row(
             horizontalArrangement = Arrangement.spacedBy(40.dp),
             verticalAlignment = Alignment.CenterVertically,
@@ -314,6 +317,29 @@ fun ProductDetailContent(product: Product, isFavorite: Boolean = false, onFavori
                         MaterialTheme.colorScheme.error
                 )
             }
+
+            if (product.glbUrl != null){
+                IconButton(
+                    onClick = {
+                        val encodedUrl = Uri.encode(product.glbUrl)
+                        view3DModel(encodedUrl)
+                    },
+                    modifier = Modifier
+                        .background(
+                            color = MaterialTheme.colorScheme.secondary.copy(0.2f),
+                            shape = CircleShape
+                        )
+                        .padding(6.dp)
+                        .size(38.dp)
+                ) {
+                    Icon(
+                        imageVector = FontAwesomeIcons.Solid.Cube,
+                        contentDescription = "View 3D Model",
+                        modifier = Modifier.size(24.dp),
+                        tint = MaterialTheme.colorScheme.onSurface
+                    )
+                }
+            }
         }
     }
 }
@@ -324,8 +350,11 @@ fun ProductDetailContent(product: Product, isFavorite: Boolean = false, onFavori
 fun HomePreViewNice() {
     SneakovTheme {
         DetailScreen(
-            viewModel = viewModel() ,
-            id = ""
+            viewModel = viewModel(),
+            id = "",
+            helperViewModel = TODO(),
+            wishlistViewModel = TODO(),
+            view3DModel = TODO()
         )
     }
 }

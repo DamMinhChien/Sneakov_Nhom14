@@ -10,6 +10,7 @@ data class Product(
     @DocumentId
     val id: String = "",
     val name: String = "",
+    val glbUrl: String? = null,
     val description: String? = null,
     val brand: String = "",
     val thumbnail: String? = null,
