@@ -12,35 +12,40 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.firebase.sneakov.navigation.Screen
 import com.firebase.sneakov.ui.compose.SurfaceIcon
+import com.firebase.sneakov.viewmodel.HelperViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(
-    navController: NavController
+    navController: NavController, helperViewModel: HelperViewModel = koinViewModel()
 ) {
+    val helperState by helperViewModel.uiState.collectAsState()
+    val wishListCount = helperState.data?.size ?: 0
+
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route ?: ""
 
-    // 🏷️ Map route → tiêu đề tiếng Việt
+    // Map route → tiêu đề tiếng Việt
     val routeTitleMap = mapOf(
         Screen.Home.route to "Sneakov",
         Screen.Search.route to "Tìm kiếm",
         Screen.Wishlist.route to "Yêu thích",
         Screen.Cart.route to "Giỏ hàng",
         Screen.Order.route to "Thanh toán",
-        "settings" to "Tài khoản",
         Screen.Detail.route to "Chi tiết sản phẩm",
-        Screen.Profile.route to "Cá nhân"
+        Screen.Profile.route to "Tài khoản"
     )
     val title = routeTitleMap[currentRoute] ?: currentRoute
 
-    // 👇 Mặc định: tất cả đều có nút Back
+    // Mặc định: tất cả đều có nút Back
     var navigationIcon: @Composable (() -> Unit) = {
         SurfaceIcon(
             icon = Icons.AutoMirrored.Filled.ArrowBack,
@@ -49,7 +54,7 @@ fun TopBar(
         )
     }
 
-    // 👇 Action icon có thể null (không hiển thị)
+    // Action icon có thể null (không hiển thị)
     var actionIcon: (@Composable () -> Unit)? = null
 
     when (currentRoute) {
@@ -63,9 +68,9 @@ fun TopBar(
             }
             actionIcon = {
                 SurfaceIcon(
-                    icon = Icons.Outlined.Search,
-                    contentDescription = "Search",
-                    onClick = { navController.navigate("search") }
+                    icon = Icons.Outlined.FavoriteBorder,
+                    contentDescription = "Favorite",
+                    onClick = { navController.navigate(Screen.Wishlist.route) }
                 )
             }
         }

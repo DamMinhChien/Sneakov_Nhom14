@@ -108,7 +108,7 @@ val appModule = module {
     viewModel { ProductViewModel(get()) }
     viewModel { DetailViewModel(get()) }
     viewModel { WishlistViewModel(get(), get()) }
-    viewModel { HelperViewModel(get()) }
+    viewModel  { HelperViewModel(get()) }
     viewModel { CloudinaryViewModel(get()) }
     viewModel { LocationViewModel(get()) }
     viewModel { SearchViewModel(get()) }

@@ -44,6 +44,8 @@ import com.firebase.sneakov.ui.compose.BaseCard
 import com.firebase.sneakov.ui.compose.ProductCard
 import com.firebase.sneakov.ui.compose.RefreshableLayout
 import com.firebase.sneakov.ui.compose.SearchBar
+import com.firebase.sneakov.utils.Prefs
+import com.firebase.sneakov.utils.savePrefsInteger
 import com.firebase.sneakov.viewmodel.BrandViewModel
 import com.firebase.sneakov.viewmodel.CartViewModel
 import com.firebase.sneakov.viewmodel.HelperViewModel
@@ -67,6 +69,8 @@ fun HomeScreen(
     val brandState by brandViewModel.uiState.collectAsState()
     val productState by productViewModel.uiState.collectAsState()
     val helperState by helperViewModel.uiState.collectAsState()
+    val wishlistState by wishlistViewModel.uiState.collectAsState()
+
     val context = LocalContext.current
 
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
@@ -75,14 +79,12 @@ fun HomeScreen(
     var query by remember { mutableStateOf("") }
 
     LaunchedEffect(Unit) {
-        Log.d("Check", "Category LaunchedEffect chạy")
         brandViewModel.fetchBrands()
     }
     LaunchedEffect(Unit) {
-        Log.d("Check", "Search LaunchedEffect chạy")
         productViewModel.fetch10NewestProducts()
     }
-    LaunchedEffect(Unit) {
+    LaunchedEffect(wishlistState) {
         helperViewModel.fetchWishlistIds()
     }
 
