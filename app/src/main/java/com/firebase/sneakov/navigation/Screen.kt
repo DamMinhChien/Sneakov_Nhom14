@@ -23,9 +23,10 @@ sealed class Screen(val route: String) {
     }
     object Cart: Screen("cart")
     object Order: Screen("order")
-
-
     object Wishlist : Screen("wishlist")
     object Profile : Screen("profile")
     object ResetPassword : Screen("reset_password")
+    object Model3D: Screen("model3d/{glbUrl}"){
+        fun createRoute(glbUrl: String) = "model3d/$glbUrl"
+    }
 }

@@ -23,13 +23,14 @@ fun SneakovApp() {
 
     // Danh sách các màn không hiển thị top/bottom bar
     val noTopBarScreens =
-        listOf(Screen.Onboarding.route, Screen.Auth.route, Screen.ResetPassword.route)
+        listOf(Screen.Onboarding.route, Screen.Auth.route, Screen.ResetPassword.route, Screen.Model3D.route)
     val noBottomBarScreens = listOf(
         Screen.Onboarding.route,
         Screen.Auth.route,
         Screen.Detail.route,
         Screen.Search.route,
-        Screen.ResetPassword.route
+        Screen.ResetPassword.route,
+        Screen.Model3D.route
     )
 
     SneakovTheme {
