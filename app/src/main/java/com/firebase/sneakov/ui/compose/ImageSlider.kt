@@ -22,8 +22,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import coil.request.ImageRequest
+import com.firebase.sneakov.R
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -31,17 +35,23 @@ fun ImageSlider(imageUrls: List<String>) {
     val pagerState = rememberPagerState(pageCount = { imageUrls.size })
     Log.d("Ảnh","$imageUrls")
 
+    val context = LocalContext.current
+
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         HorizontalPager(state = pagerState) { index ->
             val url = imageUrls[index]
             AsyncImage(
-                model = url,
+                ImageRequest.Builder(context)
+                    .data(url)
+                    .crossfade(true)
+                    .build(),
                 contentDescription = null,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(300.dp)
                     .clip(RoundedCornerShape(12.dp)),
-                contentScale = ContentScale.Crop
+                contentScale = ContentScale.Fit,
+                placeholder = painterResource(R.drawable.img_place_holder),
+                error = painterResource(R.drawable.img_place_error),
             )
         }
 

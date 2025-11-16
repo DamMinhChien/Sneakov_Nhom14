@@ -57,10 +57,14 @@ fun SneakovApp() {
         Screen.Model3D.route
     )
 
+    val notUsingGestures = listOf(
+        Screen.Model3D.route
+    )
+
     SneakovTheme(darkTheme = darkTheme) {
         ModalNavigationDrawer(
             drawerState = drawerState,
-            gesturesEnabled = true,
+            gesturesEnabled = if (currentRoute in notUsingGestures) false else true,
             drawerContent = {
                 DrawerContent(
                     navController = navController,

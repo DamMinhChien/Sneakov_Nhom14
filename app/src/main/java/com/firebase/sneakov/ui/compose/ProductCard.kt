@@ -86,7 +86,7 @@ fun ProductCard(
                     .fillMaxWidth()
                     .aspectRatio(1f)
                     .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)),
-                contentScale = ContentScale.Crop
+                contentScale = ContentScale.Fit
             )
 
             IconButton(

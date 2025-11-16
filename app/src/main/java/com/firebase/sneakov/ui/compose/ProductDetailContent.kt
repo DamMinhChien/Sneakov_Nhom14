@@ -22,7 +22,9 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.ShoppingCart
+import androidx.compose.material3.Badge
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -30,6 +32,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -38,14 +41,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
+import coil.request.ImageRequest
+import com.firebase.sneakov.R
 import com.firebase.sneakov.data.model.Product
 import com.firebase.sneakov.ui.screen.DetailScreen
 import com.firebase.sneakov.ui.theme.SneakovTheme
+import com.firebase.sneakov.utils.capitalizeFirst
 import com.firebase.sneakov.utils.formatMoney
 import compose.icons.AllIcons
 import compose.icons.FontAwesomeIcons
@@ -76,6 +84,9 @@ fun ProductDetailContent(product: Product, isFavorite: Boolean = false, onFavori
     val stock = selectedVariant?.stock ?: 0
     val allSizes = product.variants.map { it.size }.distinct().sorted()
 
+    val context = LocalContext.current
+    var avgRating by remember { mutableFloatStateOf(0f) }
+
     // ✅ Bọc toàn bộ trong Box để cố định phần footer
     Box(
         modifier = Modifier
@@ -102,7 +113,7 @@ fun ProductDetailContent(product: Product, isFavorite: Boolean = false, onFavori
             Spacer(Modifier.height(8.dp))
 
             Text(
-                text = "Thương hiệu:  ${product.brand}",
+                text = "Thương hiệu:  ${product.brand.capitalizeFirst()}",
                 color = MaterialTheme.colorScheme.secondary,
                 fontWeight = FontWeight.Bold
             )
@@ -119,14 +130,21 @@ fun ProductDetailContent(product: Product, isFavorite: Boolean = false, onFavori
                     style = MaterialTheme.typography.titleMedium,
                     color = Color(0xFF007BFF)
                 )
-                Text(
-                    text = if (stock > 0) "Tồn kho: $stock" else "Hết hàng!",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = if (stock > 0)
-                        MaterialTheme.colorScheme.surface
+                Badge(
+                    modifier = Modifier.padding(top = 4.dp),
+                    containerColor = if (stock > 0)
+                        MaterialTheme.colorScheme.primary.copy(alpha = 0.9f)
                     else
-                        MaterialTheme.colorScheme.error
-                )
+                        MaterialTheme.colorScheme.error,
+                    contentColor = MaterialTheme.colorScheme.onPrimary
+                ) {
+                    Text(
+                        text = if (stock > 0) "Còn $stock" else "Hết hàng",
+                        style = MaterialTheme.typography.labelMedium,
+                        modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
+                    )
+                }
+
             }
 
             Spacer(Modifier.height(16.dp))
@@ -135,13 +153,17 @@ fun ProductDetailContent(product: Product, isFavorite: Boolean = false, onFavori
                 ImageSlider(selectedImages)
             } else if (product.thumbnail != null) {
                 AsyncImage(
-                    model = product.thumbnail,
+                    model = ImageRequest.Builder(context)
+                        .data(product.thumbnail)
+                        .crossfade(true)
+                        .build(),
                     contentDescription = product.name,
+                    placeholder = painterResource(R.drawable.img_place_holder),
+                    error = painterResource(R.drawable.img_place_error),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(250.dp)
                         .clip(RoundedCornerShape(12.dp)),
-                    contentScale = ContentScale.Crop
+                    contentScale = ContentScale.Fit
                 )
             }
 
@@ -174,7 +196,9 @@ fun ProductDetailContent(product: Product, isFavorite: Boolean = false, onFavori
                             model = firstImage,
                             contentDescription = colorItem.name,
                             modifier = Modifier.fillMaxSize(),
-                            contentScale = ContentScale.Crop
+                            contentScale = ContentScale.Crop,
+                            placeholder = painterResource(R.drawable.img_place_holder),
+                            error = painterResource(R.drawable.img_place_error),
                         )
                     }
                 }
@@ -241,14 +265,40 @@ fun ProductDetailContent(product: Product, isFavorite: Boolean = false, onFavori
                 }
             }
 
-            Text(
-                text = "Đánh giá sản phẩm",
-                style = MaterialTheme.typography.titleLarge,
-                modifier = Modifier.padding(8.dp)
-            )
+            Row(
+                modifier = Modifier
+                    .padding(8.dp)
+                    .fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    text = "Đánh giá sản phẩm",
+                    style = MaterialTheme.typography.titleLarge
+                )
+
+                Row{
+                    Icon(
+                        imageVector = Icons.Default.Star,
+                        contentDescription = null,
+                        tint = Color(0xFFFFC107),
+                        modifier = Modifier.size(28.dp)
+                    )
+
+                    Text(
+                        text = "%.1f".format(avgRating),
+                        style = MaterialTheme.typography.titleLarge,
+                        color = MaterialTheme.colorScheme.onSurface,
+                        modifier = Modifier.padding(start = 4.dp)
+                    )
+                }
+            }
+
 
             //Bình luận
-            ReviewSection(productId = product.id)
+            ReviewSection(productId = product.id, onRatingCalculated = { avg ->
+                avgRating = avg
+            })
         }
 
         // Phần nút cố định dưới

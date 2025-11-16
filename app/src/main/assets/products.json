@@ -1,567 +1,4515 @@
 [
   {
-    "id": "nike_air_force_1",
-    "name": "Nike Air Force 1",
-    "description": "Đôi giày thể thao kinh điển, mang lại sự thoải mái và phong cách cho mọi hoạt động.",
-    "brand": "Nike",
-    "thumbnail": "https://res.cloudinary.com/dj24vxzqz/image/upload/v1761922050/AIR_FORCE_1_07_iad1u4.png",
+    "id": "adidas_forum",
+    "name": "Adidas Forum",
+    "brand": "adidas",
+    "description": "Giày Adidas Forum, một biểu tượng cổ điển được làm mới cho phong cách hiện đại.",
+    "thumbnail": "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259976/t%E1%BA%A3i_xu%E1%BB%91ng_7_cnzteg.png",
     "colors": [
-      {
-        "name": "white",
-        "hex": "#FFFFFF",
-        "images": [
-          "https://res.cloudinary.com/dj24vxzqz/image/upload/v1761922050/AIR_FORCE_1_07_iad1u4.png",
-          "https://res.cloudinary.com/dj24vxzqz/image/upload/v1761922053/AIR_FORCE_1_07_2_adgnq0.png"
-        ]
-      },
       {
         "name": "black",
         "hex": "#000000",
         "images": [
-          "https://res.cloudinary.com/dj24vxzqz/image/upload/v1761922051/AIR_FORCE_1_07_1_bq9lg6.png",
-          "https://res.cloudinary.com/dj24vxzqz/image/upload/v1761922053/AIR_FORCE_1_07_2_adgnq0.png"
-        ]
-      },
-      {
-        "name": "red",
-        "hex": "#E53935",
-        "images": [
-          "https://res.cloudinary.com/dj24vxzqz/image/upload/v1761922050/custom-nike-air-force-1-low-by-you-shoes_1_dgq7aa.png",
-          "https://res.cloudinary.com/dj24vxzqz/image/upload/v1761922050/custom-nike-air-force-1-low-by-you-shoes_2_ftsvas.png"
-        ]
-      },
-      {
-        "name": "blue",
-        "hex": "#1E88E5",
-        "images": [
-          "https://res.cloudinary.com/dj24vxzqz/image/upload/v1761922052/custom-nike-air-force-1-low-by-you-shoes_uwtjep.png",
-          "https://res.cloudinary.com/dj24vxzqz/image/upload/v1761922051/W_AF1_SHADOW_szfoyq.png"
-        ]
-      },
-      {
-        "name": "green",
-        "hex": "#43A047",
-        "images": [
-          "https://res.cloudinary.com/dj24vxzqz/image/upload/v1761922051/W_AF1_SHADOW_szfoyq.png",
-          "https://res.cloudinary.com/dj24vxzqz/image/upload/v1761922050/AIR_FORCE_1_07_LV8_lnpgf2.png"
-        ]
-      },
-      {
-        "name": "gray",
-        "hex": "#9E9E9E",
-        "images": [
-          "https://res.cloudinary.com/dj24vxzqz/image/upload/v1761922050/custom-nike-air-force-1-low-by-you-shoes_2_ftsvas.png",
-          "https://res.cloudinary.com/dj24vxzqz/image/upload/v1761922050/AIR_FORCE_1_07_iad1u4.png"
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259981/t%E1%BA%A3i_xu%E1%BB%91ng_yhcek5.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259976/t%E1%BA%A3i_xu%E1%BB%91ng_7_cnzteg.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259966/t%E1%BA%A3i_xu%E1%BB%91ng_5_v7zvjk.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259959/t%E1%BA%A3i_xu%E1%BB%91ng_4_oog1ee.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259953/t%E1%BA%A3i_xu%E1%BB%91ng_3_vp4so0.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259946/t%E1%BA%A3i_xu%E1%BB%91ng_2_gm4fds.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259943/t%E1%BA%A3i_xu%E1%BB%91ng_1_tfcgem.png"
         ]
       },
       {
         "name": "brown",
         "hex": "#8D6E63",
         "images": [
-          "https://res.cloudinary.com/dj24vxzqz/image/upload/v1761922050/AIR_FORCE_1_07_LV8_lnpgf2.png",
-          "https://res.cloudinary.com/dj24vxzqz/image/upload/v1761922051/W_AF1_SHADOW_szfoyq.png"
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259921/t%E1%BA%A3i_xu%E1%BB%91ng_niiuk7.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259901/t%E1%BA%A3i_xu%E1%BB%91ng_1_jzend2.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259898/t%E1%BA%A3i_xu%E1%BB%91ng_2_yadq0v.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259896/t%E1%BA%A3i_xu%E1%BB%91ng_6_efebkh.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259895/t%E1%BA%A3i_xu%E1%BB%91ng_3_qu1gxj.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259893/t%E1%BA%A3i_xu%E1%BB%91ng_4_coecxo.png"
+        ]
+      },
+      {
+        "name": "white",
+        "hex": "#FFFFFF",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259917/t%E1%BA%A3i_xu%E1%BB%91ng_yxkfzt.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259906/t%E1%BA%A3i_xu%E1%BB%91ng_6_hwzmxm.png ",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259902/t%E1%BA%A3i_xu%E1%BB%91ng_4_hxwaxw.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259901/t%E1%BA%A3i_xu%E1%BB%91ng_3_h7lnyn.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259900/t%E1%BA%A3i_xu%E1%BB%91ng_5_ikbc0q.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259899/t%E1%BA%A3i_xu%E1%BB%91ng_1_cyam6w.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259898/t%E1%BA%A3i_xu%E1%BB%91ng_2_lfujer.png"
+        ]
+      },
+      {
+        "name": "green",
+        "hex": "#43A047",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259938/t%E1%BA%A3i_xu%E1%BB%91ng_qrdsqi.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259935/t%E1%BA%A3i_xu%E1%BB%91ng_6_lly3lu.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259934/t%E1%BA%A3i_xu%E1%BB%91ng_1_q7cwd2.png",
+          " https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259932/t%E1%BA%A3i_xu%E1%BB%91ng_3_w188si.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259921/t%E1%BA%A3i_xu%E1%BB%91ng_5_wuxy6u.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259920/t%E1%BA%A3i_xu%E1%BB%91ng_2_an8qnl.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259915/t%E1%BA%A3i_xu%E1%BB%91ng_4_ndkuvm.png"
+        ]
+      },
+      {
+        "name": "blue",
+        "hex": "#1E88E5",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259970/t%E1%BA%A3i_xu%E1%BB%91ng_3_vzwioz.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259969/t%E1%BA%A3i_xu%E1%BB%91ng_2_xhtuj5.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259967/t%E1%BA%A3i_xu%E1%BB%91ng_1_d53ep0.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259965/t%E1%BA%A3i_xu%E1%BB%91ng_4_co7ghe.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259950/t%E1%BA%A3i_xu%E1%BB%91ng_ilhh6d.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259935/Giay_Forum_Low_CL_trang_IH7829_0_gihdpd.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259928/Giay_Forum_Low_CL_trang_IH7829_1_qjkar0.png"
         ]
       }
     ],
     "variants": [
       {
-        "id": "nike_air_force_1_white_36",
+        "id": "adidas_forum_black_36",
         "size": 36,
-        "color": "white",
-        "price": 1999999,
-        "stock": 8
-      },
-      {
-        "id": "nike_air_force_1_white_37",
-        "size": 37,
-        "color": "white",
-        "price": 2009999,
+        "color": "black",
+        "price": 2800000,
         "stock": 10
       },
       {
-        "id": "nike_air_force_1_white_38",
-        "size": 38,
-        "color": "white",
-        "price": 2019999,
-        "stock": 12
-      },
-      {
-        "id": "nike_air_force_1_white_39",
-        "size": 39,
-        "color": "white",
-        "price": 2029999,
-        "stock": 7
-      },
-      {
-        "id": "nike_air_force_1_white_40",
-        "size": 40,
-        "color": "white",
-        "price": 2039999,
-        "stock": 6
-      },
-      {
-        "id": "nike_air_force_1_white_41",
-        "size": 41,
-        "color": "white",
-        "price": 2049999,
-        "stock": 5
-      },
-      {
-        "id": "nike_air_force_1_white_42",
-        "size": 42,
-        "color": "white",
-        "price": 2059999,
-        "stock": 4
-      },
-      {
-        "id": "nike_air_force_1_white_43",
-        "size": 43,
-        "color": "white",
-        "price": 2069999,
-        "stock": 3
-      },
-      {
-        "id": "nike_air_force_1_white_44",
-        "size": 44,
-        "color": "white",
-        "price": 2079999,
-        "stock": 2
-      },
-      {
-        "id": "nike_air_force_1_black_36",
-        "size": 36,
+        "id": "adidas_forum_black_37",
+        "size": 37,
         "color": "black",
-        "price": 2099999,
+        "price": 2810000,
         "stock": 9
       },
       {
-        "id": "nike_air_force_1_black_37",
-        "size": 37,
+        "id": "adidas_forum_black_38",
+        "size": 38,
         "color": "black",
-        "price": 2109999,
+        "price": 2820000,
         "stock": 8
       },
       {
-        "id": "nike_air_force_1_black_38",
-        "size": 38,
+        "id": "adidas_forum_black_39",
+        "size": 39,
         "color": "black",
-        "price": 2119999,
+        "price": 2830000,
+        "stock": 7
+      },
+      {
+        "id": "adidas_forum_black_40",
+        "size": 40,
+        "color": "black",
+        "price": 2840000,
+        "stock": 6
+      },
+      {
+        "id": "adidas_forum_black_41",
+        "size": 41,
+        "color": "black",
+        "price": 2850000,
+        "stock": 5
+      },
+      {
+        "id": "adidas_forum_black_42",
+        "size": 42,
+        "color": "black",
+        "price": 2860000,
+        "stock": 4
+      },
+      {
+        "id": "adidas_forum_black_43",
+        "size": 43,
+        "color": "black",
+        "price": 2870000,
+        "stock": 3
+      },
+      {
+        "id": "adidas_forum_black_44",
+        "size": 44,
+        "color": "black",
+        "price": 2880000,
+        "stock": 2
+      },
+      {
+        "id": "adidas_forum_brown_36",
+        "size": 36,
+        "color": "brown",
+        "price": 2800000,
         "stock": 10
       },
       {
-        "id": "nike_air_force_1_black_39",
-        "size": 39,
-        "color": "black",
-        "price": 2129999,
-        "stock": 11
-      },
-      {
-        "id": "nike_air_force_1_black_40",
-        "size": 40,
-        "color": "black",
-        "price": 2139999,
-        "stock": 9
-      },
-      {
-        "id": "nike_air_force_1_black_41",
-        "size": 41,
-        "color": "black",
-        "price": 2149999,
-        "stock": 6
-      },
-      {
-        "id": "nike_air_force_1_black_42",
-        "size": 42,
-        "color": "black",
-        "price": 2159999,
-        "stock": 5
-      },
-      {
-        "id": "nike_air_force_1_black_43",
-        "size": 43,
-        "color": "black",
-        "price": 2169999,
-        "stock": 4
-      },
-      {
-        "id": "nike_air_force_1_black_44",
-        "size": 44,
-        "color": "black",
-        "price": 2179999,
-        "stock": 3
-      },
-      {
-        "id": "nike_air_force_1_red_36",
-        "size": 36,
-        "color": "red",
-        "price": 1949999,
-        "stock": 7
-      },
-      {
-        "id": "nike_air_force_1_red_37",
+        "id": "adidas_forum_brown_37",
         "size": 37,
-        "color": "red",
-        "price": 1959999,
+        "color": "brown",
+        "price": 2810000,
         "stock": 9
       },
       {
-        "id": "nike_air_force_1_red_38",
+        "id": "adidas_forum_brown_38",
         "size": 38,
-        "color": "red",
-        "price": 1969999,
-        "stock": 11
-      },
-      {
-        "id": "nike_air_force_1_red_39",
-        "size": 39,
-        "color": "red",
-        "price": 1979999,
+        "color": "brown",
+        "price": 2820000,
         "stock": 8
       },
       {
-        "id": "nike_air_force_1_red_40",
+        "id": "adidas_forum_brown_39",
+        "size": 39,
+        "color": "brown",
+        "price": 2830000,
+        "stock": 7
+      },
+      {
+        "id": "adidas_forum_brown_40",
         "size": 40,
-        "color": "red",
-        "price": 1989999,
+        "color": "brown",
+        "price": 2840000,
         "stock": 6
       },
       {
-        "id": "nike_air_force_1_red_41",
+        "id": "adidas_forum_brown_41",
         "size": 41,
-        "color": "red",
-        "price": 1999999,
+        "color": "brown",
+        "price": 2850000,
         "stock": 5
       },
       {
-        "id": "nike_air_force_1_red_42",
+        "id": "adidas_forum_brown_42",
         "size": 42,
-        "color": "red",
-        "price": 2009999,
+        "color": "brown",
+        "price": 2860000,
         "stock": 4
       },
       {
-        "id": "nike_air_force_1_red_43",
+        "id": "adidas_forum_brown_43",
         "size": 43,
-        "color": "red",
-        "price": 2019999,
+        "color": "brown",
+        "price": 2870000,
         "stock": 3
       },
       {
-        "id": "nike_air_force_1_red_44",
+        "id": "adidas_forum_brown_44",
         "size": 44,
-        "color": "red",
-        "price": 2029999,
+        "color": "brown",
+        "price": 2880000,
         "stock": 2
       },
       {
-        "id": "nike_air_force_1_blue_36",
+        "id": "adidas_forum_white_36",
         "size": 36,
-        "color": "blue",
-        "price": 2049999,
+        "color": "white",
+        "price": 2800000,
         "stock": 10
       },
       {
-        "id": "nike_air_force_1_blue_37",
+        "id": "adidas_forum_white_37",
         "size": 37,
-        "color": "blue",
-        "price": 2059999,
+        "color": "white",
+        "price": 2810000,
         "stock": 9
       },
       {
-        "id": "nike_air_force_1_blue_38",
+        "id": "adidas_forum_white_38",
         "size": 38,
-        "color": "blue",
-        "price": 2069999,
+        "color": "white",
+        "price": 2820000,
         "stock": 8
       },
       {
-        "id": "nike_air_force_1_blue_39",
+        "id": "adidas_forum_white_39",
         "size": 39,
-        "color": "blue",
-        "price": 2079999,
+        "color": "white",
+        "price": 2830000,
         "stock": 7
       },
       {
-        "id": "nike_air_force_1_blue_40",
+        "id": "adidas_forum_white_40",
         "size": 40,
-        "color": "blue",
-        "price": 2089999,
+        "color": "white",
+        "price": 2840000,
         "stock": 6
       },
       {
-        "id": "nike_air_force_1_blue_41",
+        "id": "adidas_forum_white_41",
         "size": 41,
-        "color": "blue",
-        "price": 2099999,
+        "color": "white",
+        "price": 2850000,
         "stock": 5
       },
       {
-        "id": "nike_air_force_1_blue_42",
+        "id": "adidas_forum_white_42",
         "size": 42,
-        "color": "blue",
-        "price": 2109999,
+        "color": "white",
+        "price": 2860000,
         "stock": 4
       },
       {
-        "id": "nike_air_force_1_blue_43",
+        "id": "adidas_forum_white_43",
         "size": 43,
-        "color": "blue",
-        "price": 2119999,
+        "color": "white",
+        "price": 2870000,
         "stock": 3
       },
       {
-        "id": "nike_air_force_1_blue_44",
+        "id": "adidas_forum_white_44",
         "size": 44,
-        "color": "blue",
-        "price": 2129999,
+        "color": "white",
+        "price": 2880000,
         "stock": 2
       },
       {
-        "id": "nike_air_force_1_green_36",
+        "id": "adidas_forum_green_36",
         "size": 36,
         "color": "green",
-        "price": 1979999,
-        "stock": 6
-      },
-      {
-        "id": "nike_air_force_1_green_37",
-        "size": 37,
-        "color": "green",
-        "price": 1989999,
-        "stock": 7
-      },
-      {
-        "id": "nike_air_force_1_green_38",
-        "size": 38,
-        "color": "green",
-        "price": 1999999,
-        "stock": 8
-      },
-      {
-        "id": "nike_air_force_1_green_39",
-        "size": 39,
-        "color": "green",
-        "price": 2009999,
-        "stock": 9
-      },
-      {
-        "id": "nike_air_force_1_green_40",
-        "size": 40,
-        "color": "green",
-        "price": 2019999,
-        "stock": 6
-      },
-      {
-        "id": "nike_air_force_1_green_41",
-        "size": 41,
-        "color": "green",
-        "price": 2029999,
-        "stock": 5
-      },
-      {
-        "id": "nike_air_force_1_green_42",
-        "size": 42,
-        "color": "green",
-        "price": 2039999,
-        "stock": 4
-      },
-      {
-        "id": "nike_air_force_1_green_43",
-        "size": 43,
-        "color": "green",
-        "price": 2049999,
-        "stock": 3
-      },
-      {
-        "id": "nike_air_force_1_green_44",
-        "size": 44,
-        "color": "green",
-        "price": 2059999,
-        "stock": 2
-      },
-      {
-        "id": "nike_air_force_1_gray_36",
-        "size": 36,
-        "color": "gray",
-        "price": 1899999,
-        "stock": 8
-      },
-      {
-        "id": "nike_air_force_1_gray_37",
-        "size": 37,
-        "color": "gray",
-        "price": 1909999,
-        "stock": 9
-      },
-      {
-        "id": "nike_air_force_1_gray_38",
-        "size": 38,
-        "color": "gray",
-        "price": 1919999,
+        "price": 2800000,
         "stock": 10
       },
       {
-        "id": "nike_air_force_1_gray_39",
-        "size": 39,
-        "color": "gray",
-        "price": 1929999,
-        "stock": 7
-      },
-      {
-        "id": "nike_air_force_1_gray_40",
-        "size": 40,
-        "color": "gray",
-        "price": 1939999,
-        "stock": 6
-      },
-      {
-        "id": "nike_air_force_1_gray_41",
-        "size": 41,
-        "color": "gray",
-        "price": 1949999,
-        "stock": 5
-      },
-      {
-        "id": "nike_air_force_1_gray_42",
-        "size": 42,
-        "color": "gray",
-        "price": 1959999,
-        "stock": 4
-      },
-      {
-        "id": "nike_air_force_1_gray_43",
-        "size": 43,
-        "color": "gray",
-        "price": 1969999,
-        "stock": 3
-      },
-      {
-        "id": "nike_air_force_1_gray_44",
-        "size": 44,
-        "color": "gray",
-        "price": 1979999,
-        "stock": 2
-      },
-      {
-        "id": "nike_air_force_1_brown_36",
-        "size": 36,
-        "color": "brown",
-        "price": 1859999,
-        "stock": 5
-      },
-      {
-        "id": "nike_air_force_1_brown_37",
+        "id": "adidas_forum_green_37",
         "size": 37,
-        "color": "brown",
-        "price": 1869999,
-        "stock": 6
+        "color": "green",
+        "price": 2810000,
+        "stock": 9
       },
       {
-        "id": "nike_air_force_1_brown_38",
+        "id": "adidas_forum_green_38",
         "size": 38,
-        "color": "brown",
-        "price": 1879999,
+        "color": "green",
+        "price": 2820000,
+        "stock": 8
+      },
+      {
+        "id": "adidas_forum_green_39",
+        "size": 39,
+        "color": "green",
+        "price": 2830000,
         "stock": 7
       },
       {
-        "id": "nike_air_force_1_brown_39",
-        "size": 39,
-        "color": "brown",
-        "price": 1889999,
+        "id": "adidas_forum_green_40",
+        "size": 40,
+        "color": "green",
+        "price": 2840000,
         "stock": 6
       },
       {
-        "id": "nike_air_force_1_brown_40",
-        "size": 40,
-        "color": "brown",
-        "price": 1899999,
+        "id": "adidas_forum_green_41",
+        "size": 41,
+        "color": "green",
+        "price": 2850000,
         "stock": 5
       },
       {
-        "id": "nike_air_force_1_brown_41",
-        "size": 41,
-        "color": "brown",
-        "price": 1909999,
+        "id": "adidas_forum_green_42",
+        "size": 42,
+        "color": "green",
+        "price": 2860000,
         "stock": 4
       },
       {
-        "id": "nike_air_force_1_brown_42",
-        "size": 42,
-        "color": "brown",
-        "price": 1919999,
+        "id": "adidas_forum_green_43",
+        "size": 43,
+        "color": "green",
+        "price": 2870000,
         "stock": 3
       },
       {
-        "id": "nike_air_force_1_brown_43",
-        "size": 43,
-        "color": "brown",
-        "price": 1929999,
+        "id": "adidas_forum_green_44",
+        "size": 44,
+        "color": "green",
+        "price": 2880000,
         "stock": 2
       },
       {
-        "id": "nike_air_force_1_brown_44",
+        "id": "adidas_forum_blue_36",
+        "size": 36,
+        "color": "blue",
+        "price": 2800000,
+        "stock": 10
+      },
+      {
+        "id": "adidas_forum_blue_37",
+        "size": 37,
+        "color": "blue",
+        "price": 2810000,
+        "stock": 9
+      },
+      {
+        "id": "adidas_forum_blue_38",
+        "size": 38,
+        "color": "blue",
+        "price": 2820000,
+        "stock": 8
+      },
+      {
+        "id": "adidas_forum_blue_39",
+        "size": 39,
+        "color": "blue",
+        "price": 2830000,
+        "stock": 7
+      },
+      {
+        "id": "adidas_forum_blue_40",
+        "size": 40,
+        "color": "blue",
+        "price": 2840000,
+        "stock": 6
+      },
+      {
+        "id": "adidas_forum_blue_41",
+        "size": 41,
+        "color": "blue",
+        "price": 2850000,
+        "stock": 5
+      },
+      {
+        "id": "adidas_forum_blue_42",
+        "size": 42,
+        "color": "blue",
+        "price": 2860000,
+        "stock": 4
+      },
+      {
+        "id": "adidas_forum_blue_43",
+        "size": 43,
+        "color": "blue",
+        "price": 2870000,
+        "stock": 3
+      },
+      {
+        "id": "adidas_forum_blue_44",
         "size": 44,
-        "color": "brown",
-        "price": 1939999,
-        "stock": 1
+        "color": "blue",
+        "price": 2880000,
+        "stock": 2
       }
     ],
-    "created_at": { ".sv": "timestamp" }
+    "created_at": {
+      ".sv": "timestamp"
+    }
   },
   {
-    "id": "adidas_ultraboost",
-    "name": "Adidas Ultraboost",
-    "description": "Giày chạy bộ hiện đại, êm ái và năng động, phù hợp cho mọi hoạt động thể thao.",
-    "brand": "Adidas",
-    "thumbnail": "https://example.com/adidas_ultraboost_thumb.png",
+    "id": "adidas_superstar",
+    "name": "Adidas Superstar",
+    "brand": "adidas",
+    "description": "Giày Adidas Superstar, thiết kế mũi vỏ sò đặc trưng, không bao giờ lỗi mốt.",
+    "thumbnail": "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260068/t%E1%BA%A3i_xu%E1%BB%91ng_7_azs2na.png",
     "colors": [
+      {
+        "name": "black",
+        "hex": "#000000",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260094/t%E1%BA%A3i_xu%E1%BB%91ng_1_wrx67z.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260075/t%E1%BA%A3i_xu%E1%BB%91ng_5_yz2ntn.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260071/t%E1%BA%A3i_xu%E1%BB%91ng_fhzfjs.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260068/t%E1%BA%A3i_xu%E1%BB%91ng_7_azs2na.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260063/t%E1%BA%A3i_xu%E1%BB%91ng_3_vewnag.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260057/t%E1%BA%A3i_xu%E1%BB%91ng_4_kxrme1.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260050/t%E1%BA%A3i_xu%E1%BB%91ng_2_edmzdf.png"
+        ]
+      },
+      {
+        "name": "cream",
+        "hex": "#F5F5DC",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260034/t%E1%BA%A3i_xu%E1%BB%91ng_7_jzecto.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260026/t%E1%BA%A3i_xu%E1%BB%91ng_ln8f0d.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260002/t%E1%BA%A3i_xu%E1%BB%91ng_2_vlspwf.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259997/t%E1%BA%A3i_xu%E1%BB%91ng_3_plo3kz.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259976/t%E1%BA%A3i_xu%E1%BB%91ng_5_ukwm96.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259994/t%E1%BA%A3i_xu%E1%BB%91ng_4_b75psq.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259971/t%E1%BA%A3i_xu%E1%BB%91ng_1_pgcpnc.png"
+        ]
+      },
       {
         "name": "white",
         "hex": "#FFFFFF",
         "images": [
-          "https://example.com/adidas_white_1.png",
-          "https://example.com/adidas_white_2.png"
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260039/t%E1%BA%A3i_xu%E1%BB%91ng_higrvm.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260025/t%E1%BA%A3i_xu%E1%BB%91ng_5_k6lhnk.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260020/t%E1%BA%A3i_xu%E1%BB%91ng_6_amllhf.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260012/t%E1%BA%A3i_xu%E1%BB%91ng_4_a0kxsp.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260011/t%E1%BA%A3i_xu%E1%BB%91ng_2_sgevhb.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259999/t%E1%BA%A3i_xu%E1%BB%91ng_3_markuk.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259991/t%E1%BA%A3i_xu%E1%BB%91ng_1_xj0gzy.png"
+        ]
+      },
+      {
+        "name": "navy",
+        "hex": "#000080",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260117/t%E1%BA%A3i_xu%E1%BB%91ng_2_m4dtav.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260108/t%E1%BA%A3i_xu%E1%BB%91ng_pcju3g.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260086/t%E1%BA%A3i_xu%E1%BB%91ng_4_kqs4t7.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260043/t%E1%BA%A3i_xu%E1%BB%91ng_5_maebkj.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260041/t%E1%BA%A3i_xu%E1%BB%91ng_6_vaj4p9.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260028/t%E1%BA%A3i_xu%E1%BB%91ng_3_vh5v9y.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260015/t%E1%BA%A3i_xu%E1%BB%91ng_1_xjbsjo.png"
+        ]
+      }
+    ],
+    "variants": [
+      {
+        "id": "adidas_superstar_black_36",
+        "size": 36,
+        "color": "black",
+        "price": 2500000,
+        "stock": 10
+      },
+      {
+        "id": "adidas_superstar_black_37",
+        "size": 37,
+        "color": "black",
+        "price": 2510000,
+        "stock": 9
+      },
+      {
+        "id": "adidas_superstar_black_38",
+        "size": 38,
+        "color": "black",
+        "price": 2520000,
+        "stock": 8
+      },
+      {
+        "id": "adidas_superstar_black_39",
+        "size": 39,
+        "color": "black",
+        "price": 2530000,
+        "stock": 7
+      },
+      {
+        "id": "adidas_superstar_black_40",
+        "size": 40,
+        "color": "black",
+        "price": 2540000,
+        "stock": 6
+      },
+      {
+        "id": "adidas_superstar_black_41",
+        "size": 41,
+        "color": "black",
+        "price": 2550000,
+        "stock": 5
+      },
+      {
+        "id": "adidas_superstar_black_42",
+        "size": 42,
+        "color": "black",
+        "price": 2560000,
+        "stock": 4
+      },
+      {
+        "id": "adidas_superstar_black_43",
+        "size": 43,
+        "color": "black",
+        "price": 2570000,
+        "stock": 3
+      },
+      {
+        "id": "adidas_superstar_black_44",
+        "size": 44,
+        "color": "black",
+        "price": 2580000,
+        "stock": 2
+      },
+      {
+        "id": "adidas_superstar_cream_36",
+        "size": 36,
+        "color": "cream",
+        "price": 2500000,
+        "stock": 10
+      },
+      {
+        "id": "adidas_superstar_cream_37",
+        "size": 37,
+        "color": "cream",
+        "price": 2510000,
+        "stock": 9
+      },
+      {
+        "id": "adidas_superstar_cream_38",
+        "size": 38,
+        "color": "cream",
+        "price": 2520000,
+        "stock": 8
+      },
+      {
+        "id": "adidas_superstar_cream_39",
+        "size": 39,
+        "color": "cream",
+        "price": 2530000,
+        "stock": 7
+      },
+      {
+        "id": "adidas_superstar_cream_40",
+        "size": 40,
+        "color": "cream",
+        "price": 2540000,
+        "stock": 6
+      },
+      {
+        "id": "adidas_superstar_cream_41",
+        "size": 41,
+        "color": "cream",
+        "price": 2550000,
+        "stock": 5
+      },
+      {
+        "id": "adidas_superstar_cream_42",
+        "size": 42,
+        "color": "cream",
+        "price": 2560000,
+        "stock": 4
+      },
+      {
+        "id": "adidas_superstar_cream_43",
+        "size": 43,
+        "color": "cream",
+        "price": 2570000,
+        "stock": 3
+      },
+      {
+        "id": "adidas_superstar_cream_44",
+        "size": 44,
+        "color": "cream",
+        "price": 2580000,
+        "stock": 2
+      },
+      {
+        "id": "adidas_superstar_white_36",
+        "size": 36,
+        "color": "white",
+        "price": 2500000,
+        "stock": 10
+      },
+      {
+        "id": "adidas_superstar_white_37",
+        "size": 37,
+        "color": "white",
+        "price": 2510000,
+        "stock": 9
+      },
+      {
+        "id": "adidas_superstar_white_38",
+        "size": 38,
+        "color": "white",
+        "price": 2520000,
+        "stock": 8
+      },
+      {
+        "id": "adidas_superstar_white_39",
+        "size": 39,
+        "color": "white",
+        "price": 2530000,
+        "stock": 7
+      },
+      {
+        "id": "adidas_superstar_white_40",
+        "size": 40,
+        "color": "white",
+        "price": 2540000,
+        "stock": 6
+      },
+      {
+        "id": "adidas_superstar_white_41",
+        "size": 41,
+        "color": "white",
+        "price": 2550000,
+        "stock": 5
+      },
+      {
+        "id": "adidas_superstar_white_42",
+        "size": 42,
+        "color": "white",
+        "price": 2560000,
+        "stock": 4
+      },
+      {
+        "id": "adidas_superstar_white_43",
+        "size": 43,
+        "color": "white",
+        "price": 2570000,
+        "stock": 3
+      },
+      {
+        "id": "adidas_superstar_white_44",
+        "size": 44,
+        "color": "white",
+        "price": 2580000,
+        "stock": 2
+      },
+      {
+        "id": "adidas_superstar_navy_36",
+        "size": 36,
+        "color": "navy",
+        "price": 2500000,
+        "stock": 10
+      },
+      {
+        "id": "adidas_superstar_navy_37",
+        "size": 37,
+        "color": "navy",
+        "price": 2510000,
+        "stock": 9
+      },
+      {
+        "id": "adidas_superstar_navy_38",
+        "size": 38,
+        "color": "navy",
+        "price": 2520000,
+        "stock": 8
+      },
+      {
+        "id": "adidas_superstar_navy_39",
+        "size": 39,
+        "color": "navy",
+        "price": 2530000,
+        "stock": 7
+      },
+      {
+        "id": "adidas_superstar_navy_40",
+        "size": 40,
+        "color": "navy",
+        "price": 2540000,
+        "stock": 6
+      },
+      {
+        "id": "adidas_superstar_navy_41",
+        "size": 41,
+        "color": "navy",
+        "price": 2550000,
+        "stock": 5
+      },
+      {
+        "id": "adidas_superstar_navy_42",
+        "size": 42,
+        "color": "navy",
+        "price": 2560000,
+        "stock": 4
+      },
+      {
+        "id": "adidas_superstar_navy_43",
+        "size": 43,
+        "color": "navy",
+        "price": 2570000,
+        "stock": 3
+      },
+      {
+        "id": "adidas_superstar_navy_44",
+        "size": 44,
+        "color": "navy",
+        "price": 2580000,
+        "stock": 2
+      }
+    ],
+    "created_at": {
+      ".sv": "timestamp"
+    }
+  },
+  {
+    "id": "balenciaga_track",
+    "name": "Balenciaga Track",
+    "brand": "balenciaga",
+    "description": "Giày Balenciaga Track, thiết kế đa lớp phức tạp, mang đậm phong cách đường phố cao cấp.",
+    "thumbnail": "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260238/t%E1%BA%A3i_xu%E1%BB%91ng_dejxgg.png",
+    "colors": [
+      {
+        "name": "black",
+        "hex": "#000000",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260238/t%E1%BA%A3i_xu%E1%BB%91ng_dejxgg.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260230/t%E1%BA%A3i_xu%E1%BB%91ng_1_ecanxo.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260217/t%E1%BA%A3i_xu%E1%BB%91ng_2_kugh2p.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260214/t%E1%BA%A3i_xu%E1%BB%91ng_3_fm86gi.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260175/t%E1%BA%A3i_xu%E1%BB%91ng_7_n0vfq4.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260166/t%E1%BA%A3i_xu%E1%BB%91ng_4_caauo0.png"
+        ]
+      },
+      {
+        "name": "brown",
+        "hex": "#8D6E63",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260166/t%E1%BA%A3i_xu%E1%BB%91ng_4_caauo0.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260145/t%E1%BA%A3i_xu%E1%BB%91ng_4_fbsmz3.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260091/t%E1%BA%A3i_xu%E1%BB%91ng_6_esmvtp.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260085/t%E1%BA%A3i_xu%E1%BB%91ng_3_al2rix.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260076/t%E1%BA%A3i_xu%E1%BB%91ng_1_usymzt.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260082/t%E1%BA%A3i_xu%E1%BB%91ng_2_dkwqkz.png"
+        ]
+      },
+      {
+        "name": "white",
+        "hex": "#FFFFFF",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260234/t%E1%BA%A3i_xu%E1%BB%91ng_4_xefwpg.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260173/t%E1%BA%A3i_xu%E1%BB%91ng_2_xlkfah.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260124/t%E1%BA%A3i_xu%E1%BB%91ng_s9rfhv.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260116/t%E1%BA%A3i_xu%E1%BB%91ng_5_hj0eby.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260111/t%E1%BA%A3i_xu%E1%BB%91ng_3_hbsskp.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260099/t%E1%BA%A3i_xu%E1%BB%91ng_1_iampkr.png"
+        ]
+      }
+    ],
+    "variants": [
+      {
+        "id": "balenciaga_track_black_36",
+        "size": 36,
+        "color": "black",
+        "price": 15000000,
+        "stock": 10
+      },
+      {
+        "id": "balenciaga_track_black_37",
+        "size": 37,
+        "color": "black",
+        "price": 15010000,
+        "stock": 9
+      },
+      {
+        "id": "balenciaga_track_black_38",
+        "size": 38,
+        "color": "black",
+        "price": 15020000,
+        "stock": 8
+      },
+      {
+        "id": "balenciaga_track_black_39",
+        "size": 39,
+        "color": "black",
+        "price": 15030000,
+        "stock": 7
+      },
+      {
+        "id": "balenciaga_track_black_40",
+        "size": 40,
+        "color": "black",
+        "price": 15040000,
+        "stock": 6
+      },
+      {
+        "id": "balenciaga_track_black_41",
+        "size": 41,
+        "color": "black",
+        "price": 15050000,
+        "stock": 5
+      },
+      {
+        "id": "balenciaga_track_black_42",
+        "size": 42,
+        "color": "black",
+        "price": 15060000,
+        "stock": 4
+      },
+      {
+        "id": "balenciaga_track_black_43",
+        "size": 43,
+        "color": "black",
+        "price": 15070000,
+        "stock": 3
+      },
+      {
+        "id": "balenciaga_track_black_44",
+        "size": 44,
+        "color": "black",
+        "price": 15080000,
+        "stock": 2
+      },
+      {
+        "id": "balenciaga_track_brown_36",
+        "size": 36,
+        "color": "brown",
+        "price": 15000000,
+        "stock": 10
+      },
+      {
+        "id": "balenciaga_track_brown_37",
+        "size": 37,
+        "color": "brown",
+        "price": 15010000,
+        "stock": 9
+      },
+      {
+        "id": "balenciaga_track_brown_38",
+        "size": 38,
+        "color": "brown",
+        "price": 15020000,
+        "stock": 8
+      },
+      {
+        "id": "balenciaga_track_brown_39",
+        "size": 39,
+        "color": "brown",
+        "price": 15030000,
+        "stock": 7
+      },
+      {
+        "id": "balenciaga_track_brown_40",
+        "size": 40,
+        "color": "brown",
+        "price": 15040000,
+        "stock": 6
+      },
+      {
+        "id": "balenciaga_track_brown_41",
+        "size": 41,
+        "color": "brown",
+        "price": 15050000,
+        "stock": 5
+      },
+      {
+        "id": "balenciaga_track_brown_42",
+        "size": 42,
+        "color": "brown",
+        "price": 15060000,
+        "stock": 4
+      },
+      {
+        "id": "balenciaga_track_brown_43",
+        "size": 43,
+        "color": "brown",
+        "price": 15070000,
+        "stock": 3
+      },
+      {
+        "id": "balenciaga_track_brown_44",
+        "size": 44,
+        "color": "brown",
+        "price": 15080000,
+        "stock": 2
+      },
+      {
+        "id": "balenciaga_track_white_36",
+        "size": 36,
+        "color": "white",
+        "price": 15000000,
+        "stock": 10
+      },
+      {
+        "id": "balenciaga_track_white_37",
+        "size": 37,
+        "color": "white",
+        "price": 15010000,
+        "stock": 9
+      },
+      {
+        "id": "balenciaga_track_white_38",
+        "size": 38,
+        "color": "white",
+        "price": 15020000,
+        "stock": 8
+      },
+      {
+        "id": "balenciaga_track_white_39",
+        "size": 39,
+        "color": "white",
+        "price": 15030000,
+        "stock": 7
+      },
+      {
+        "id": "balenciaga_track_white_40",
+        "size": 40,
+        "color": "white",
+        "price": 15040000,
+        "stock": 6
+      },
+      {
+        "id": "balenciaga_track_white_41",
+        "size": 41,
+        "color": "white",
+        "price": 15050000,
+        "stock": 5
+      },
+      {
+        "id": "balenciaga_track_white_42",
+        "size": 42,
+        "color": "white",
+        "price": 15060000,
+        "stock": 4
+      },
+      {
+        "id": "balenciaga_track_white_43",
+        "size": 43,
+        "color": "white",
+        "price": 15070000,
+        "stock": 3
+      },
+      {
+        "id": "balenciaga_track_white_44",
+        "size": 44,
+        "color": "white",
+        "price": 15080000,
+        "stock": 2
+      }
+    ],
+    "created_at": {
+      ".sv": "timestamp"
+    }
+  },
+  {
+    "id": "balenciaga_triple_s",
+    "name": "Balenciaga Triple S",
+    "brand": "balenciaga",
+    "description": "Giày Balenciaga Triple S, tiên phong cho xu hướng 'dad shoe' với đế giày 3 lớp độc đáo.",
+    "thumbnail": "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260250/t%E1%BA%A3i_xu%E1%BB%91ng_5_bsli4a.png",
+    "colors": [
+      {
+        "name": "black",
+        "hex": "#000000",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260250/t%E1%BA%A3i_xu%E1%BB%91ng_5_bsli4a.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260342/t%E1%BA%A3i_xu%E1%BB%91ng_3_ilmviy.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260253/t%E1%BA%A3i_xu%E1%BB%91ng_wx4zhh.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260250/t%E1%BA%A3i_xu%E1%BB%91ng_1_ee77pg.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260244/t%E1%BA%A3i_xu%E1%BB%91ng_2_ppk6sp.png"
+        ]
+      },
+      {
+        "name": "brown",
+        "hex": "#8D6E63",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260230/t%E1%BA%A3i_xu%E1%BB%91ng_5_glxbar.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260226/t%E1%BA%A3i_xu%E1%BB%91ng_vgf9rs.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260209/t%E1%BA%A3i_xu%E1%BB%91ng_4_oemb4i.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260201/t%E1%BA%A3i_xu%E1%BB%91ng_3_g14vhv.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260193/t%E1%BA%A3i_xu%E1%BB%91ng_2_xyazp9.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260186/t%E1%BA%A3i_xu%E1%BB%91ng_1_td3ely.png"
+        ]
+      },
+      {
+        "name": "white",
+        "hex": "#FFFFFF",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260277/t%E1%BA%A3i_xu%E1%BB%91ng_4_miosbw.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260268/t%E1%BA%A3i_xu%E1%BB%91ng_3_hlbdt7.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260241/t%E1%BA%A3i_xu%E1%BB%91ng_npg7x2.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260240/t%E1%BA%A3i_xu%E1%BB%91ng_2_jn2uaz.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260236/t%E1%BA%A3i_xu%E1%BB%91ng_1_avwkdh.png"
+        ]
+      }
+    ],
+    "variants": [
+      {
+        "id": "balenciaga_triple_black_36",
+        "size": 36,
+        "color": "black",
+        "price": 16000000,
+        "stock": 10
+      },
+      {
+        "id": "balenciaga_triple_black_37",
+        "size": 37,
+        "color": "black",
+        "price": 16010000,
+        "stock": 9
+      },
+      {
+        "id": "balenciaga_triple_black_38",
+        "size": 38,
+        "color": "black",
+        "price": 16020000,
+        "stock": 8
+      },
+      {
+        "id": "balenciaga_triple_black_39",
+        "size": 39,
+        "color": "black",
+        "price": 16030000,
+        "stock": 7
+      },
+      {
+        "id": "balenciaga_triple_black_40",
+        "size": 40,
+        "color": "black",
+        "price": 16040000,
+        "stock": 6
+      },
+      {
+        "id": "balenciaga_triple_black_41",
+        "size": 41,
+        "color": "black",
+        "price": 16050000,
+        "stock": 5
+      },
+      {
+        "id": "balenciaga_triple_black_42",
+        "size": 42,
+        "color": "black",
+        "price": 16060000,
+        "stock": 4
+      },
+      {
+        "id": "balenciaga_triple_black_43",
+        "size": 43,
+        "color": "black",
+        "price": 16070000,
+        "stock": 3
+      },
+      {
+        "id": "balenciaga_triple_black_44",
+        "size": 44,
+        "color": "black",
+        "price": 16080000,
+        "stock": 2
+      },
+      {
+        "id": "balenciaga_triple_brown_36",
+        "size": 36,
+        "color": "brown",
+        "price": 16000000,
+        "stock": 10
+      },
+      {
+        "id": "balenciaga_triple_brown_37",
+        "size": 37,
+        "color": "brown",
+        "price": 16010000,
+        "stock": 9
+      },
+      {
+        "id": "balenciaga_triple_brown_38",
+        "size": 38,
+        "color": "brown",
+        "price": 16020000,
+        "stock": 8
+      },
+      {
+        "id": "balenciaga_triple_brown_39",
+        "size": 39,
+        "color": "brown",
+        "price": 16030000,
+        "stock": 7
+      },
+      {
+        "id": "balenciaga_triple_brown_40",
+        "size": 40,
+        "color": "brown",
+        "price": 16040000,
+        "stock": 6
+      },
+      {
+        "id": "balenciaga_triple_brown_41",
+        "size": 41,
+        "color": "brown",
+        "price": 16050000,
+        "stock": 5
+      },
+      {
+        "id": "balenciaga_triple_brown_42",
+        "size": 42,
+        "color": "brown",
+        "price": 16060000,
+        "stock": 4
+      },
+      {
+        "id": "balenciaga_triple_brown_43",
+        "size": 43,
+        "color": "brown",
+        "price": 16070000,
+        "stock": 3
+      },
+      {
+        "id": "balenciaga_triple_brown_44",
+        "size": 44,
+        "color": "brown",
+        "price": 16080000,
+        "stock": 2
+      },
+      {
+        "id": "balenciaga_triple_white_36",
+        "size": 36,
+        "color": "white",
+        "price": 16000000,
+        "stock": 10
+      },
+      {
+        "id": "balenciaga_triple_white_37",
+        "size": 37,
+        "color": "white",
+        "price": 16010000,
+        "stock": 9
+      },
+      {
+        "id": "balenciaga_triple_white_38",
+        "size": 38,
+        "color": "white",
+        "price": 16020000,
+        "stock": 8
+      },
+      {
+        "id": "balenciaga_triple_white_39",
+        "size": 39,
+        "color": "white",
+        "price": 16030000,
+        "stock": 7
+      },
+      {
+        "id": "balenciaga_triple_white_40",
+        "size": 40,
+        "color": "white",
+        "price": 16040000,
+        "stock": 6
+      },
+      {
+        "id": "balenciaga_triple_white_41",
+        "size": 41,
+        "color": "white",
+        "price": 16050000,
+        "stock": 5
+      },
+      {
+        "id": "balenciaga_triple_white_42",
+        "size": 42,
+        "color": "white",
+        "price": 16060000,
+        "stock": 4
+      },
+      {
+        "id": "balenciaga_triple_white_43",
+        "size": 43,
+        "color": "white",
+        "price": 16070000,
+        "stock": 3
+      },
+      {
+        "id": "balenciaga_triple_white_44",
+        "size": 44,
+        "color": "white",
+        "price": 16080000,
+        "stock": 2
+      }
+    ],
+    "created_at": {
+      ".sv": "timestamp"
+    }
+  },
+  {
+    "id": "converse_chunk",
+    "name": "Converse Chunk",
+    "brand": "converse",
+    "description": "Giày Converse Chunk, biến tấu hiện đại của dòng classic với đế platform.",
+    "thumbnail": "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260437/t%E1%BA%A3i_xu%E1%BB%91ng_6_lmmkwj.png",
+    "colors": [
+      {
+        "name": "black",
+        "hex": "#000000",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260536/t%E1%BA%A3i_xu%E1%BB%91ng_3_yvxgjf.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260499/t%E1%BA%A3i_xu%E1%BB%91ng_2_x6mku2.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260483/t%E1%BA%A3i_xu%E1%BB%91ng_6_asqeo8.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260476/t%E1%BA%A3i_xu%E1%BB%91ng_nfbsne.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260433/t%E1%BA%A3i_xu%E1%BB%91ng_1_tcbanw.png"
+        ]
+      },
+      {
+        "name": "cream",
+        "hex": "#F5F5DC",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260926/t%E1%BA%A3i_xu%E1%BB%91ng_2_npitaz.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260922/t%E1%BA%A3i_xu%E1%BB%91ng_4_e4b1jc.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260454/t%E1%BA%A3i_xu%E1%BB%91ng_3_va3ypz.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260359/t%E1%BA%A3i_xu%E1%BB%91ng_1_z87zbz.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260330/t%E1%BA%A3i_xu%E1%BB%91ng_kvn3ow.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260317/t%E1%BA%A3i_xu%E1%BB%91ng_5_tz5ly8.png"
+        ]
+      },
+      {
+        "name": "white",
+        "hex": "#FFFFFF",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260360/t%E1%BA%A3i_xu%E1%BB%91ng_2_u7tz5l.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260356/t%E1%BA%A3i_xu%E1%BB%91ng_1_nxys0q.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260354/t%E1%BA%A3i_xu%E1%BB%91ng_dnrry4.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260351/t%E1%BA%A3i_xu%E1%BB%91ng_4_tnubta.png ",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260336/kp8utb6so7kz3vinnrqd.png"
+        ]
+      },
+      {
+        "name": "green",
+        "hex": "#43A047",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260533/t%E1%BA%A3i_xu%E1%BB%91ng_4_dh6brh.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260467/t%E1%BA%A3i_xu%E1%BB%91ng_2_mxbhzf.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260437/t%E1%BA%A3i_xu%E1%BB%91ng_6_lmmkwj.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260426/t%E1%BA%A3i_xu%E1%BB%91ng_m0fget.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260380/t%E1%BA%A3i_xu%E1%BB%91ng_3_zd0xvy.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260368/t%E1%BA%A3i_xu%E1%BB%91ng_1_iwaeut.png"
+        ]
+      }
+    ],
+    "variants": [
+      {
+        "id": "converse_chunk_black_36",
+        "size": 36,
+        "color": "black",
+        "price": 2200000,
+        "stock": 10
+      },
+      {
+        "id": "converse_chunk_black_37",
+        "size": 37,
+        "color": "black",
+        "price": 2210000,
+        "stock": 9
+      },
+      {
+        "id": "converse_chunk_black_38",
+        "size": 38,
+        "color": "black",
+        "price": 2220000,
+        "stock": 8
+      },
+      {
+        "id": "converse_chunk_black_39",
+        "size": 39,
+        "color": "black",
+        "price": 2230000,
+        "stock": 7
+      },
+      {
+        "id": "converse_chunk_black_40",
+        "size": 40,
+        "color": "black",
+        "price": 2240000,
+        "stock": 6
+      },
+      {
+        "id": "converse_chunk_black_41",
+        "size": 41,
+        "color": "black",
+        "price": 2250000,
+        "stock": 5
+      },
+      {
+        "id": "converse_chunk_black_42",
+        "size": 42,
+        "color": "black",
+        "price": 2260000,
+        "stock": 4
+      },
+      {
+        "id": "converse_chunk_black_43",
+        "size": 43,
+        "color": "black",
+        "price": 2270000,
+        "stock": 3
+      },
+      {
+        "id": "converse_chunk_black_44",
+        "size": 44,
+        "color": "black",
+        "price": 2280000,
+        "stock": 2
+      },
+      {
+        "id": "converse_chunk_cream_36",
+        "size": 36,
+        "color": "cream",
+        "price": 2200000,
+        "stock": 10
+      },
+      {
+        "id": "converse_chunk_cream_37",
+        "size": 37,
+        "color": "cream",
+        "price": 2210000,
+        "stock": 9
+      },
+      {
+        "id": "converse_chunk_cream_38",
+        "size": 38,
+        "color": "cream",
+        "price": 2220000,
+        "stock": 8
+      },
+      {
+        "id": "converse_chunk_cream_39",
+        "size": 39,
+        "color": "cream",
+        "price": 2230000,
+        "stock": 7
+      },
+      {
+        "id": "converse_chunk_cream_40",
+        "size": 40,
+        "color": "cream",
+        "price": 2240000,
+        "stock": 6
+      },
+      {
+        "id": "converse_chunk_cream_41",
+        "size": 41,
+        "color": "cream",
+        "price": 2250000,
+        "stock": 5
+      },
+      {
+        "id": "converse_chunk_cream_42",
+        "size": 42,
+        "color": "cream",
+        "price": 2260000,
+        "stock": 4
+      },
+      {
+        "id": "converse_chunk_cream_43",
+        "size": 43,
+        "color": "cream",
+        "price": 2270000,
+        "stock": 3
+      },
+      {
+        "id": "converse_chunk_cream_44",
+        "size": 44,
+        "color": "cream",
+        "price": 2280000,
+        "stock": 2
+      },
+      {
+        "id": "converse_chunk_white_36",
+        "size": 36,
+        "color": "white",
+        "price": 2200000,
+        "stock": 10
+      },
+      {
+        "id": "converse_chunk_white_37",
+        "size": 37,
+        "color": "white",
+        "price": 2210000,
+        "stock": 9
+      },
+      {
+        "id": "converse_chunk_white_38",
+        "size": 38,
+        "color": "white",
+        "price": 2220000,
+        "stock": 8
+      },
+      {
+        "id": "converse_chunk_white_39",
+        "size": 39,
+        "color": "white",
+        "price": 2230000,
+        "stock": 7
+      },
+      {
+        "id": "converse_chunk_white_40",
+        "size": 40,
+        "color": "white",
+        "price": 2240000,
+        "stock": 6
+      },
+      {
+        "id": "converse_chunk_white_41",
+        "size": 41,
+        "color": "white",
+        "price": 2250000,
+        "stock": 5
+      },
+      {
+        "id": "converse_chunk_white_42",
+        "size": 42,
+        "color": "white",
+        "price": 2260000,
+        "stock": 4
+      },
+      {
+        "id": "converse_chunk_white_43",
+        "size": 43,
+        "color": "white",
+        "price": 2270000,
+        "stock": 3
+      },
+      {
+        "id": "converse_chunk_white_44",
+        "size": 44,
+        "color": "white",
+        "price": 2280000,
+        "stock": 2
+      },
+      {
+        "id": "converse_chunk_green_36",
+        "size": 36,
+        "color": "green",
+        "price": 2200000,
+        "stock": 10
+      },
+      {
+        "id": "converse_chunk_green_37",
+        "size": 37,
+        "color": "green",
+        "price": 2210000,
+        "stock": 9
+      },
+      {
+        "id": "converse_chunk_green_38",
+        "size": 38,
+        "color": "green",
+        "price": 2220000,
+        "stock": 8
+      },
+      {
+        "id": "converse_chunk_green_39",
+        "size": 39,
+        "color": "green",
+        "price": 2230000,
+        "stock": 7
+      },
+      {
+        "id": "converse_chunk_green_40",
+        "size": 40,
+        "color": "green",
+        "price": 2240000,
+        "stock": 6
+      },
+      {
+        "id": "converse_chunk_green_41",
+        "size": 41,
+        "color": "green",
+        "price": 2250000,
+        "stock": 5
+      },
+      {
+        "id": "converse_chunk_green_42",
+        "size": 42,
+        "color": "green",
+        "price": 2260000,
+        "stock": 4
+      },
+      {
+        "id": "converse_chunk_green_43",
+        "size": 43,
+        "color": "green",
+        "price": 2270000,
+        "stock": 3
+      },
+      {
+        "id": "converse_chunk_green_44",
+        "size": 44,
+        "color": "green",
+        "price": 2280000,
+        "stock": 2
+      }
+    ],
+    "created_at": {
+      ".sv": "timestamp"
+    }
+  },
+  {
+    "id": "converse_chunk_taylor",
+    "name": "Converse Chunk Taylor",
+    "brand": "converse",
+    "description": "Giày Converse Chuck Taylor, biểu tượng vượt thời gian của phong cách casual.",
+    "thumbnail": "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260680/t%E1%BA%A3i_xu%E1%BB%91ng_5_kg0ur1.png",
+    "colors": [
+      {
+        "name": "black",
+        "hex": "#000000",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260746/t%E1%BA%A3i_xu%E1%BB%91ng_3_fmzmzn.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260738/t%E1%BA%A3i_xu%E1%BB%91ng_1_fyt09u.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260692/t%E1%BA%A3i_xu%E1%BB%91ng_umipbz.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260680/t%E1%BA%A3i_xu%E1%BB%91ng_5_kg0ur1.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260671/t%E1%BA%A3i_xu%E1%BB%91ng_2_amq2gg.png"
+        ]
+      },
+      {
+        "name": "red",
+        "hex": "#E53935",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260823/t%E1%BA%A3i_xu%E1%BB%91ng_d8a0tn.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260810/t%E1%BA%A3i_xu%E1%BB%91ng_5_neqj36.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260786/t%E1%BA%A3i_xu%E1%BB%91ng_1_lm7aam.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260785/t%E1%BA%A3i_xu%E1%BB%91ng_3_uqq39r.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260785/t%E1%BA%A3i_xu%E1%BB%91ng_4_zfomji.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260782/t%E1%BA%A3i_xu%E1%BB%91ng_2_axodjc.png"
+        ]
+      },
+      {
+        "name": "white",
+        "hex": "#FFFFFF",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260566/t%E1%BA%A3i_xu%E1%BB%91ng_3_nxwgub.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260549/t%E1%BA%A3i_xu%E1%BB%91ng_mvjc3w.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260527/t%E1%BA%A3i_xu%E1%BB%91ng_5_ypxjaj.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260525/t%E1%BA%A3i_xu%E1%BB%91ng_4_tlvsov.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260506/t%E1%BA%A3i_xu%E1%BB%91ng_1_luurem.png"
+        ]
+      },
+      {
+        "name": "yellow",
+        "hex": "#FFEB3B",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260645/t%E1%BA%A3i_xu%E1%BB%91ng_zo3dsu.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260637/t%E1%BA%A3i_xu%E1%BB%91ng_2_owkgtp.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260618/t%E1%BA%A3i_xu%E1%BB%91ng_1_riqurs.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260609/t%E1%BA%A3i_xu%E1%BB%91ng_6_js9csm.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260587/t%E1%BA%A3i_xu%E1%BB%91ng_4_qeqnwi.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260573/t%E1%BA%A3i_xu%E1%BB%91ng_3_e2xkgv.png"
+        ]
+      },
+      {
+        "name": "blue",
+        "hex": "#1E88E5",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260573/t%E1%BA%A3i_xu%E1%BB%91ng_3_e2xkgv.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260728/t%E1%BA%A3i_xu%E1%BB%91ng_3_rjf59v.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260691/t%E1%BA%A3i_xu%E1%BB%91ng_1_f489n5.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260657/t%E1%BA%A3i_xu%E1%BB%91ng_4_mlo9k7.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260645/t%E1%BA%A3i_xu%E1%BB%91ng_2_kzhwh4.png"
+        ]
+      }
+    ],
+    "variants": [
+      {
+        "id": "converse_chunk_black_36",
+        "size": 36,
+        "color": "black",
+        "price": 1800000,
+        "stock": 10
+      },
+      {
+        "id": "converse_chunk_black_37",
+        "size": 37,
+        "color": "black",
+        "price": 1810000,
+        "stock": 9
+      },
+      {
+        "id": "converse_chunk_black_38",
+        "size": 38,
+        "color": "black",
+        "price": 1820000,
+        "stock": 8
+      },
+      {
+        "id": "converse_chunk_black_39",
+        "size": 39,
+        "color": "black",
+        "price": 1830000,
+        "stock": 7
+      },
+      {
+        "id": "converse_chunk_black_40",
+        "size": 40,
+        "color": "black",
+        "price": 1840000,
+        "stock": 6
+      },
+      {
+        "id": "converse_chunk_black_41",
+        "size": 41,
+        "color": "black",
+        "price": 1850000,
+        "stock": 5
+      },
+      {
+        "id": "converse_chunk_black_42",
+        "size": 42,
+        "color": "black",
+        "price": 1860000,
+        "stock": 4
+      },
+      {
+        "id": "converse_chunk_black_43",
+        "size": 43,
+        "color": "black",
+        "price": 1870000,
+        "stock": 3
+      },
+      {
+        "id": "converse_chunk_black_44",
+        "size": 44,
+        "color": "black",
+        "price": 1880000,
+        "stock": 2
+      },
+      {
+        "id": "converse_chunk_red_36",
+        "size": 36,
+        "color": "red",
+        "price": 1800000,
+        "stock": 10
+      },
+      {
+        "id": "converse_chunk_red_37",
+        "size": 37,
+        "color": "red",
+        "price": 1810000,
+        "stock": 9
+      },
+      {
+        "id": "converse_chunk_red_38",
+        "size": 38,
+        "color": "red",
+        "price": 1820000,
+        "stock": 8
+      },
+      {
+        "id": "converse_chunk_red_39",
+        "size": 39,
+        "color": "red",
+        "price": 1830000,
+        "stock": 7
+      },
+      {
+        "id": "converse_chunk_red_40",
+        "size": 40,
+        "color": "red",
+        "price": 1840000,
+        "stock": 6
+      },
+      {
+        "id": "converse_chunk_red_41",
+        "size": 41,
+        "color": "red",
+        "price": 1850000,
+        "stock": 5
+      },
+      {
+        "id": "converse_chunk_red_42",
+        "size": 42,
+        "color": "red",
+        "price": 1860000,
+        "stock": 4
+      },
+      {
+        "id": "converse_chunk_red_43",
+        "size": 43,
+        "color": "red",
+        "price": 1870000,
+        "stock": 3
+      },
+      {
+        "id": "converse_chunk_red_44",
+        "size": 44,
+        "color": "red",
+        "price": 1880000,
+        "stock": 2
+      },
+      {
+        "id": "converse_chunk_white_36",
+        "size": 36,
+        "color": "white",
+        "price": 1800000,
+        "stock": 10
+      },
+      {
+        "id": "converse_chunk_white_37",
+        "size": 37,
+        "color": "white",
+        "price": 1810000,
+        "stock": 9
+      },
+      {
+        "id": "converse_chunk_white_38",
+        "size": 38,
+        "color": "white",
+        "price": 1820000,
+        "stock": 8
+      },
+      {
+        "id": "converse_chunk_white_39",
+        "size": 39,
+        "color": "white",
+        "price": 1830000,
+        "stock": 7
+      },
+      {
+        "id": "converse_chunk_white_40",
+        "size": 40,
+        "color": "white",
+        "price": 1840000,
+        "stock": 6
+      },
+      {
+        "id": "converse_chunk_white_41",
+        "size": 41,
+        "color": "white",
+        "price": 1850000,
+        "stock": 5
+      },
+      {
+        "id": "converse_chunk_white_42",
+        "size": 42,
+        "color": "white",
+        "price": 1860000,
+        "stock": 4
+      },
+      {
+        "id": "converse_chunk_white_43",
+        "size": 43,
+        "color": "white",
+        "price": 1870000,
+        "stock": 3
+      },
+      {
+        "id": "converse_chunk_white_44",
+        "size": 44,
+        "color": "white",
+        "price": 1880000,
+        "stock": 2
+      },
+      {
+        "id": "converse_chunk_yellow_36",
+        "size": 36,
+        "color": "yellow",
+        "price": 1800000,
+        "stock": 10
+      },
+      {
+        "id": "converse_chunk_yellow_37",
+        "size": 37,
+        "color": "yellow",
+        "price": 1810000,
+        "stock": 9
+      },
+      {
+        "id": "converse_chunk_yellow_38",
+        "size": 38,
+        "color": "yellow",
+        "price": 1820000,
+        "stock": 8
+      },
+      {
+        "id": "converse_chunk_yellow_39",
+        "size": 39,
+        "color": "yellow",
+        "price": 1830000,
+        "stock": 7
+      },
+      {
+        "id": "converse_chunk_yellow_40",
+        "size": 40,
+        "color": "yellow",
+        "price": 1840000,
+        "stock": 6
+      },
+      {
+        "id": "converse_chunk_yellow_41",
+        "size": 41,
+        "color": "yellow",
+        "price": 1850000,
+        "stock": 5
+      },
+      {
+        "id": "converse_chunk_yellow_42",
+        "size": 42,
+        "color": "yellow",
+        "price": 1860000,
+        "stock": 4
+      },
+      {
+        "id": "converse_chunk_yellow_43",
+        "size": 43,
+        "color": "yellow",
+        "price": 1870000,
+        "stock": 3
+      },
+      {
+        "id": "converse_chunk_yellow_44",
+        "size": 44,
+        "color": "yellow",
+        "price": 1880000,
+        "stock": 2
+      },
+      {
+        "id": "converse_chunk_blue_36",
+        "size": 36,
+        "color": "blue",
+        "price": 1800000,
+        "stock": 10
+      },
+      {
+        "id": "converse_chunk_blue_37",
+        "size": 37,
+        "color": "blue",
+        "price": 1810000,
+        "stock": 9
+      },
+      {
+        "id": "converse_chunk_blue_38",
+        "size": 38,
+        "color": "blue",
+        "price": 1820000,
+        "stock": 8
+      },
+      {
+        "id": "converse_chunk_blue_39",
+        "size": 39,
+        "color": "blue",
+        "price": 1830000,
+        "stock": 7
+      },
+      {
+        "id": "converse_chunk_blue_40",
+        "size": 40,
+        "color": "blue",
+        "price": 1840000,
+        "stock": 6
+      },
+      {
+        "id": "converse_chunk_blue_41",
+        "size": 41,
+        "color": "blue",
+        "price": 1850000,
+        "stock": 5
+      },
+      {
+        "id": "converse_chunk_blue_42",
+        "size": 42,
+        "color": "blue",
+        "price": 1860000,
+        "stock": 4
+      },
+      {
+        "id": "converse_chunk_blue_43",
+        "size": 43,
+        "color": "blue",
+        "price": 1870000,
+        "stock": 3
+      },
+      {
+        "id": "converse_chunk_blue_44",
+        "size": 44,
+        "color": "blue",
+        "price": 1880000,
+        "stock": 2
+      }
+    ],
+    "created_at": {
+      ".sv": "timestamp"
+    }
+  },
+  {
+    "id": "mcqueen_mcqueen",
+    "name": "Mcqueen Mcqueen",
+    "brand": "mcqueen",
+    "description": "Giày Alexander McQueen với đế oversize đặc trưng, tạo nên vẻ ngoài nổi bật và sang trọng.",
+    "thumbnail": "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260967/t%E1%BA%A3i_xu%E1%BB%91ng_2_sotn9j.png",
+    "colors": [
+      {
+        "name": "black",
+        "hex": "#000000",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260967/t%E1%BA%A3i_xu%E1%BB%91ng_2_sotn9j.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260902/t%E1%BA%A3i_xu%E1%BB%91ng_3_lsqqv0.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260874/t%E1%BA%A3i_xu%E1%BB%91ng_nsxjlj.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260834/t%E1%BA%A3i_xu%E1%BB%91ng_1_b4egmy.png"
+        ]
+      },
+      {
+        "name": "red",
+        "hex": "#E53935",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260883/t%E1%BA%A3i_xu%E1%BB%91ng_pkdru6.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260856/t%E1%BA%A3i_xu%E1%BB%91ng_1_gqtjqg.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260849/t%E1%BA%A3i_xu%E1%BB%91ng_6_oiitfo.png"
+        ]
+      },
+      {
+        "name": "white",
+        "hex": "#FFFFFF",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260812/t%E1%BA%A3i_xu%E1%BB%91ng_jbmzwv.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260800/t%E1%BA%A3i_xu%E1%BB%91ng_3_kxhzo8.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260796/t%E1%BA%A3i_xu%E1%BB%91ng_2_ajkdvw.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260794/t%E1%BA%A3i_xu%E1%BB%91ng_1_qrz3zb.png"
+        ]
+      },
+      {
+        "name": "blue",
+        "hex": "#1E88E5",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260844/t%E1%BA%A3i_xu%E1%BB%91ng_ndty1y.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260826/t%E1%BA%A3i_xu%E1%BB%91ng_1_zahkqi.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260812/t%E1%BA%A3i_xu%E1%BB%91ng_4_fprkug.png"
+        ]
+      }
+    ],
+    "variants": [
+      {
+        "id": "mcqueen_mcqueen_black_36",
+        "size": 36,
+        "color": "black",
+        "price": 8500000,
+        "stock": 10
+      },
+      {
+        "id": "mcqueen_mcqueen_black_37",
+        "size": 37,
+        "color": "black",
+        "price": 8510000,
+        "stock": 9
+      },
+      {
+        "id": "mcqueen_mcqueen_black_38",
+        "size": 38,
+        "color": "black",
+        "price": 8520000,
+        "stock": 8
+      },
+      {
+        "id": "mcqueen_mcqueen_black_39",
+        "size": 39,
+        "color": "black",
+        "price": 8530000,
+        "stock": 7
+      },
+      {
+        "id": "mcqueen_mcqueen_black_40",
+        "size": 40,
+        "color": "black",
+        "price": 8540000,
+        "stock": 6
+      },
+      {
+        "id": "mcqueen_mcqueen_black_41",
+        "size": 41,
+        "color": "black",
+        "price": 8550000,
+        "stock": 5
+      },
+      {
+        "id": "mcqueen_mcqueen_black_42",
+        "size": 42,
+        "color": "black",
+        "price": 8560000,
+        "stock": 4
+      },
+      {
+        "id": "mcqueen_mcqueen_black_43",
+        "size": 43,
+        "color": "black",
+        "price": 8570000,
+        "stock": 3
+      },
+      {
+        "id": "mcqueen_mcqueen_black_44",
+        "size": 44,
+        "color": "black",
+        "price": 8580000,
+        "stock": 2
+      },
+      {
+        "id": "mcqueen_mcqueen_red_36",
+        "size": 36,
+        "color": "red",
+        "price": 8500000,
+        "stock": 10
+      },
+      {
+        "id": "mcqueen_mcqueen_red_37",
+        "size": 37,
+        "color": "red",
+        "price": 8510000,
+        "stock": 9
+      },
+      {
+        "id": "mcqueen_mcqueen_red_38",
+        "size": 38,
+        "color": "red",
+        "price": 8520000,
+        "stock": 8
+      },
+      {
+        "id": "mcqueen_mcqueen_red_39",
+        "size": 39,
+        "color": "red",
+        "price": 8530000,
+        "stock": 7
+      },
+      {
+        "id": "mcqueen_mcqueen_red_40",
+        "size": 40,
+        "color": "red",
+        "price": 8540000,
+        "stock": 6
+      },
+      {
+        "id": "mcqueen_mcqueen_red_41",
+        "size": 41,
+        "color": "red",
+        "price": 8550000,
+        "stock": 5
+      },
+      {
+        "id": "mcqueen_mcqueen_red_42",
+        "size": 42,
+        "color": "red",
+        "price": 8560000,
+        "stock": 4
+      },
+      {
+        "id": "mcqueen_mcqueen_red_43",
+        "size": 43,
+        "color": "red",
+        "price": 8570000,
+        "stock": 3
+      },
+      {
+        "id": "mcqueen_mcqueen_red_44",
+        "size": 44,
+        "color": "red",
+        "price": 8580000,
+        "stock": 2
+      },
+      {
+        "id": "mcqueen_mcqueen_white_36",
+        "size": 36,
+        "color": "white",
+        "price": 8500000,
+        "stock": 10
+      },
+      {
+        "id": "mcqueen_mcqueen_white_37",
+        "size": 37,
+        "color": "white",
+        "price": 8510000,
+        "stock": 9
+      },
+      {
+        "id": "mcqueen_mcqueen_white_38",
+        "size": 38,
+        "color": "white",
+        "price": 8520000,
+        "stock": 8
+      },
+      {
+        "id": "mcqueen_mcqueen_white_39",
+        "size": 39,
+        "color": "white",
+        "price": 8530000,
+        "stock": 7
+      },
+      {
+        "id": "mcqueen_mcqueen_white_40",
+        "size": 40,
+        "color": "white",
+        "price": 8540000,
+        "stock": 6
+      },
+      {
+        "id": "mcqueen_mcqueen_white_41",
+        "size": 41,
+        "color": "white",
+        "price": 8550000,
+        "stock": 5
+      },
+      {
+        "id": "mcqueen_mcqueen_white_42",
+        "size": 42,
+        "color": "white",
+        "price": 8560000,
+        "stock": 4
+      },
+      {
+        "id": "mcqueen_mcqueen_white_43",
+        "size": 43,
+        "color": "white",
+        "price": 8570000,
+        "stock": 3
+      },
+      {
+        "id": "mcqueen_mcqueen_white_44",
+        "size": 44,
+        "color": "white",
+        "price": 8580000,
+        "stock": 2
+      },
+      {
+        "id": "mcqueen_mcqueen_blue_36",
+        "size": 36,
+        "color": "blue",
+        "price": 8500000,
+        "stock": 10
+      },
+      {
+        "id": "mcqueen_mcqueen_blue_37",
+        "size": 37,
+        "color": "blue",
+        "price": 8510000,
+        "stock": 9
+      },
+      {
+        "id": "mcqueen_mcqueen_blue_38",
+        "size": 38,
+        "color": "blue",
+        "price": 8520000,
+        "stock": 8
+      },
+      {
+        "id": "mcqueen_mcqueen_blue_39",
+        "size": 39,
+        "color": "blue",
+        "price": 8530000,
+        "stock": 7
+      },
+      {
+        "id": "mcqueen_mcqueen_blue_40",
+        "size": 40,
+        "color": "blue",
+        "price": 8540000,
+        "stock": 6
+      },
+      {
+        "id": "mcqueen_mcqueen_blue_41",
+        "size": 41,
+        "color": "blue",
+        "price": 8550000,
+        "stock": 5
+      },
+      {
+        "id": "mcqueen_mcqueen_blue_42",
+        "size": 42,
+        "color": "blue",
+        "price": 8560000,
+        "stock": 4
+      },
+      {
+        "id": "mcqueen_mcqueen_blue_43",
+        "size": 43,
+        "color": "blue",
+        "price": 8570000,
+        "stock": 3
+      },
+      {
+        "id": "mcqueen_mcqueen_blue_44",
+        "size": 44,
+        "color": "blue",
+        "price": 8580000,
+        "stock": 2
+      }
+    ],
+    "created_at": {
+      ".sv": "timestamp"
+    }
+  },
+  {
+    "id": "mlb_chunky_liner",
+    "name": "Mlb Chunky Liner",
+    "brand": "mlb",
+    "description": "Giày MLB Chunky Liner, phong cách bóng chày đường phố với thiết kế đế dày và logo nổi bật.",
+    "thumbnail": "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259597/t%E1%BA%A3i_xu%E1%BB%91ng_6_bruatf.png",
+    "colors": [
+      {
+        "name": "black",
+        "hex": "#000000",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259602/t%E1%BA%A3i_xu%E1%BB%91ng_3_myigcs.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259598/t%E1%BA%A3i_xu%E1%BB%91ng_xkwhfb.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259597/t%E1%BA%A3i_xu%E1%BB%91ng_6_bruatf.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259595/t%E1%BA%A3i_xu%E1%BB%91ng_4_lvqn0p.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259594/t%E1%BA%A3i_xu%E1%BB%91ng_1_dqm8n0.png"
+        ]
+      },
+      {
+        "name": "đen trắng",
+        "hex": "#FFFFFF",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259628/t%E1%BA%A3i_xu%E1%BB%91ng_4_nhnsrg.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259605/t%E1%BA%A3i_xu%E1%BB%91ng_7_c6vncq.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259605/t%E1%BA%A3i_xu%E1%BB%91ng_yj2kmf.png ",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259604/t%E1%BA%A3i_xu%E1%BB%91ng_5_yntyvv.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259602/t%E1%BA%A3i_xu%E1%BB%91ng_3_qbrvi3.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259601/t%E1%BA%A3i_xu%E1%BB%91ng_2_qex6qs.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259599/t%E1%BA%A3i_xu%E1%BB%91ng_1_vanhek.png"
+        ]
+      },
+      {
+        "name": "hồng",
+        "hex": "#E91E63",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259581/t%E1%BA%A3i_xu%E1%BB%91ng_q19pee.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259581/t%E1%BA%A3i_xu%E1%BB%91ng_5_dh2xjy.png ",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259581/t%E1%BA%A3i_xu%E1%BB%91ng_1_cfkj7k.png"
+        ]
+      },
+      {
+        "name": "cream",
+        "hex": "#F5F5DC",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259602/t%E1%BA%A3i_xu%E1%BB%91ng_5_wikrgs.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259593/t%E1%BA%A3i_xu%E1%BB%91ng_6_jlbliu.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259589/t%E1%BA%A3i_xu%E1%BB%91ng_1_q6v4gs.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259586/t%E1%BA%A3i_xu%E1%BB%91ng_lieuhq.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259584/t%E1%BA%A3i_xu%E1%BB%91ng_2_aple8g.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259583/t%E1%BA%A3i_xu%E1%BB%91ng_4_csidjc.png ",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259583/t%E1%BA%A3i_xu%E1%BB%91ng_3_jztwk5.png"
+        ]
+      },
+      {
+        "name": "white",
+        "hex": "#FFFFFF",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259590/t%E1%BA%A3i_xu%E1%BB%91ng_hqdrjz.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259589/t%E1%BA%A3i_xu%E1%BB%91ng_6_b6ykb1.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259588/t%E1%BA%A3i_xu%E1%BB%91ng_4_po5dnj.png ",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259588/t%E1%BA%A3i_xu%E1%BB%91ng_2_ioylh5.png ",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259587/t%E1%BA%A3i_xu%E1%BB%91ng_3_hw55xg.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259586/t%E1%BA%A3i_xu%E1%BB%91ng_1_dtdcdc.png"
+        ]
+      },
+      {
+        "name": "blue",
+        "hex": "#1E88E5",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259592/t%E1%BA%A3i_xu%E1%BB%91ng_4_friuld.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259594/t%E1%BA%A3i_xu%E1%BB%91ng_npiif7.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259594/t%E1%BA%A3i_xu%E1%BB%91ng_1_jznnq0.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259593/t%E1%BA%A3i_xu%E1%BB%91ng_3_pnfskq.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259591/t%E1%BA%A3i_xu%E1%BB%91ng_2_jw3bh3.png ",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259609/t%E1%BA%A3i_xu%E1%BB%91ng_5_sqhxgs.png"
+        ]
+      }
+    ],
+    "variants": [
+      {
+        "id": "mlb_chunky_black_36",
+        "size": 36,
+        "color": "black",
+        "price": 3200000,
+        "stock": 10
+      },
+      {
+        "id": "mlb_chunky_black_37",
+        "size": 37,
+        "color": "black",
+        "price": 3210000,
+        "stock": 9
+      },
+      {
+        "id": "mlb_chunky_black_38",
+        "size": 38,
+        "color": "black",
+        "price": 3220000,
+        "stock": 8
+      },
+      {
+        "id": "mlb_chunky_black_39",
+        "size": 39,
+        "color": "black",
+        "price": 3230000,
+        "stock": 7
+      },
+      {
+        "id": "mlb_chunky_black_40",
+        "size": 40,
+        "color": "black",
+        "price": 3240000,
+        "stock": 6
+      },
+      {
+        "id": "mlb_chunky_black_41",
+        "size": 41,
+        "color": "black",
+        "price": 3250000,
+        "stock": 5
+      },
+      {
+        "id": "mlb_chunky_black_42",
+        "size": 42,
+        "color": "black",
+        "price": 3260000,
+        "stock": 4
+      },
+      {
+        "id": "mlb_chunky_black_43",
+        "size": 43,
+        "color": "black",
+        "price": 3270000,
+        "stock": 3
+      },
+      {
+        "id": "mlb_chunky_black_44",
+        "size": 44,
+        "color": "black",
+        "price": 3280000,
+        "stock": 2
+      },
+      {
+        "id": "mlb_chunky_đen_trắng_36",
+        "size": 36,
+        "color": "đen trắng",
+        "price": 3200000,
+        "stock": 10
+      },
+      {
+        "id": "mlb_chunky_đen_trắng_37",
+        "size": 37,
+        "color": "đen trắng",
+        "price": 3210000,
+        "stock": 9
+      },
+      {
+        "id": "mlb_chunky_đen_trắng_38",
+        "size": 38,
+        "color": "đen trắng",
+        "price": 3220000,
+        "stock": 8
+      },
+      {
+        "id": "mlb_chunky_đen_trắng_39",
+        "size": 39,
+        "color": "đen trắng",
+        "price": 3230000,
+        "stock": 7
+      },
+      {
+        "id": "mlb_chunky_đen_trắng_40",
+        "size": 40,
+        "color": "đen trắng",
+        "price": 3240000,
+        "stock": 6
+      },
+      {
+        "id": "mlb_chunky_đen_trắng_41",
+        "size": 41,
+        "color": "đen trắng",
+        "price": 3250000,
+        "stock": 5
+      },
+      {
+        "id": "mlb_chunky_đen_trắng_42",
+        "size": 42,
+        "color": "đen trắng",
+        "price": 3260000,
+        "stock": 4
+      },
+      {
+        "id": "mlb_chunky_đen_trắng_43",
+        "size": 43,
+        "color": "đen trắng",
+        "price": 3270000,
+        "stock": 3
+      },
+      {
+        "id": "mlb_chunky_đen_trắng_44",
+        "size": 44,
+        "color": "đen trắng",
+        "price": 3280000,
+        "stock": 2
+      },
+      {
+        "id": "mlb_chunky_hồng_36",
+        "size": 36,
+        "color": "hồng",
+        "price": 3200000,
+        "stock": 10
+      },
+      {
+        "id": "mlb_chunky_hồng_37",
+        "size": 37,
+        "color": "hồng",
+        "price": 3210000,
+        "stock": 9
+      },
+      {
+        "id": "mlb_chunky_hồng_38",
+        "size": 38,
+        "color": "hồng",
+        "price": 3220000,
+        "stock": 8
+      },
+      {
+        "id": "mlb_chunky_hồng_39",
+        "size": 39,
+        "color": "hồng",
+        "price": 3230000,
+        "stock": 7
+      },
+      {
+        "id": "mlb_chunky_hồng_40",
+        "size": 40,
+        "color": "hồng",
+        "price": 3240000,
+        "stock": 6
+      },
+      {
+        "id": "mlb_chunky_hồng_41",
+        "size": 41,
+        "color": "hồng",
+        "price": 3250000,
+        "stock": 5
+      },
+      {
+        "id": "mlb_chunky_hồng_42",
+        "size": 42,
+        "color": "hồng",
+        "price": 3260000,
+        "stock": 4
+      },
+      {
+        "id": "mlb_chunky_hồng_43",
+        "size": 43,
+        "color": "hồng",
+        "price": 3270000,
+        "stock": 3
+      },
+      {
+        "id": "mlb_chunky_hồng_44",
+        "size": 44,
+        "color": "hồng",
+        "price": 3280000,
+        "stock": 2
+      },
+      {
+        "id": "mlb_chunky_cream_36",
+        "size": 36,
+        "color": "cream",
+        "price": 3200000,
+        "stock": 10
+      },
+      {
+        "id": "mlb_chunky_cream_37",
+        "size": 37,
+        "color": "cream",
+        "price": 3210000,
+        "stock": 9
+      },
+      {
+        "id": "mlb_chunky_cream_38",
+        "size": 38,
+        "color": "cream",
+        "price": 3220000,
+        "stock": 8
+      },
+      {
+        "id": "mlb_chunky_cream_39",
+        "size": 39,
+        "color": "cream",
+        "price": 3230000,
+        "stock": 7
+      },
+      {
+        "id": "mlb_chunky_cream_40",
+        "size": 40,
+        "color": "cream",
+        "price": 3240000,
+        "stock": 6
+      },
+      {
+        "id": "mlb_chunky_cream_41",
+        "size": 41,
+        "color": "cream",
+        "price": 3250000,
+        "stock": 5
+      },
+      {
+        "id": "mlb_chunky_cream_42",
+        "size": 42,
+        "color": "cream",
+        "price": 3260000,
+        "stock": 4
+      },
+      {
+        "id": "mlb_chunky_cream_43",
+        "size": 43,
+        "color": "cream",
+        "price": 3270000,
+        "stock": 3
+      },
+      {
+        "id": "mlb_chunky_cream_44",
+        "size": 44,
+        "color": "cream",
+        "price": 3280000,
+        "stock": 2
+      },
+      {
+        "id": "mlb_chunky_white_36",
+        "size": 36,
+        "color": "white",
+        "price": 3200000,
+        "stock": 10
+      },
+      {
+        "id": "mlb_chunky_white_37",
+        "size": 37,
+        "color": "white",
+        "price": 3210000,
+        "stock": 9
+      },
+      {
+        "id": "mlb_chunky_white_38",
+        "size": 38,
+        "color": "white",
+        "price": 3220000,
+        "stock": 8
+      },
+      {
+        "id": "mlb_chunky_white_39",
+        "size": 39,
+        "color": "white",
+        "price": 3230000,
+        "stock": 7
+      },
+      {
+        "id": "mlb_chunky_white_40",
+        "size": 40,
+        "color": "white",
+        "price": 3240000,
+        "stock": 6
+      },
+      {
+        "id": "mlb_chunky_white_41",
+        "size": 41,
+        "color": "white",
+        "price": 3250000,
+        "stock": 5
+      },
+      {
+        "id": "mlb_chunky_white_42",
+        "size": 42,
+        "color": "white",
+        "price": 3260000,
+        "stock": 4
+      },
+      {
+        "id": "mlb_chunky_white_43",
+        "size": 43,
+        "color": "white",
+        "price": 3270000,
+        "stock": 3
+      },
+      {
+        "id": "mlb_chunky_white_44",
+        "size": 44,
+        "color": "white",
+        "price": 3280000,
+        "stock": 2
+      },
+      {
+        "id": "mlb_chunky_blue_36",
+        "size": 36,
+        "color": "blue",
+        "price": 3200000,
+        "stock": 10
+      },
+      {
+        "id": "mlb_chunky_blue_37",
+        "size": 37,
+        "color": "blue",
+        "price": 3210000,
+        "stock": 9
+      },
+      {
+        "id": "mlb_chunky_blue_38",
+        "size": 38,
+        "color": "blue",
+        "price": 3220000,
+        "stock": 8
+      },
+      {
+        "id": "mlb_chunky_blue_39",
+        "size": 39,
+        "color": "blue",
+        "price": 3230000,
+        "stock": 7
+      },
+      {
+        "id": "mlb_chunky_blue_40",
+        "size": 40,
+        "color": "blue",
+        "price": 3240000,
+        "stock": 6
+      },
+      {
+        "id": "mlb_chunky_blue_41",
+        "size": 41,
+        "color": "blue",
+        "price": 3250000,
+        "stock": 5
+      },
+      {
+        "id": "mlb_chunky_blue_42",
+        "size": 42,
+        "color": "blue",
+        "price": 3260000,
+        "stock": 4
+      },
+      {
+        "id": "mlb_chunky_blue_43",
+        "size": 43,
+        "color": "blue",
+        "price": 3270000,
+        "stock": 3
+      },
+      {
+        "id": "mlb_chunky_blue_44",
+        "size": 44,
+        "color": "blue",
+        "price": 3280000,
+        "stock": 2
+      }
+    ],
+    "created_at": {
+      ".sv": "timestamp"
+    }
+  },
+  {
+    "id": "mlb_runner",
+    "name": "Mlb Runner",
+    "brand": "mlb",
+    "description": "Giày MLB Runner, thiết kế năng động, êm ái, phù hợp cho chạy bộ và đi lại hàng ngày.",
+    "thumbnail": "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259638/t%E1%BA%A3i_xu%E1%BB%91ng_f4z1il.png",
+    "colors": [
+      {
+        "name": "black",
+        "hex": "#000000",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259638/t%E1%BA%A3i_xu%E1%BB%91ng_f4z1il.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259636/t%E1%BA%A3i_xu%E1%BB%91ng_4_zzlzs6.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259626/t%E1%BA%A3i_xu%E1%BB%91ng_2_s8bkma.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259625/t%E1%BA%A3i_xu%E1%BB%91ng_6_ejzzvi.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259624/t%E1%BA%A3i_xu%E1%BB%91ng_3_cjwbxi.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259620/t%E1%BA%A3i_xu%E1%BB%91ng_1_e9wj8w.png"
+        ]
+      },
+      {
+        "name": "hồng",
+        "hex": "#E91E63",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259614/t%E1%BA%A3i_xu%E1%BB%91ng_2_gv1rze.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259610/t%E1%BA%A3i_xu%E1%BB%91ng_bswhdl.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259608/t%E1%BA%A3i_xu%E1%BB%91ng_4_qfivof.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259607/t%E1%BA%A3i_xu%E1%BB%91ng_5_asg0hg.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259607/t%E1%BA%A3i_xu%E1%BB%91ng_3_xdfmxb.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259605/t%E1%BA%A3i_xu%E1%BB%91ng_1_ogc7ep.png"
+        ]
+      },
+      {
+        "name": "white",
+        "hex": "#FFFFFF",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259620/t%E1%BA%A3i_xu%E1%BB%91ng_4_plvlss.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259615/t%E1%BA%A3i_xu%E1%BB%91ng_btmj6d.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259613/t%E1%BA%A3i_xu%E1%BB%91ng_5_vcpm9w.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259613/t%E1%BA%A3i_xu%E1%BB%91ng_2_dynhdq.png ",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259611/t%E1%BA%A3i_xu%E1%BB%91ng_3_dctqiv.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259609/t%E1%BA%A3i_xu%E1%BB%91ng_1_qkl7yu.png"
+        ]
+      },
+      {
+        "name": "xám",
+        "hex": "#9E9E9E",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259622/t%E1%BA%A3i_xu%E1%BB%91ng_3_qh0ni0.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259621/t%E1%BA%A3i_xu%E1%BB%91ng_cq6rgs.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259621/t%E1%BA%A3i_xu%E1%BB%91ng_6_gfce7a.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259618/t%E1%BA%A3i_xu%E1%BB%91ng_4_mvk6ud.png ",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259616/t%E1%BA%A3i_xu%E1%BB%91ng_1_mulywe.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259616/t%E1%BA%A3i_xu%E1%BB%91ng_2_c60xs1.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259618/t%E1%BA%A3i_xu%E1%BB%91ng_5_gdzl7w.png"
+        ]
+      }
+    ],
+    "variants": [
+      {
+        "id": "mlb_runner_black_36",
+        "size": 36,
+        "color": "black",
+        "price": 2900000,
+        "stock": 10
+      },
+      {
+        "id": "mlb_runner_black_37",
+        "size": 37,
+        "color": "black",
+        "price": 2910000,
+        "stock": 9
+      },
+      {
+        "id": "mlb_runner_black_38",
+        "size": 38,
+        "color": "black",
+        "price": 2920000,
+        "stock": 8
+      },
+      {
+        "id": "mlb_runner_black_39",
+        "size": 39,
+        "color": "black",
+        "price": 2930000,
+        "stock": 7
+      },
+      {
+        "id": "mlb_runner_black_40",
+        "size": 40,
+        "color": "black",
+        "price": 2940000,
+        "stock": 6
+      },
+      {
+        "id": "mlb_runner_black_41",
+        "size": 41,
+        "color": "black",
+        "price": 2950000,
+        "stock": 5
+      },
+      {
+        "id": "mlb_runner_black_42",
+        "size": 42,
+        "color": "black",
+        "price": 2960000,
+        "stock": 4
+      },
+      {
+        "id": "mlb_runner_black_43",
+        "size": 43,
+        "color": "black",
+        "price": 2970000,
+        "stock": 3
+      },
+      {
+        "id": "mlb_runner_black_44",
+        "size": 44,
+        "color": "black",
+        "price": 2980000,
+        "stock": 2
+      },
+      {
+        "id": "mlb_runner_hồng_36",
+        "size": 36,
+        "color": "hồng",
+        "price": 2900000,
+        "stock": 10
+      },
+      {
+        "id": "mlb_runner_hồng_37",
+        "size": 37,
+        "color": "hồng",
+        "price": 2910000,
+        "stock": 9
+      },
+      {
+        "id": "mlb_runner_hồng_38",
+        "size": 38,
+        "color": "hồng",
+        "price": 2920000,
+        "stock": 8
+      },
+      {
+        "id": "mlb_runner_hồng_39",
+        "size": 39,
+        "color": "hồng",
+        "price": 2930000,
+        "stock": 7
+      },
+      {
+        "id": "mlb_runner_hồng_40",
+        "size": 40,
+        "color": "hồng",
+        "price": 2940000,
+        "stock": 6
+      },
+      {
+        "id": "mlb_runner_hồng_41",
+        "size": 41,
+        "color": "hồng",
+        "price": 2950000,
+        "stock": 5
+      },
+      {
+        "id": "mlb_runner_hồng_42",
+        "size": 42,
+        "color": "hồng",
+        "price": 2960000,
+        "stock": 4
+      },
+      {
+        "id": "mlb_runner_hồng_43",
+        "size": 43,
+        "color": "hồng",
+        "price": 2970000,
+        "stock": 3
+      },
+      {
+        "id": "mlb_runner_hồng_44",
+        "size": 44,
+        "color": "hồng",
+        "price": 2980000,
+        "stock": 2
+      },
+      {
+        "id": "mlb_runner_white_36",
+        "size": 36,
+        "color": "white",
+        "price": 2900000,
+        "stock": 10
+      },
+      {
+        "id": "mlb_runner_white_37",
+        "size": 37,
+        "color": "white",
+        "price": 2910000,
+        "stock": 9
+      },
+      {
+        "id": "mlb_runner_white_38",
+        "size": 38,
+        "color": "white",
+        "price": 2920000,
+        "stock": 8
+      },
+      {
+        "id": "mlb_runner_white_39",
+        "size": 39,
+        "color": "white",
+        "price": 2930000,
+        "stock": 7
+      },
+      {
+        "id": "mlb_runner_white_40",
+        "size": 40,
+        "color": "white",
+        "price": 2940000,
+        "stock": 6
+      },
+      {
+        "id": "mlb_runner_white_41",
+        "size": 41,
+        "color": "white",
+        "price": 2950000,
+        "stock": 5
+      },
+      {
+        "id": "mlb_runner_white_42",
+        "size": 42,
+        "color": "white",
+        "price": 2960000,
+        "stock": 4
+      },
+      {
+        "id": "mlb_runner_white_43",
+        "size": 43,
+        "color": "white",
+        "price": 2970000,
+        "stock": 3
+      },
+      {
+        "id": "mlb_runner_white_44",
+        "size": 44,
+        "color": "white",
+        "price": 2980000,
+        "stock": 2
+      },
+      {
+        "id": "mlb_runner_xám_36",
+        "size": 36,
+        "color": "xám",
+        "price": 2900000,
+        "stock": 10
+      },
+      {
+        "id": "mlb_runner_xám_37",
+        "size": 37,
+        "color": "xám",
+        "price": 2910000,
+        "stock": 9
+      },
+      {
+        "id": "mlb_runner_xám_38",
+        "size": 38,
+        "color": "xám",
+        "price": 2920000,
+        "stock": 8
+      },
+      {
+        "id": "mlb_runner_xám_39",
+        "size": 39,
+        "color": "xám",
+        "price": 2930000,
+        "stock": 7
+      },
+      {
+        "id": "mlb_runner_xám_40",
+        "size": 40,
+        "color": "xám",
+        "price": 2940000,
+        "stock": 6
+      },
+      {
+        "id": "mlb_runner_xám_41",
+        "size": 41,
+        "color": "xám",
+        "price": 2950000,
+        "stock": 5
+      },
+      {
+        "id": "mlb_runner_xám_42",
+        "size": 42,
+        "color": "xám",
+        "price": 2960000,
+        "stock": 4
+      },
+      {
+        "id": "mlb_runner_xám_43",
+        "size": 43,
+        "color": "xám",
+        "price": 2970000,
+        "stock": 3
+      },
+      {
+        "id": "mlb_runner_xám_44",
+        "size": 44,
+        "color": "xám",
+        "price": 2980000,
+        "stock": 2
+      }
+    ],
+    "created_at": {
+      ".sv": "timestamp"
+    }
+  },
+  {
+    "id": "nike_air_force_1",
+    "name": "Nike Air Force 1",
+    "brand": "nike",
+    "description": "Giày Nike Air Force 1, đôi giày thể thao kinh điển, mang lại sự thoải mái và phong cách.",
+    "thumbnail": "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259730/t%E1%BA%A3i_xu%E1%BB%91ng_6_denrx8.png",
+    "colors": [
+      {
+        "name": "black",
+        "hex": "#000000",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259730/t%E1%BA%A3i_xu%E1%BB%91ng_6_denrx8.png ",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259727/t%E1%BA%A3i_xu%E1%BB%91ng_moypla.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259724/t%E1%BA%A3i_xu%E1%BB%91ng_4_kegkb6.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259723/t%E1%BA%A3i_xu%E1%BB%91ng_2_fdvuim.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259721/t%E1%BA%A3i_xu%E1%BB%91ng_3_ixiyvb.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259718/t%E1%BA%A3i_xu%E1%BB%91ng_1_iqhrkh.png"
+        ]
+      },
+      {
+        "name": "hồng",
+        "hex": "#E91E63",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259708/t%E1%BA%A3i_xu%E1%BB%91ng_2_zq25iu.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259659/t%E1%BA%A3i_xu%E1%BB%91ng_4_sngou0.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259638/t%E1%BA%A3i_xu%E1%BB%91ng_g7lkuy.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259633/t%E1%BA%A3i_xu%E1%BB%91ng_6_etgxpl.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259633/t%E1%BA%A3i_xu%E1%BB%91ng_3_eiludl.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259629/t%E1%BA%A3i_xu%E1%BB%91ng_1_nklpcf.png"
+        ]
+      },
+      {
+        "name": "brown",
+        "hex": "#8D6E63",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260854/t%E1%BA%A3i_xu%E1%BB%91ng_onyx7o.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259668/t%E1%BA%A3i_xu%E1%BB%91ng_7_k1efew.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259644/t%E1%BA%A3i_xu%E1%BB%91ng_3_gkjf4y.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259643/t%E1%BA%A3i_xu%E1%BB%91ng_4_smsjwp.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259640/t%E1%BA%A3i_xu%E1%BB%91ng_2_su00we.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259640/t%E1%BA%A3i_xu%E1%BB%91ng_1_mwxicy.png"
+        ]
+      },
+      {
+        "name": "white",
+        "hex": "#FFFFFF",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259743/t%E1%BA%A3i_xu%E1%BB%91ng_4_k0o5my.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259705/t%E1%BA%A3i_xu%E1%BB%91ng_2_xak5s0.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259702/t%E1%BA%A3i_xu%E1%BB%91ng_w35qdm.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259697/t%E1%BA%A3i_xu%E1%BB%91ng_3_aokljq.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259683/t%E1%BA%A3i_xu%E1%BB%91ng_5_rtjbeb.png ",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259659/t%E1%BA%A3i_xu%E1%BB%91ng_1_slsdn5.png"
+        ]
+      },
+      {
+        "name": "xám",
+        "hex": "#9E9E9E",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259755/t%E1%BA%A3i_xu%E1%BB%91ng_2_f9pohd.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259740/t%E1%BA%A3i_xu%E1%BB%91ng_1_m4it3b.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259716/t%E1%BA%A3i_xu%E1%BB%91ng_5_jc85yg.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259716/t%E1%BA%A3i_xu%E1%BB%91ng_tdugas.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259714/t%E1%BA%A3i_xu%E1%BB%91ng_4_nk2j7h.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259712/t%E1%BA%A3i_xu%E1%BB%91ng_3_jlhbto.png"
+        ]
+      },
+      {
+        "name": "blue",
+        "hex": "#1E88E5",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259707/t%E1%BA%A3i_xu%E1%BB%91ng_1_evylus.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259708/t%E1%BA%A3i_xu%E1%BB%91ng_5_a2zozv.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259713/t%E1%BA%A3i_xu%E1%BB%91ng_2_qxg8ci.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259710/t%E1%BA%A3i_xu%E1%BB%91ng_tytbvk.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259709/t%E1%BA%A3i_xu%E1%BB%91ng_4_r0glat.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259775/t%E1%BA%A3i_xu%E1%BB%91ng_6_eaihzr.png"
+        ]
+      }
+    ],
+    "variants": [
+      {
+        "id": "nike_air_black_36",
+        "size": 36,
+        "color": "black",
+        "price": 2900000,
+        "stock": 10
+      },
+      {
+        "id": "nike_air_black_37",
+        "size": 37,
+        "color": "black",
+        "price": 2910000,
+        "stock": 9
+      },
+      {
+        "id": "nike_air_black_38",
+        "size": 38,
+        "color": "black",
+        "price": 2920000,
+        "stock": 8
+      },
+      {
+        "id": "nike_air_black_39",
+        "size": 39,
+        "color": "black",
+        "price": 2930000,
+        "stock": 7
+      },
+      {
+        "id": "nike_air_black_40",
+        "size": 40,
+        "color": "black",
+        "price": 2940000,
+        "stock": 6
+      },
+      {
+        "id": "nike_air_black_41",
+        "size": 41,
+        "color": "black",
+        "price": 2950000,
+        "stock": 5
+      },
+      {
+        "id": "nike_air_black_42",
+        "size": 42,
+        "color": "black",
+        "price": 2960000,
+        "stock": 4
+      },
+      {
+        "id": "nike_air_black_43",
+        "size": 43,
+        "color": "black",
+        "price": 2970000,
+        "stock": 3
+      },
+      {
+        "id": "nike_air_black_44",
+        "size": 44,
+        "color": "black",
+        "price": 2980000,
+        "stock": 2
+      },
+      {
+        "id": "nike_air_hồng_36",
+        "size": 36,
+        "color": "hồng",
+        "price": 2900000,
+        "stock": 10
+      },
+      {
+        "id": "nike_air_hồng_37",
+        "size": 37,
+        "color": "hồng",
+        "price": 2910000,
+        "stock": 9
+      },
+      {
+        "id": "nike_air_hồng_38",
+        "size": 38,
+        "color": "hồng",
+        "price": 2920000,
+        "stock": 8
+      },
+      {
+        "id": "nike_air_hồng_39",
+        "size": 39,
+        "color": "hồng",
+        "price": 2930000,
+        "stock": 7
+      },
+      {
+        "id": "nike_air_hồng_40",
+        "size": 40,
+        "color": "hồng",
+        "price": 2940000,
+        "stock": 6
+      },
+      {
+        "id": "nike_air_hồng_41",
+        "size": 41,
+        "color": "hồng",
+        "price": 2950000,
+        "stock": 5
+      },
+      {
+        "id": "nike_air_hồng_42",
+        "size": 42,
+        "color": "hồng",
+        "price": 2960000,
+        "stock": 4
+      },
+      {
+        "id": "nike_air_hồng_43",
+        "size": 43,
+        "color": "hồng",
+        "price": 2970000,
+        "stock": 3
+      },
+      {
+        "id": "nike_air_hồng_44",
+        "size": 44,
+        "color": "hồng",
+        "price": 2980000,
+        "stock": 2
+      },
+      {
+        "id": "nike_air_brown_36",
+        "size": 36,
+        "color": "brown",
+        "price": 2900000,
+        "stock": 10
+      },
+      {
+        "id": "nike_air_brown_37",
+        "size": 37,
+        "color": "brown",
+        "price": 2910000,
+        "stock": 9
+      },
+      {
+        "id": "nike_air_brown_38",
+        "size": 38,
+        "color": "brown",
+        "price": 2920000,
+        "stock": 8
+      },
+      {
+        "id": "nike_air_brown_39",
+        "size": 39,
+        "color": "brown",
+        "price": 2930000,
+        "stock": 7
+      },
+      {
+        "id": "nike_air_brown_40",
+        "size": 40,
+        "color": "brown",
+        "price": 2940000,
+        "stock": 6
+      },
+      {
+        "id": "nike_air_brown_41",
+        "size": 41,
+        "color": "brown",
+        "price": 2950000,
+        "stock": 5
+      },
+      {
+        "id": "nike_air_brown_42",
+        "size": 42,
+        "color": "brown",
+        "price": 2960000,
+        "stock": 4
+      },
+      {
+        "id": "nike_air_brown_43",
+        "size": 43,
+        "color": "brown",
+        "price": 2970000,
+        "stock": 3
+      },
+      {
+        "id": "nike_air_brown_44",
+        "size": 44,
+        "color": "brown",
+        "price": 2980000,
+        "stock": 2
+      },
+      {
+        "id": "nike_air_white_36",
+        "size": 36,
+        "color": "white",
+        "price": 2900000,
+        "stock": 10
+      },
+      {
+        "id": "nike_air_white_37",
+        "size": 37,
+        "color": "white",
+        "price": 2910000,
+        "stock": 9
+      },
+      {
+        "id": "nike_air_white_38",
+        "size": 38,
+        "color": "white",
+        "price": 2920000,
+        "stock": 8
+      },
+      {
+        "id": "nike_air_white_39",
+        "size": 39,
+        "color": "white",
+        "price": 2930000,
+        "stock": 7
+      },
+      {
+        "id": "nike_air_white_40",
+        "size": 40,
+        "color": "white",
+        "price": 2940000,
+        "stock": 6
+      },
+      {
+        "id": "nike_air_white_41",
+        "size": 41,
+        "color": "white",
+        "price": 2950000,
+        "stock": 5
+      },
+      {
+        "id": "nike_air_white_42",
+        "size": 42,
+        "color": "white",
+        "price": 2960000,
+        "stock": 4
+      },
+      {
+        "id": "nike_air_white_43",
+        "size": 43,
+        "color": "white",
+        "price": 2970000,
+        "stock": 3
+      },
+      {
+        "id": "nike_air_white_44",
+        "size": 44,
+        "color": "white",
+        "price": 2980000,
+        "stock": 2
+      },
+      {
+        "id": "nike_air_xám_36",
+        "size": 36,
+        "color": "xám",
+        "price": 2900000,
+        "stock": 10
+      },
+      {
+        "id": "nike_air_xám_37",
+        "size": 37,
+        "color": "xám",
+        "price": 2910000,
+        "stock": 9
+      },
+      {
+        "id": "nike_air_xám_38",
+        "size": 38,
+        "color": "xám",
+        "price": 2920000,
+        "stock": 8
+      },
+      {
+        "id": "nike_air_xám_39",
+        "size": 39,
+        "color": "xám",
+        "price": 2930000,
+        "stock": 7
+      },
+      {
+        "id": "nike_air_xám_40",
+        "size": 40,
+        "color": "xám",
+        "price": 2940000,
+        "stock": 6
+      },
+      {
+        "id": "nike_air_xám_41",
+        "size": 41,
+        "color": "xám",
+        "price": 2950000,
+        "stock": 5
+      },
+      {
+        "id": "nike_air_xám_42",
+        "size": 42,
+        "color": "xám",
+        "price": 2960000,
+        "stock": 4
+      },
+      {
+        "id": "nike_air_xám_43",
+        "size": 43,
+        "color": "xám",
+        "price": 2970000,
+        "stock": 3
+      },
+      {
+        "id": "nike_air_xám_44",
+        "size": 44,
+        "color": "xám",
+        "price": 2980000,
+        "stock": 2
+      },
+      {
+        "id": "nike_air_blue_36",
+        "size": 36,
+        "color": "blue",
+        "price": 2900000,
+        "stock": 10
+      },
+      {
+        "id": "nike_air_blue_37",
+        "size": 37,
+        "color": "blue",
+        "price": 2910000,
+        "stock": 9
+      },
+      {
+        "id": "nike_air_blue_38",
+        "size": 38,
+        "color": "blue",
+        "price": 2920000,
+        "stock": 8
+      },
+      {
+        "id": "nike_air_blue_39",
+        "size": 39,
+        "color": "blue",
+        "price": 2930000,
+        "stock": 7
+      },
+      {
+        "id": "nike_air_blue_40",
+        "size": 40,
+        "color": "blue",
+        "price": 2940000,
+        "stock": 6
+      },
+      {
+        "id": "nike_air_blue_41",
+        "size": 41,
+        "color": "blue",
+        "price": 2950000,
+        "stock": 5
+      },
+      {
+        "id": "nike_air_blue_42",
+        "size": 42,
+        "color": "blue",
+        "price": 2960000,
+        "stock": 4
+      },
+      {
+        "id": "nike_air_blue_43",
+        "size": 43,
+        "color": "blue",
+        "price": 2970000,
+        "stock": 3
+      },
+      {
+        "id": "nike_air_blue_44",
+        "size": 44,
+        "color": "blue",
+        "price": 2980000,
+        "stock": 2
+      }
+    ],
+    "created_at": {
+      ".sv": "timestamp"
+    }
+  },
+  {
+    "id": "nike_dunk_low",
+    "name": "Nike Dunk Low",
+    "brand": "nike",
+    "description": "Giày Nike Dunk Low, từ sân bóng rổ trở thành biểu tượng thời trang đường phố.",
+    "thumbnail": "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259752/t%E1%BA%A3i_xu%E1%BB%91ng_locvtl.png",
+    "colors": [
+      {
+        "name": "red",
+        "hex": "#F39C12",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259752/t%E1%BA%A3i_xu%E1%BB%91ng_locvtl.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259747/t%E1%BA%A3i_xu%E1%BB%91ng_3_wymcri.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259754/t%E1%BA%A3i_xu%E1%BB%91ng_5_wv7jeo.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259738/t%E1%BA%A3i_xu%E1%BB%91ng_2_wpjjea.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259751/t%E1%BA%A3i_xu%E1%BB%91ng_7_jqofvz.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259742/t%E1%BA%A3i_xu%E1%BB%91ng_4_acgec5.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259735/t%E1%BA%A3i_xu%E1%BB%91ng_1_lds9ph.png"
         ]
       },
       {
         "name": "black",
         "hex": "#000000",
         "images": [
-          "https://example.com/adidas_black_1.png",
-          "https://example.com/adidas_black_2.png"
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259779/t%E1%BA%A3i_xu%E1%BB%91ng_6_tfydoh.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259774/t%E1%BA%A3i_xu%E1%BB%91ng_3_fblchp.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259795/t%E1%BA%A3i_xu%E1%BB%91ng_5_cxopym.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259789/t%E1%BA%A3i_xu%E1%BB%91ng_2_qqvznr.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259781/t%E1%BA%A3i_xu%E1%BB%91ng_ilri9r.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259776/t%E1%BA%A3i_xu%E1%BB%91ng_4_h2mjk5.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259771/t%E1%BA%A3i_xu%E1%BB%91ng_1_xd6zcd.png"
+        ]
+      },
+      {
+        "name": "white",
+        "hex": "#FFFFFF",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763260868/t%E1%BA%A3i_xu%E1%BB%91ng_4_hvkxcd.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259762/t%E1%BA%A3i_xu%E1%BB%91ng_2_jwuzfh.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259760/t%E1%BA%A3i_xu%E1%BB%91ng_5_qd0fmj.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259758/t%E1%BA%A3i_xu%E1%BB%91ng_cwapjx.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259754/t%E1%BA%A3i_xu%E1%BB%91ng_3_wht7rh.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259751/t%E1%BA%A3i_xu%E1%BB%91ng_1_q0nr6v.png"
+        ]
+      },
+      {
+        "name": "blue",
+        "hex": "#1E88E5",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259768/t%E1%BA%A3i_xu%E1%BB%91ng_6_z2k69c.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259763/t%E1%BA%A3i_xu%E1%BB%91ng_2_ogo38m.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259760/t%E1%BA%A3i_xu%E1%BB%91ng_1_utvksn.png ",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259767/t%E1%BA%A3i_xu%E1%BB%91ng_5_srg6ic.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259770/t%E1%BA%A3i_xu%E1%BB%91ng_j8eyvy.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259796/t%E1%BA%A3i_xu%E1%BB%91ng_3_qowtor.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259889/t%E1%BA%A3i_xu%E1%BB%91ng_4_pa3tyx.png"
         ]
       }
     ],
     "variants": [
       {
-        "id": "adidas_ultraboost_white_40",
+        "id": "nike_dunk_do_36",
+        "size": 36,
+        "color": "do",
+        "price": 3100000,
+        "stock": 10
+      },
+      {
+        "id": "nike_dunk_do_37",
+        "size": 37,
+        "color": "do",
+        "price": 3110000,
+        "stock": 9
+      },
+      {
+        "id": "nike_dunk_do_38",
+        "size": 38,
+        "color": "do",
+        "price": 3120000,
+        "stock": 8
+      },
+      {
+        "id": "nike_dunk_do_39",
+        "size": 39,
+        "color": "do",
+        "price": 3130000,
+        "stock": 7
+      },
+      {
+        "id": "nike_dunk_do_40",
         "size": 40,
-        "color": "white",
-        "price": 2500000,
+        "color": "do",
+        "price": 3140000,
+        "stock": 6
+      },
+      {
+        "id": "nike_dunk_do_41",
+        "size": 41,
+        "color": "do",
+        "price": 3150000,
         "stock": 5
       },
       {
-        "id": "adidas_ultraboost_white_41",
-        "size": 41,
-        "color": "white",
-        "price": 2550000,
-        "stock": 3
-      },
-      {
-        "id": "adidas_ultraboost_black_40",
-        "size": 40,
-        "color": "black",
-        "price": 2600000,
+        "id": "nike_dunk_do_42",
+        "size": 42,
+        "color": "do",
+        "price": 3160000,
         "stock": 4
       },
       {
-        "id": "adidas_ultraboost_black_41",
+        "id": "nike_dunk_do_43",
+        "size": 43,
+        "color": "do",
+        "price": 3170000,
+        "stock": 3
+      },
+      {
+        "id": "nike_dunk_do_44",
+        "size": 44,
+        "color": "do",
+        "price": 3180000,
+        "stock": 2
+      },
+      {
+        "id": "nike_dunk_black_36",
+        "size": 36,
+        "color": "black",
+        "price": 3100000,
+        "stock": 10
+      },
+      {
+        "id": "nike_dunk_black_37",
+        "size": 37,
+        "color": "black",
+        "price": 3110000,
+        "stock": 9
+      },
+      {
+        "id": "nike_dunk_black_38",
+        "size": 38,
+        "color": "black",
+        "price": 3120000,
+        "stock": 8
+      },
+      {
+        "id": "nike_dunk_black_39",
+        "size": 39,
+        "color": "black",
+        "price": 3130000,
+        "stock": 7
+      },
+      {
+        "id": "nike_dunk_black_40",
+        "size": 40,
+        "color": "black",
+        "price": 3140000,
+        "stock": 6
+      },
+      {
+        "id": "nike_dunk_black_41",
         "size": 41,
         "color": "black",
-        "price": 2650000,
+        "price": 3150000,
+        "stock": 5
+      },
+      {
+        "id": "nike_dunk_black_42",
+        "size": 42,
+        "color": "black",
+        "price": 3160000,
+        "stock": 4
+      },
+      {
+        "id": "nike_dunk_black_43",
+        "size": 43,
+        "color": "black",
+        "price": 3170000,
+        "stock": 3
+      },
+      {
+        "id": "nike_dunk_black_44",
+        "size": 44,
+        "color": "black",
+        "price": 3180000,
+        "stock": 2
+      },
+      {
+        "id": "nike_dunk_white_36",
+        "size": 36,
+        "color": "white",
+        "price": 3100000,
+        "stock": 10
+      },
+      {
+        "id": "nike_dunk_white_37",
+        "size": 37,
+        "color": "white",
+        "price": 3110000,
+        "stock": 9
+      },
+      {
+        "id": "nike_dunk_white_38",
+        "size": 38,
+        "color": "white",
+        "price": 3120000,
+        "stock": 8
+      },
+      {
+        "id": "nike_dunk_white_39",
+        "size": 39,
+        "color": "white",
+        "price": 3130000,
+        "stock": 7
+      },
+      {
+        "id": "nike_dunk_white_40",
+        "size": 40,
+        "color": "white",
+        "price": 3140000,
+        "stock": 6
+      },
+      {
+        "id": "nike_dunk_white_41",
+        "size": 41,
+        "color": "white",
+        "price": 3150000,
+        "stock": 5
+      },
+      {
+        "id": "nike_dunk_white_42",
+        "size": 42,
+        "color": "white",
+        "price": 3160000,
+        "stock": 4
+      },
+      {
+        "id": "nike_dunk_white_43",
+        "size": 43,
+        "color": "white",
+        "price": 3170000,
+        "stock": 3
+      },
+      {
+        "id": "nike_dunk_white_44",
+        "size": 44,
+        "color": "white",
+        "price": 3180000,
+        "stock": 2
+      },
+      {
+        "id": "nike_dunk_blue_36",
+        "size": 36,
+        "color": "blue",
+        "price": 3100000,
+        "stock": 10
+      },
+      {
+        "id": "nike_dunk_blue_37",
+        "size": 37,
+        "color": "blue",
+        "price": 3110000,
+        "stock": 9
+      },
+      {
+        "id": "nike_dunk_blue_38",
+        "size": 38,
+        "color": "blue",
+        "price": 3120000,
+        "stock": 8
+      },
+      {
+        "id": "nike_dunk_blue_39",
+        "size": 39,
+        "color": "blue",
+        "price": 3130000,
+        "stock": 7
+      },
+      {
+        "id": "nike_dunk_blue_40",
+        "size": 40,
+        "color": "blue",
+        "price": 3140000,
+        "stock": 6
+      },
+      {
+        "id": "nike_dunk_blue_41",
+        "size": 41,
+        "color": "blue",
+        "price": 3150000,
+        "stock": 5
+      },
+      {
+        "id": "nike_dunk_blue_42",
+        "size": 42,
+        "color": "blue",
+        "price": 3160000,
+        "stock": 4
+      },
+      {
+        "id": "nike_dunk_blue_43",
+        "size": 43,
+        "color": "blue",
+        "price": 3170000,
+        "stock": 3
+      },
+      {
+        "id": "nike_dunk_blue_44",
+        "size": 44,
+        "color": "blue",
+        "price": 3180000,
         "stock": 2
       }
     ],
-    "created_at": { ".sv": "timestamp" }
+    "created_at": {
+      ".sv": "timestamp"
+    }
+  },
+  {
+    "id": "vans_knu",
+    "name": "Vans Knu",
+    "brand": "vans",
+    "description": "Giày Vans KNU Skool, phiên bản 'phồng' của Old Skool, mang đậm chất trượt ván thập niên 90.",
+    "thumbnail": "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259869/t%E1%BA%A3i_xu%E1%BB%91ng_3_dqnys8.png",
+    "colors": [
+      {
+        "name": "black",
+        "hex": "#000000",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259869/t%E1%BA%A3i_xu%E1%BB%91ng_3_dqnys8.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259871/t%E1%BA%A3i_xu%E1%BB%91ng_4_unplhc.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259866/t%E1%BA%A3i_xu%E1%BB%91ng_2_rcnabd.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259863/t%E1%BA%A3i_xu%E1%BB%91ng_1_imekd4.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259875/t%E1%BA%A3i_xu%E1%BB%91ng_irpum4.png"
+        ]
+      },
+      {
+        "name": "hồng",
+        "hex": "#E91E63",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259796/t%E1%BA%A3i_xu%E1%BB%91ng_4_g7nahd.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259793/t%E1%BA%A3i_xu%E1%BB%91ng_t9wyai.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259790/t%E1%BA%A3i_xu%E1%BB%91ng_2_fwaosn.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259783/t%E1%BA%A3i_xu%E1%BB%91ng_1_gevkxa.png"
+        ]
+      },
+      {
+        "name": "brown",
+        "hex": "#8D6E63",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259783/t%E1%BA%A3i_xu%E1%BB%91ng_1_gevkxa.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259850/t%E1%BA%A3i_xu%E1%BB%91ng_2_xuwhtc.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259803/t%E1%BA%A3i_xu%E1%BB%91ng_3_fwaeb4.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259800/t%E1%BA%A3i_xu%E1%BB%91ng_1_mqc92g.png"
+        ]
+      },
+      {
+        "name": "white",
+        "hex": "#FFFFFF",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259853/t%E1%BA%A3i_xu%E1%BB%91ng_5_divmei.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259852/t%E1%BA%A3i_xu%E1%BB%91ng_2_pw7a7d.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259852/t%E1%BA%A3i_xu%E1%BB%91ng_qwfs1k.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259805/t%E1%BA%A3i_xu%E1%BB%91ng_1_hkgufj.png"
+        ]
+      },
+      {
+        "name": "blue",
+        "hex": "#1E88E5",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259860/t%E1%BA%A3i_xu%E1%BB%91ng_gtz9ed.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259856/t%E1%BA%A3i_xu%E1%BB%91ng_3_qyco5p.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259881/t%E1%BA%A3i_xu%E1%BB%91ng_1_upotrx.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259880/t%E1%BA%A3i_xu%E1%BB%91ng_4_pw74ta.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259874/t%E1%BA%A3i_xu%E1%BB%91ng_2_nnrc8e.png"
+        ]
+      }
+    ],
+    "variants": [
+      {
+        "id": "vans_knu_black_36",
+        "size": 36,
+        "color": "black",
+        "price": 2400000,
+        "stock": 10
+      },
+      {
+        "id": "vans_knu_black_37",
+        "size": 37,
+        "color": "black",
+        "price": 2410000,
+        "stock": 9
+      },
+      {
+        "id": "vans_knu_black_38",
+        "size": 38,
+        "color": "black",
+        "price": 2420000,
+        "stock": 8
+      },
+      {
+        "id": "vans_knu_black_39",
+        "size": 39,
+        "color": "black",
+        "price": 2430000,
+        "stock": 7
+      },
+      {
+        "id": "vans_knu_black_40",
+        "size": 40,
+        "color": "black",
+        "price": 2440000,
+        "stock": 6
+      },
+      {
+        "id": "vans_knu_black_41",
+        "size": 41,
+        "color": "black",
+        "price": 2450000,
+        "stock": 5
+      },
+      {
+        "id": "vans_knu_black_42",
+        "size": 42,
+        "color": "black",
+        "price": 2460000,
+        "stock": 4
+      },
+      {
+        "id": "vans_knu_black_43",
+        "size": 43,
+        "color": "black",
+        "price": 2470000,
+        "stock": 3
+      },
+      {
+        "id": "vans_knu_black_44",
+        "size": 44,
+        "color": "black",
+        "price": 2480000,
+        "stock": 2
+      },
+      {
+        "id": "vans_knu_hồng_36",
+        "size": 36,
+        "color": "hồng",
+        "price": 2400000,
+        "stock": 10
+      },
+      {
+        "id": "vans_knu_hồng_37",
+        "size": 37,
+        "color": "hồng",
+        "price": 2410000,
+        "stock": 9
+      },
+      {
+        "id": "vans_knu_hồng_38",
+        "size": 38,
+        "color": "hồng",
+        "price": 2420000,
+        "stock": 8
+      },
+      {
+        "id": "vans_knu_hồng_39",
+        "size": 39,
+        "color": "hồng",
+        "price": 2430000,
+        "stock": 7
+      },
+      {
+        "id": "vans_knu_hồng_40",
+        "size": 40,
+        "color": "hồng",
+        "price": 2440000,
+        "stock": 6
+      },
+      {
+        "id": "vans_knu_hồng_41",
+        "size": 41,
+        "color": "hồng",
+        "price": 2450000,
+        "stock": 5
+      },
+      {
+        "id": "vans_knu_hồng_42",
+        "size": 42,
+        "color": "hồng",
+        "price": 2460000,
+        "stock": 4
+      },
+      {
+        "id": "vans_knu_hồng_43",
+        "size": 43,
+        "color": "hồng",
+        "price": 2470000,
+        "stock": 3
+      },
+      {
+        "id": "vans_knu_hồng_44",
+        "size": 44,
+        "color": "hồng",
+        "price": 2480000,
+        "stock": 2
+      },
+      {
+        "id": "vans_knu_brown_36",
+        "size": 36,
+        "color": "brown",
+        "price": 2400000,
+        "stock": 10
+      },
+      {
+        "id": "vans_knu_brown_37",
+        "size": 37,
+        "color": "brown",
+        "price": 2410000,
+        "stock": 9
+      },
+      {
+        "id": "vans_knu_brown_38",
+        "size": 38,
+        "color": "brown",
+        "price": 2420000,
+        "stock": 8
+      },
+      {
+        "id": "vans_knu_brown_39",
+        "size": 39,
+        "color": "brown",
+        "price": 2430000,
+        "stock": 7
+      },
+      {
+        "id": "vans_knu_brown_40",
+        "size": 40,
+        "color": "brown",
+        "price": 2440000,
+        "stock": 6
+      },
+      {
+        "id": "vans_knu_brown_41",
+        "size": 41,
+        "color": "brown",
+        "price": 2450000,
+        "stock": 5
+      },
+      {
+        "id": "vans_knu_brown_42",
+        "size": 42,
+        "color": "brown",
+        "price": 2460000,
+        "stock": 4
+      },
+      {
+        "id": "vans_knu_brown_43",
+        "size": 43,
+        "color": "brown",
+        "price": 2470000,
+        "stock": 3
+      },
+      {
+        "id": "vans_knu_brown_44",
+        "size": 44,
+        "color": "brown",
+        "price": 2480000,
+        "stock": 2
+      },
+      {
+        "id": "vans_knu_white_36",
+        "size": 36,
+        "color": "white",
+        "price": 2400000,
+        "stock": 10
+      },
+      {
+        "id": "vans_knu_white_37",
+        "size": 37,
+        "color": "white",
+        "price": 2410000,
+        "stock": 9
+      },
+      {
+        "id": "vans_knu_white_38",
+        "size": 38,
+        "color": "white",
+        "price": 2420000,
+        "stock": 8
+      },
+      {
+        "id": "vans_knu_white_39",
+        "size": 39,
+        "color": "white",
+        "price": 2430000,
+        "stock": 7
+      },
+      {
+        "id": "vans_knu_white_40",
+        "size": 40,
+        "color": "white",
+        "price": 2440000,
+        "stock": 6
+      },
+      {
+        "id": "vans_knu_white_41",
+        "size": 41,
+        "color": "white",
+        "price": 2450000,
+        "stock": 5
+      },
+      {
+        "id": "vans_knu_white_42",
+        "size": 42,
+        "color": "white",
+        "price": 2460000,
+        "stock": 4
+      },
+      {
+        "id": "vans_knu_white_43",
+        "size": 43,
+        "color": "white",
+        "price": 2470000,
+        "stock": 3
+      },
+      {
+        "id": "vans_knu_white_44",
+        "size": 44,
+        "color": "white",
+        "price": 2480000,
+        "stock": 2
+      },
+      {
+        "id": "vans_knu_blue_36",
+        "size": 36,
+        "color": "blue",
+        "price": 2400000,
+        "stock": 10
+      },
+      {
+        "id": "vans_knu_blue_37",
+        "size": 37,
+        "color": "blue",
+        "price": 2410000,
+        "stock": 9
+      },
+      {
+        "id": "vans_knu_blue_38",
+        "size": 38,
+        "color": "blue",
+        "price": 2420000,
+        "stock": 8
+      },
+      {
+        "id": "vans_knu_blue_39",
+        "size": 39,
+        "color": "blue",
+        "price": 2430000,
+        "stock": 7
+      },
+      {
+        "id": "vans_knu_blue_40",
+        "size": 40,
+        "color": "blue",
+        "price": 2440000,
+        "stock": 6
+      },
+      {
+        "id": "vans_knu_blue_41",
+        "size": 41,
+        "color": "blue",
+        "price": 2450000,
+        "stock": 5
+      },
+      {
+        "id": "vans_knu_blue_42",
+        "size": 42,
+        "color": "blue",
+        "price": 2460000,
+        "stock": 4
+      },
+      {
+        "id": "vans_knu_blue_43",
+        "size": 43,
+        "color": "blue",
+        "price": 2470000,
+        "stock": 3
+      },
+      {
+        "id": "vans_knu_blue_44",
+        "size": 44,
+        "color": "blue",
+        "price": 2480000,
+        "stock": 2
+      }
+    ],
+    "created_at": {
+      ".sv": "timestamp"
+    }
+  },
+  {
+    "id": "vans_old_skool",
+    "name": "Vans Old Skool",
+    "brand": "vans",
+    "description": "Giày Vans Old Skool, thiết kế sọc jazz đặc trưng, là một huyền thoại của văn hóa trượt ván.",
+    "thumbnail": "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763270743/Capture_tvtcpq.png",
+    "colors": [
+      {
+        "name": "black",
+        "hex": "#000000",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763270743/Capture_tvtcpq.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259888/t%E1%BA%A3i_xu%E1%BB%91ng_v3kbrl.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259886/t%E1%BA%A3i_xu%E1%BB%91ng_3_oe5tpk.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259885/t%E1%BA%A3i_xu%E1%BB%91ng_2_hcowqr.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259885/t%E1%BA%A3i_xu%E1%BB%91ng_1_kpticz.png"
+        ]
+      },
+      {
+        "name": "red",
+        "hex": "#E53935",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763271818/Capture_wpurqs.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259891/t%E1%BA%A3i_xu%E1%BB%91ng_fqt3jf.png ",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259887/t%E1%BA%A3i_xu%E1%BB%91ng_4_xxq3f8.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259887/t%E1%BA%A3i_xu%E1%BB%91ng_1_fpug9l.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259887/t%E1%BA%A3i_xu%E1%BB%91ng_3_lmd4xr.png"
+        ]
+      },
+      {
+        "name": "white",
+        "hex": "#FFFFFF",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259877/t%E1%BA%A3i_xu%E1%BB%91ng_fx5ziw.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259877/t%E1%BA%A3i_xu%E1%BB%91ng_4_a3gjrh.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259876/t%E1%BA%A3i_xu%E1%BB%91ng_2_snoqrl.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259876/t%E1%BA%A3i_xu%E1%BB%91ng_3_ondiv9.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259875/t%E1%BA%A3i_xu%E1%BB%91ng_1_ifuvc8.png"
+        ]
+      },
+      {
+        "name": "xám",
+        "hex": "#9E9E9E",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259875/t%E1%BA%A3i_xu%E1%BB%91ng_1_ifuvc8.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259882/t%E1%BA%A3i_xu%E1%BB%91ng_2_ukgxxw.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259881/t%E1%BA%A3i_xu%E1%BB%91ng_7_ysqd95.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259881/t%E1%BA%A3i_xu%E1%BB%91ng_1_pncyiw.png"
+        ]
+      },
+      {
+        "name": "blue",
+        "hex": "#1E88E5",
+        "images": [
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259880/t%E1%BA%A3i_xu%E1%BB%91ng_obld37.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259880/t%E1%BA%A3i_xu%E1%BB%91ng_6_ooarbk.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259879/t%E1%BA%A3i_xu%E1%BB%91ng_5_vzzbdg.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259879/t%E1%BA%A3i_xu%E1%BB%91ng_4_xqamww.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259878/t%E1%BA%A3i_xu%E1%BB%91ng_3_sb2dux.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259878/t%E1%BA%A3i_xu%E1%BB%91ng_2_gqkczg.png",
+          "https://res.cloudinary.com/dxp6ywrle/image/upload/v1763259878/t%E1%BA%A3i_xu%E1%BB%91ng_1_u8upcq.png"
+        ]
+      }
+    ],
+    "variants": [
+      {
+        "id": "vans_old_black_36",
+        "size": 36,
+        "color": "black",
+        "price": 1900000,
+        "stock": 10
+      },
+      {
+        "id": "vans_old_black_37",
+        "size": 37,
+        "color": "black",
+        "price": 1910000,
+        "stock": 9
+      },
+      {
+        "id": "vans_old_black_38",
+        "size": 38,
+        "color": "black",
+        "price": 1920000,
+        "stock": 8
+      },
+      {
+        "id": "vans_old_black_39",
+        "size": 39,
+        "color": "black",
+        "price": 1930000,
+        "stock": 7
+      },
+      {
+        "id": "vans_old_black_40",
+        "size": 40,
+        "color": "black",
+        "price": 1940000,
+        "stock": 6
+      },
+      {
+        "id": "vans_old_black_41",
+        "size": 41,
+        "color": "black",
+        "price": 1950000,
+        "stock": 5
+      },
+      {
+        "id": "vans_old_black_42",
+        "size": 42,
+        "color": "black",
+        "price": 1960000,
+        "stock": 4
+      },
+      {
+        "id": "vans_old_black_43",
+        "size": 43,
+        "color": "black",
+        "price": 1970000,
+        "stock": 3
+      },
+      {
+        "id": "vans_old_black_44",
+        "size": 44,
+        "color": "black",
+        "price": 1980000,
+        "stock": 2
+      },
+      {
+        "id": "vans_old_red_36",
+        "size": 36,
+        "color": "red",
+        "price": 1900000,
+        "stock": 10
+      },
+      {
+        "id": "vans_old_red_37",
+        "size": 37,
+        "color": "red",
+        "price": 1910000,
+        "stock": 9
+      },
+      {
+        "id": "vans_old_red_38",
+        "size": 38,
+        "color": "red",
+        "price": 1920000,
+        "stock": 8
+      },
+      {
+        "id": "vans_old_red_39",
+        "size": 39,
+        "color": "red",
+        "price": 1930000,
+        "stock": 7
+      },
+      {
+        "id": "vans_old_red_40",
+        "size": 40,
+        "color": "red",
+        "price": 1940000,
+        "stock": 6
+      },
+      {
+        "id": "vans_old_red_41",
+        "size": 41,
+        "color": "red",
+        "price": 1950000,
+        "stock": 5
+      },
+      {
+        "id": "vans_old_red_42",
+        "size": 42,
+        "color": "red",
+        "price": 1960000,
+        "stock": 4
+      },
+      {
+        "id": "vans_old_red_43",
+        "size": 43,
+        "color": "red",
+        "price": 1970000,
+        "stock": 3
+      },
+      {
+        "id": "vans_old_red_44",
+        "size": 44,
+        "color": "red",
+        "price": 1980000,
+        "stock": 2
+      },
+      {
+        "id": "vans_old_white_36",
+        "size": 36,
+        "color": "white",
+        "price": 1900000,
+        "stock": 10
+      },
+      {
+        "id": "vans_old_white_37",
+        "size": 37,
+        "color": "white",
+        "price": 1910000,
+        "stock": 9
+      },
+      {
+        "id": "vans_old_white_38",
+        "size": 38,
+        "color": "white",
+        "price": 1920000,
+        "stock": 8
+      },
+      {
+        "id": "vans_old_white_39",
+        "size": 39,
+        "color": "white",
+        "price": 1930000,
+        "stock": 7
+      },
+      {
+        "id": "vans_old_white_40",
+        "size": 40,
+        "color": "white",
+        "price": 1940000,
+        "stock": 6
+      },
+      {
+        "id": "vans_old_white_41",
+        "size": 41,
+        "color": "white",
+        "price": 1950000,
+        "stock": 5
+      },
+      {
+        "id": "vans_old_white_42",
+        "size": 42,
+        "color": "white",
+        "price": 1960000,
+        "stock": 4
+      },
+      {
+        "id": "vans_old_white_43",
+        "size": 43,
+        "color": "white",
+        "price": 1970000,
+        "stock": 3
+      },
+      {
+        "id": "vans_old_white_44",
+        "size": 44,
+        "color": "white",
+        "price": 1980000,
+        "stock": 2
+      },
+      {
+        "id": "vans_old_xám_36",
+        "size": 36,
+        "color": "xám",
+        "price": 1900000,
+        "stock": 10
+      },
+      {
+        "id": "vans_old_xám_37",
+        "size": 37,
+        "color": "xám",
+        "price": 1910000,
+        "stock": 9
+      },
+      {
+        "id": "vans_old_xám_38",
+        "size": 38,
+        "color": "xám",
+        "price": 1920000,
+        "stock": 8
+      },
+      {
+        "id": "vans_old_xám_39",
+        "size": 39,
+        "color": "xám",
+        "price": 1930000,
+        "stock": 7
+      },
+      {
+        "id": "vans_old_xám_40",
+        "size": 40,
+        "color": "xám",
+        "price": 1940000,
+        "stock": 6
+      },
+      {
+        "id": "vans_old_xám_41",
+        "size": 41,
+        "color": "xám",
+        "price": 1950000,
+        "stock": 5
+      },
+      {
+        "id": "vans_old_xám_42",
+        "size": 42,
+        "color": "xám",
+        "price": 1960000,
+        "stock": 4
+      },
+      {
+        "id": "vans_old_xám_43",
+        "size": 43,
+        "color": "xám",
+        "price": 1970000,
+        "stock": 3
+      },
+      {
+        "id": "vans_old_xám_44",
+        "size": 44,
+        "color": "xám",
+        "price": 1980000,
+        "stock": 2
+      },
+      {
+        "id": "vans_old_blue_36",
+        "size": 36,
+        "color": "blue",
+        "price": 1900000,
+        "stock": 10
+      },
+      {
+        "id": "vans_old_blue_37",
+        "size": 37,
+        "color": "blue",
+        "price": 1910000,
+        "stock": 9
+      },
+      {
+        "id": "vans_old_blue_38",
+        "size": 38,
+        "color": "blue",
+        "price": 1920000,
+        "stock": 8
+      },
+      {
+        "id": "vans_old_blue_39",
+        "size": 39,
+        "color": "blue",
+        "price": 1930000,
+        "stock": 7
+      },
+      {
+        "id": "vans_old_blue_40",
+        "size": 40,
+        "color": "blue",
+        "price": 1940000,
+        "stock": 6
+      },
+      {
+        "id": "vans_old_blue_41",
+        "size": 41,
+        "color": "blue",
+        "price": 1950000,
+        "stock": 5
+      },
+      {
+        "id": "vans_old_blue_42",
+        "size": 42,
+        "color": "blue",
+        "price": 1960000,
+        "stock": 4
+      },
+      {
+        "id": "vans_old_blue_43",
+        "size": 43,
+        "color": "blue",
+        "price": 1970000,
+        "stock": 3
+      },
+      {
+        "id": "vans_old_blue_44",
+        "size": 44,
+        "color": "blue",
+        "price": 1980000,
+        "stock": 2
+      }
+    ],
+    "created_at": {
+      ".sv": "timestamp"
+    }
   }
 ]

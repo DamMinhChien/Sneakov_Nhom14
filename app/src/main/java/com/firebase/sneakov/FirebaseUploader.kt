@@ -41,7 +41,8 @@ object FirebaseUploader {
             // 3. Build productMap, convert colors
             val productMap = mutableMapOf<String, Any>()
             productJson.keys().forEach { key ->
-                if (key == "variants") return@forEach // bỏ variants
+                if (key == "variants" || key == "id") return@forEach // ⛔ Bỏ id trong productMap
+
                 val value = productJson.get(key)
 
                 // Chuyển colors JSONArray → List<Map<String, Any>>
@@ -51,11 +52,13 @@ object FirebaseUploader {
                         val colorJson = value.getJSONObject(j)
                         val imagesJsonArray = colorJson.optJSONArray("images")
                         val imagesList = mutableListOf<String>()
+
                         if (imagesJsonArray != null) {
                             for (k in 0 until imagesJsonArray.length()) {
                                 imagesList.add(imagesJsonArray.getString(k))
                             }
                         }
+
                         val colorMap = mapOf(
                             "name" to colorJson.getString("name"),
                             "hex" to colorJson.getString("hex"),
@@ -64,16 +67,19 @@ object FirebaseUploader {
                         colorsList.add(colorMap)
                     }
                     productMap["colors"] = colorsList
+
                 } else if (key == "created_at") {
                     productMap["created_at"] = FieldValue.serverTimestamp()
+
                 } else {
                     productMap[key] = value
                 }
             }
 
-            // 4. Lấy ID product
-            val productId = productMap["id"]?.toString()
-                ?: db.collection("products").document().id
+            // 4. Lấy ID product → lấy từ JSON, nhưng không add vào map
+            val productId = productJson.optString("id").ifEmpty {
+                db.collection("products").document().id
+            }
 
             val productRef = db.collection("products").document(productId)
 
@@ -86,8 +92,7 @@ object FirebaseUploader {
                     variantsJsonArray?.let { variants ->
                         for (j in 0 until variants.length()) {
                             val variantJson = variants.getJSONObject(j)
-                            val variantId = variantJson.optString("id") ?: run {
-                                // fallback nếu JSON chưa có id
+                            val variantId = variantJson.optString("id").ifEmpty {
                                 "${productId}_${variantJson.getString("color")}_${variantJson.getInt("size")}"
                             }
 
