@@ -9,6 +9,7 @@ import com.firebase.sneakov.data.repository.CartRepository
 import com.firebase.sneakov.data.repository.OrderRepository
 import com.firebase.sneakov.data.repository.CloudinaryRepository
 import com.firebase.sneakov.data.repository.LocationRepository
+import com.firebase.sneakov.data.repository.NotificationRepository
 import com.firebase.sneakov.data.repository.ProductRepository
 import com.firebase.sneakov.data.repository.ReviewRepository
 import com.firebase.sneakov.data.repository.WishlistRepository
@@ -24,6 +25,8 @@ import com.firebase.sneakov.viewmodel.ColorViewModel
 import com.firebase.sneakov.viewmodel.DetailViewModel
 import com.firebase.sneakov.viewmodel.HelperViewModel
 import com.firebase.sneakov.viewmodel.LocationViewModel
+import com.firebase.sneakov.viewmodel.NotificationViewModel
+import com.firebase.sneakov.viewmodel.OrderDetailViewModel
 import com.firebase.sneakov.viewmodel.ProductViewModel
 import com.firebase.sneakov.viewmodel.ReviewViewModel
 import com.firebase.sneakov.viewmodel.SearchViewModel
@@ -97,6 +100,7 @@ val appModule = module {
     single { CartRepository(get()) }
     single { OrderRepository(get()) }
     single { ReviewRepository(get(), get()) }
+    single { NotificationRepository() }
 
     single { WishlistRepository(get(), get()) }
     single { CloudinaryRepository(get()) }
@@ -117,5 +121,6 @@ val appModule = module {
     viewModel { ReviewViewModel(get()) }
     viewModel { CartViewModel(get(), get(), get()) }
     viewModel { OrderViewModel(get(), get(), get()) }
-
+    viewModel { NotificationViewModel(get(), get(), get()) }
+    viewModel { OrderDetailViewModel(get(), get(), get()) }
 }

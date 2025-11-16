@@ -49,7 +49,7 @@ fun BottomBar(navController: NavHostController, helperViewModel: HelperViewModel
         BottomNavItem(Screen.Home.route, "Trang chủ", Icons.Outlined.Home),
         BottomNavItem(Screen.Wishlist.route, "Yêu thích", Icons.Outlined.FavoriteBorder),
         BottomNavItem(Screen.Cart.route, "Giỏ hàng", Icons.Outlined.ShoppingCart),
-        BottomNavItem(Screen.Home.route, "Thông báo", Icons.Outlined.Notifications),
+        BottomNavItem(Screen.Notification.route, "Thông báo", Icons.Outlined.Notifications),
         BottomNavItem(Screen.Profile.route, "Tài khoản", Icons.Outlined.Person)
     )
 

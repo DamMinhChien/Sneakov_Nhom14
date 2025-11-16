@@ -37,6 +37,28 @@ class OrderViewModel(
     private val _checkoutState = MutableStateFlow<CheckoutResultState>(CheckoutResultState.Idle)
     val checkoutState: StateFlow<CheckoutResultState> = _checkoutState
 
+    //State để giữ danh sách tất cả đơn hàng cua người dùng
+    private  val _userOrders = MutableStateFlow<List<Order>>(emptyList())
+    val userOrders: StateFlow<List<Order>> = _userOrders
+
+    //state để báo hiệu đang tải danh sách
+    private val _isLoading = MutableStateFlow(false)
+    val isLoading: StateFlow<Boolean> = _isLoading
+
+    /**
+     * Hàm này được gọi từ OrderScreen để lấy tất cả đơn hàng của người dùng
+     */
+    fun fetchUserOrders() {
+        viewModelScope.launch {
+            _isLoading.value = true
+            val userId = authRepo.currentUserId
+            if(userId != null) {
+                _userOrders.value = orderRepo.getOrdersByUser(userId)
+            }
+            _isLoading.value = false
+        }
+    }
+
     /**
      * Hàm này được gọi từ CartScreen để "gửi" các sản phẩm đã chọn sang.
      */
@@ -115,6 +137,40 @@ class OrderViewModel(
      */
     fun dismissError() {
         _checkoutState.value = CheckoutResultState.Idle
+    }
+
+    /**
+     * Cập nhật trạng thái đơn hàng sang 'delivered'.
+     */
+    fun shipOrder(orderId: String) {
+        viewModelScope.launch {
+            val success = orderRepo.updateOrderStatus(orderId, "delivered")
+            if (success) {
+                // Cập nhật lại danh sách đơn hàng trên UI
+                _userOrders.update { currentOrders ->
+                    currentOrders.map { order ->
+                        if (order.orderId == orderId) order.copy(status = "delivered") else order
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Cập nhật trạng thái đơn hàng sang 'canceled'.
+     */
+    fun cancelOrder(orderId: String) {
+        viewModelScope.launch {
+            val success = orderRepo.updateOrderStatus(orderId, "canceled")
+            if (success) {
+                // Cập nhật lại danh sách đơn hàng trên UI
+                _userOrders.update { currentOrders ->
+                    currentOrders.map { order ->
+                        if (order.orderId == orderId) order.copy(status = "canceled") else order
+                    }
+                }
+            }
+        }
     }
 }
 

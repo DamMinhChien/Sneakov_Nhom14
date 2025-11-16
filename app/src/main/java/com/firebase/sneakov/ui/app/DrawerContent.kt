@@ -211,10 +211,10 @@ fun DrawerContent(
                         .fillMaxWidth()
                         .padding(vertical = 8.dp)
                         .clickable {
-//                            navController.navigate(Screen.Orders.route) {
-//                                popUpTo(navController.graph.startDestinationId)
-//                            }
-//                            closeDrawer()
+                            navController.navigate(Screen.OrderHistory.route) {
+                                popUpTo(navController.graph.startDestinationId)
+                            }
+                            closeDrawer()
                         }
                 ) {
                     Icon(
@@ -231,10 +231,13 @@ fun DrawerContent(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 8.dp)
-//                        .clickable {
-//                            navController.navigate(Screen.Notifications.route)
-//                        }
-//                            closeDrawer()
+                        .clickable {
+                            navController.navigate(Screen.Notification.route) {
+                                popUpTo(navController.graph.startDestinationId)
+                            }
+                            closeDrawer()
+                        }
+
 
                 ) {
                     Icon(

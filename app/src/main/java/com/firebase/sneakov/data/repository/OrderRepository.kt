@@ -38,4 +38,29 @@ class OrderRepository(
         emptyList()
     }
 
+    suspend fun getOrderById(orderId: String): Order? {
+        return try {
+            orderRef.document(orderId).get().await().toObject(Order::class.java)
+        }catch (e: Exception) {
+            println("Error getting order by ID: ${e.message}")
+            null
+        }
+
+    }
+
+    /**
+     * Cập nhật trạng thái của một đơn hàng.
+     * @param orderId ID của đơn hàng cần cập nhật.
+     * @param newStatus Trạng thái mới (ví dụ: "delivered", "canceled").
+     */
+    suspend fun updateOrderStatus(orderId: String, newStatus: String): Boolean = try {
+        orderRef.document(orderId)
+            .update("status", newStatus)
+            .await()
+        true // Trả về true nếu thành công
+    } catch (e: Exception) {
+        e.printStackTrace()
+        false // Trả về false nếu có lỗi
+    }
+
 }
