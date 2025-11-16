@@ -39,6 +39,7 @@ import org.koin.androidx.compose.koinViewModel
 fun ReviewSection(
     productId: String,
     reviewViewModel: ReviewViewModel = koinViewModel(),
+    onRatingCalculated: (Float) -> Unit,
     userViewModel: UserViewModel = koinViewModel()
 ) {
     val uiState by reviewViewModel.uiState.collectAsState()
@@ -55,6 +56,14 @@ fun ReviewSection(
 
     LaunchedEffect(Unit) {
         userViewModel.fetchCurrentUser()
+    }
+
+    LaunchedEffect(uiState.data) {
+        val reviews = uiState.data
+        if (reviews?.isNotEmpty() ?: false) {
+            val avg = reviews.map { it.rating }.average().toFloat()
+            onRatingCalculated(avg)  // gửi cho cha
+        }
     }
 
     Column(

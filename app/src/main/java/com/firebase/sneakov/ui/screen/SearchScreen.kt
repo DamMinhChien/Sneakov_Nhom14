@@ -107,7 +107,6 @@ fun SearchScreen(
                     Icon(
                         imageVector = FontAwesomeIcons.Solid.Filter,
                         contentDescription = "Filter",
-                        tint = MaterialTheme.colorScheme.error,
                         modifier = Modifier.size(26.dp)
                     )
                 }
