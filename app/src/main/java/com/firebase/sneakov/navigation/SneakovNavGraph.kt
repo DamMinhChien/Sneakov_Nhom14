@@ -24,6 +24,7 @@ import com.firebase.sneakov.ui.screen.CheckoutScreen
 import com.firebase.sneakov.ui.screen.DetailScreen
 import com.firebase.sneakov.ui.screen.HomeScreen
 import com.firebase.sneakov.ui.screen.Model3DScreen
+import com.firebase.sneakov.ui.screen.NotificationScreen
 import com.firebase.sneakov.ui.screen.OnboardingScreen
 import com.firebase.sneakov.ui.screen.ProfileScreen
 import com.firebase.sneakov.ui.screen.ResetPasswordScreen
@@ -31,6 +32,7 @@ import com.firebase.sneakov.ui.screen.SearchScreen
 import com.firebase.sneakov.ui.screen.WishlistScreen
 import com.firebase.sneakov.utils.isOnboardingSeen
 import com.firebase.sneakov.utils.setOnboardingSeen
+import com.firebase.sneakov.viewmodel.NotificationViewModel
 import com.firebase.sneakov.viewmodel.OrderViewModel
 import com.google.firebase.auth.FirebaseAuth
 import org.koin.androidx.compose.koinViewModel
@@ -234,10 +236,13 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
                 val orderViewModel: OrderViewModel = koinViewModel(
                     viewModelStoreOwner = parentEntry
                 )
+                val notificationViewModel: NotificationViewModel = koinViewModel()
                 CheckoutScreen(
                     orderViewModel = orderViewModel,
                     onBack = { navController.popBackStack() },
-                    onCheckoutSuccess = { _ ->
+                    onCheckoutSuccess = { orderId ->
+                        notificationViewModel.createOrderNotification(orderId)
+
                         navController.navigate(Screen.Home.route) {
                             popUpTo(Graph.CHECKOUT) {
                                 inclusive = true
@@ -250,6 +255,9 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
             }
 
         }
-
+        composable(Screen.Notification.route) {
+            val viewModel: NotificationViewModel = koinViewModel()
+            NotificationScreen(viewModel = viewModel)
+        }
     }
 }
