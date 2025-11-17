@@ -2,6 +2,7 @@ package com.firebase.sneakov.ui.app
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material.icons.outlined.ShoppingCart
@@ -36,7 +37,8 @@ fun TopBar(
         Screen.Cart.route to "Giỏ hàng",
         Screen.Order.route to "Thanh toán",
         Screen.Detail.route to "Chi tiết sản phẩm",
-        Screen.Profile.route to "Tài khoản"
+        Screen.Profile.route to "Tài khoản",
+        Screen.Notification.route to "Thông báo"
     )
     val title = routeTitleMap[currentRoute] ?: currentRoute
 
@@ -89,6 +91,18 @@ fun TopBar(
                     contentDescription = "Yêu thích",
                     onClick = {
                         navController.navigate(Screen.Wishlist.route)
+                    }
+                )
+            }
+        }
+
+        Screen.Notification.route -> {
+            actionIcon = {
+                SurfaceIcon(
+                    icon = Icons.Outlined.Delete,
+                    contentDescription = "Xoá thông báo",
+                    onClick = {
+
                     }
                 )
             }

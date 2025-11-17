@@ -231,10 +231,13 @@ fun DrawerContent(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 8.dp)
-//                        .clickable {
-//                            navController.navigate(Screen.Notifications.route)
-//                        }
-//                            closeDrawer()
+                        .clickable {
+                            navController.navigate(Screen.Notification.route) {
+
+                            }
+                            closeDrawer()
+                        }
+
 
                 ) {
                     Icon(

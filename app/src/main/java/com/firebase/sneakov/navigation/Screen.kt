@@ -29,4 +29,6 @@ sealed class Screen(val route: String) {
     object Model3D: Screen("model3d/{glbUrl}"){
         fun createRoute(glbUrl: String) = "model3d/$glbUrl"
     }
+
+    object Notification: Screen("notification")
 }

@@ -38,4 +38,14 @@ class OrderRepository(
         emptyList()
     }
 
+    suspend fun getOrderById(orderId: String): Order? {
+        return try {
+            orderRef.document(orderId).get().await().toObject(Order::class.java)
+        }catch (e: Exception) {
+            println("Error getting order by ID: ${e.message}")
+            null
+        }
+
+    }
+
 }
