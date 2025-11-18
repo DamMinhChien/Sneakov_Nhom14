@@ -26,6 +26,7 @@ import com.firebase.sneakov.viewmodel.DetailViewModel
 import com.firebase.sneakov.viewmodel.HelperViewModel
 import com.firebase.sneakov.viewmodel.LocationViewModel
 import com.firebase.sneakov.viewmodel.NotificationViewModel
+import com.firebase.sneakov.viewmodel.OrderDetailViewModel
 import com.firebase.sneakov.viewmodel.ProductViewModel
 import com.firebase.sneakov.viewmodel.ReviewViewModel
 import com.firebase.sneakov.viewmodel.SearchViewModel
@@ -121,5 +122,5 @@ val appModule = module {
     viewModel { CartViewModel(get(), get(), get()) }
     viewModel { OrderViewModel(get(), get(), get()) }
     viewModel { NotificationViewModel(get(), get(), get()) }
-
+    viewModel { OrderDetailViewModel(get(), get(), get()) }
 }
