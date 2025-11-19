@@ -26,6 +26,8 @@ import com.firebase.sneakov.ui.screen.HomeScreen
 import com.firebase.sneakov.ui.screen.Model3DScreen
 import com.firebase.sneakov.ui.screen.NotificationScreen
 import com.firebase.sneakov.ui.screen.OnboardingScreen
+import com.firebase.sneakov.ui.screen.OrderDetailScreen
+import com.firebase.sneakov.ui.screen.OrderScreen
 import com.firebase.sneakov.ui.screen.ProfileScreen
 import com.firebase.sneakov.ui.screen.ResetPasswordScreen
 import com.firebase.sneakov.ui.screen.SearchScreen
@@ -258,6 +260,17 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
         composable(Screen.Notification.route) {
             val viewModel: NotificationViewModel = koinViewModel()
             NotificationScreen(viewModel = viewModel)
+        }
+        composable(Screen.OrderHistory.route) {
+            OrderScreen(navController = navController)
+        }
+        composable(
+            route = Screen.OrderDetail.route,
+            arguments = listOf(navArgument("orderId") {
+                type = NavType.StringType
+            })
+        ) {
+            OrderDetailScreen()
         }
     }
 }

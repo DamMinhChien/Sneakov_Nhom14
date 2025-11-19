@@ -38,7 +38,9 @@ fun TopBar(
         Screen.Order.route to "Thanh toán",
         Screen.Detail.route to "Chi tiết sản phẩm",
         Screen.Profile.route to "Tài khoản",
-        Screen.Notification.route to "Thông báo"
+        Screen.Notification.route to "Thông báo",
+        Screen.OrderHistory.route to "Đơn hàng của bạn",
+        Screen.OrderDetail.route to "Chi tiết đơn hàng"
     )
     val title = routeTitleMap[currentRoute] ?: currentRoute
 

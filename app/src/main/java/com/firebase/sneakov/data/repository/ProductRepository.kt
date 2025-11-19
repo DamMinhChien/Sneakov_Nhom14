@@ -5,6 +5,7 @@ import com.firebase.sneakov.data.model.ProductVariant
 import com.firebase.sneakov.utils.CollectionName
 import com.firebase.sneakov.utils.FieldName
 import com.firebase.sneakov.utils.Result
+import com.google.firebase.firestore.FieldPath
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import kotlinx.coroutines.async
@@ -115,6 +116,45 @@ class ProductRepository(private val db: FirebaseFirestore) {
             Result.Success(data = colorNames)
         } catch (e: Exception) {
             Result.Error(message = e.message ?: "Lỗi không xác định $e")
+        }
+    }
+
+    /**
+     * Lấy thông tin của nhiều sản phẩm dựa vào danh sách ID.
+     * Sử dụng 'in' query của Firestore và chạy song song các request lấy variants.
+     * @param productIds Danh sách các ID sản phẩm cần lấy (tối đa 30).
+     * @return Result chứa danh sách các đối tượng Product đã có variants.
+     */
+    suspend fun getProductsByIds(productIds: List<String>): Result<List<Product>> = coroutineScope {
+        if (productIds.isEmpty()) {
+            return@coroutineScope Result.Success(emptyList())
+        }
+        return@coroutineScope try {
+            // Firestore 'in' query có giới hạn 30 item mỗi lần gọi.
+            // Nếu đơn hàng có thể có nhiều hơn, bạn cần chia nhỏ (chunk) productIds.
+            val snapshot = db.collection(CollectionName.PRODUCTS)
+                .whereIn(FieldPath.documentId(), productIds)
+                .get()
+                .await()
+
+            val products = snapshot.toObjects(Product::class.java)
+
+            // Lấy variants cho các sản phẩm tìm thấy, tương tự các hàm khác của bạn
+            val productsWithVariants = products.map { product ->
+                async {
+                    val variantsSnapshot = db.collection(CollectionName.PRODUCTS)
+                        .document(product.id)
+                        .collection(CollectionName.VARIANTS)
+                        .get()
+                        .await()
+                    val variants = variantsSnapshot.toObjects(ProductVariant::class.java)
+                    product.copy(variants = variants)
+                }
+            }.awaitAll()
+
+            Result.Success(productsWithVariants)
+        } catch (e: Exception) {
+            Result.Error(e.message ?: "Lỗi không xác định khi lấy sản phẩm theo IDs: $e")
         }
     }
 }
