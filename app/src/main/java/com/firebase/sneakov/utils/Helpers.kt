@@ -11,6 +11,9 @@ import java.util.Locale
 fun String.capitalizeFirst(): String =
     this.replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
 
+fun String.capitalizeWords(): String =
+    this.split(" ").joinToString(" ") { it.replaceFirstChar { c -> c.titlecase() } }
+
 fun Double.formatMoney(): String {
     val formatter = NumberFormat.getCurrencyInstance(Locale.forLanguageTag("vi-VN"))
     return formatter.format(this)

@@ -54,6 +54,7 @@ import com.firebase.sneakov.data.model.Product
 import com.firebase.sneakov.ui.screen.DetailScreen
 import com.firebase.sneakov.ui.theme.SneakovTheme
 import com.firebase.sneakov.utils.capitalizeFirst
+import com.firebase.sneakov.utils.capitalizeWords
 import com.firebase.sneakov.utils.formatMoney
 import compose.icons.AllIcons
 import compose.icons.FontAwesomeIcons
@@ -105,7 +106,7 @@ fun ProductDetailContent(product: Product, isFavorite: Boolean = false, onFavori
             Spacer(Modifier.height(8.dp))
 
             Text(
-                text = product.name,
+                text = product.name.capitalizeWords(),
                 style = MaterialTheme.typography.headlineSmall,
                 fontWeight = FontWeight.Bold
             )
