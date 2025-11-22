@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
 //            ) {
 //                Text("Click")
 //            }
-            SneakovApp()
+                SneakovApp()
         }
     }
 }

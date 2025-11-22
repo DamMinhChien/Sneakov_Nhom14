@@ -39,6 +39,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.firebase.sneakov.data.model.Product
+import com.firebase.sneakov.utils.capitalizeWords
 import com.firebase.sneakov.utils.formatMoney
 import com.firebase.sneakov.utils.fromHex
 import compose.icons.FontAwesomeIcons
@@ -59,7 +60,7 @@ fun ProductCard(
     val min = product.variants.minOfOrNull { it.price } ?: 0
     val max = product.variants.maxOfOrNull { it.price } ?: 0
     val range: String =
-        if (min == max) min.formatMoney() else "${min.formatMoney().replace("₫", "").trim()} - ${max.formatMoney()}"
+        if (min == max) min.formatMoney() else "${min.formatMoney().replace("₫", "").trim()}-${max.formatMoney()}"
     val colors = product.colors.map { it.hex }
 
     Card(
@@ -169,7 +170,7 @@ fun ProductCard(
             Spacer(modifier = Modifier.height(4.dp))
 
             Text(
-                text = product.name,
+                text = product.name.capitalizeWords(),
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onSurface,
