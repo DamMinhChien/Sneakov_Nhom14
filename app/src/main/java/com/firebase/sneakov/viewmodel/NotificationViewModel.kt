@@ -27,6 +27,9 @@ class NotificationViewModel(
     private val _isLoading = MutableStateFlow(true)
     val isLoading = _isLoading.asStateFlow()
 
+    init {
+        loadNotifications()
+    }
     fun loadNotifications() {
         val userId = authRepo.currentUserId!!
         viewModelScope.launch {

@@ -58,7 +58,10 @@ fun SneakovApp() {
     )
 
     val notUsingGestures = listOf(
-        Screen.Model3D.route
+        Screen.Model3D.route,
+        Screen.Onboarding.route,
+        Screen.Auth.route,
+        Screen.ResetPassword.route
     )
 
     SneakovTheme(darkTheme = darkTheme) {

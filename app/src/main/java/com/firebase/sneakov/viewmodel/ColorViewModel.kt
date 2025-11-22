@@ -9,6 +9,9 @@ import com.firebase.sneakov.utils.Result
 class ColorViewModel(
     private val productRepository: ProductRepository
 ) : BaseViewModel<List<String>>() {
+    init {
+        getColorsName()
+    }
     fun getColorsName() {
         viewModelScope.launch {
             setLoading(true)

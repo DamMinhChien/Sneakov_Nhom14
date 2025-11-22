@@ -77,13 +77,13 @@ fun HomeScreen(
     val itemWidth = screenWidth / 2
 
     var query by remember { mutableStateOf("") }
-
-    LaunchedEffect(Unit) {
-        brandViewModel.fetchBrands()
-    }
-    LaunchedEffect(Unit) {
-        productViewModel.fetch10NewestProducts()
-    }
+//
+//    LaunchedEffect(Unit) {
+//        brandViewModel.fetchBrands()
+//    }
+//    LaunchedEffect(Unit) {
+//        productViewModel.fetch10NewestProducts()
+//    }
     LaunchedEffect(wishlistState) {
         helperViewModel.fetchWishlistIds()
     }
@@ -213,18 +213,3 @@ fun HomeScreen(
         brandViewModel.dismissError()
     }
 }
-
-//@Composable
-//@Preview(showSystemUi = true, showBackground = true)
-//fun HomePreViewNice() {
-//    SneakovTheme {
-//        HomeScreen(
-//            brandViewModel = TODO(),
-//            goToSearchScreen = TODO(),
-//            productViewModel = TODO(),
-//            onProductClick = TODO(),
-//            helperViewModel = TODO(),
-//            wishlistViewModel = TODO()
-//        )
-//    }
-//}

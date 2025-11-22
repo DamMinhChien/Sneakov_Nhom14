@@ -69,11 +69,11 @@ fun SearchScreen(
     var sortByPriceAsc by remember { mutableStateOf(true) }
     var query by remember { mutableStateOf(keyword) }
 
-    LaunchedEffect(Unit) {
-        viewModel.fetchProducts()
-        colorViewModel.getColorsName()
-        brandsNameViewModel.getBrandsName()
-    }
+//    LaunchedEffect(Unit) {
+//        viewModel.fetchProducts()
+//        colorViewModel.getColorsName()
+//        brandsNameViewModel.getBrandsName()
+//    }
 
     LaunchedEffect(keyword, brand, latest) {
         viewModel.updateFilter {

@@ -9,6 +9,9 @@ import com.firebase.sneakov.utils.Result
 import kotlinx.coroutines.launch
 
 class ProductViewModel(private val repo: ProductRepository): BaseViewModel<List<Product>>() {
+    init {
+        fetch10NewestProducts()
+    }
     fun fetchProducts() {
         viewModelScope.launch{
             setLoading(true)

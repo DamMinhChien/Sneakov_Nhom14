@@ -9,6 +9,9 @@ import kotlinx.coroutines.launch
 class HelperViewModel(
     private val wishlistRepository: WishlistRepository,
 ) : BaseViewModel<List<String>>() {
+    init {
+        fetchWishlistIds()
+    }
     fun fetchWishlistIds() {
         viewModelScope.launch {
             setLoading(true)

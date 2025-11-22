@@ -8,6 +8,9 @@ import com.firebase.sneakov.utils.Result
 import kotlinx.coroutines.launch
 
 class BrandViewModel(private val repo: BrandRepository) : BaseViewModel<List<Brand>>() {
+    init {
+        fetchBrands()
+    }
     fun fetchBrands() {
         viewModelScope.launch{
             setLoading(true)
