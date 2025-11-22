@@ -43,9 +43,9 @@ fun OrderScreen(
     val orders by orderViewModel.userOrders.collectAsState()
     val isLoading by orderViewModel.isLoading.collectAsState()
 
-    LaunchedEffect(Unit) {
-        orderViewModel.fetchUserOrders()
-    }
+//    LaunchedEffect(Unit) {
+//        orderViewModel.fetchUserOrders()
+//    }
 
     val tabs = listOf("Đã xác nhận", "Đã giao", "Đã huỷ")
     val paperState = rememberPagerState(pageCount = {tabs.size})

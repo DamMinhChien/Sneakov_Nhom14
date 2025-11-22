@@ -23,6 +23,9 @@ enum class SortField { NAME, PRICE, CREATED_AT }
 enum class SortOrder { ASC, DESC }
 
 class SearchViewModel(private val repo: ProductRepository): BaseViewModel<List<Product>>() {
+    init {
+        fetchProducts()
+    }
     private var allProducts: List<Product> = emptyList()
     private val _filter = MutableStateFlow(ProductFilter())
     val filter: StateFlow<ProductFilter> = _filter

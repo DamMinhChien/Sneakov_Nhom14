@@ -8,6 +8,13 @@ import com.firebase.sneakov.utils.Result
 import kotlinx.coroutines.launch
 
 class DetailViewModel(private val repo: ProductRepository): BaseViewModel<Product>() {
+    private var lastId: String? = null
+
+    fun loadProduct(id: String) {
+        if (id == lastId) return // Không làm gì nếu ID không thay đổi
+        lastId = id
+        fetchProduct(id)
+    }
     fun fetchProduct(id: String) {
         viewModelScope.launch{
             setLoading(true)

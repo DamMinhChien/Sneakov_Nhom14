@@ -32,6 +32,10 @@ class CartViewModel(
      *  Chọn hoặc bỏ chọn một sản phẩm trong giỏ hàng.
      *  @param cartId ID của mục trong giỏ hàng (không phải productId)
      */
+
+    init {
+        loadCart()
+    }
     fun toggleSelection(cartId: String) {
         _selectedItems.update { currentSelection ->
             if (currentSelection.contains(cartId)) {

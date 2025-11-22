@@ -39,9 +39,9 @@ fun DetailScreen(
         viewModel.fetchProduct(id)
     }
 
-    LaunchedEffect(Unit) {
-        helperViewModel.fetchWishlistIds()
-    }
+//    LaunchedEffect(Unit) {
+//        helperViewModel.fetchWishlistIds()
+//    }
 
     RefreshableLayout(
         modifier = Modifier

@@ -11,6 +11,9 @@ import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 
 class WishlistViewModel(private val wishlistRepo: WishlistRepository, private val productRepo: ProductRepository): BaseViewModel<Any>() {
+    init {
+        fetchWishlistWithProducts()
+    }
     fun fetchWishlistWithProducts() {
         viewModelScope.launch{
             setLoading(true)

@@ -37,14 +37,14 @@ fun NotificationScreen(viewModel: NotificationViewModel = koinViewModel()) {
     val (recent, yesterday) = splitNotifications(list)
     val isLoading by viewModel.isLoading.collectAsState()
 
-    LaunchedEffect(Unit) {
-        viewModel.loadNotifications()
-    }
+//    LaunchedEffect(Unit) {
+//        viewModel.loadNotifications()
+//    }
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFF2F4F7))
+            .background(MaterialTheme.colorScheme.background)
     ) {
         RefreshableLayout(
             isRefreshing = isLoading,

@@ -109,9 +109,9 @@ fun ProfileScreen(
 
     var lastAction by remember { mutableStateOf<String?>(null) }
 
-    LaunchedEffect(Unit) {
-        userViewModel.fetchCurrentUser()
-    }
+//    LaunchedEffect(Unit) {
+//        userViewModel.fetchCurrentUser()
+//    }
 
     LaunchedEffect(authState.data, authState.error) {
         when {
@@ -189,7 +189,7 @@ fun ProfileScreen(
         when {
             cloudinaryState.data != null -> {
                 avatarUrl = cloudinaryState.data!!
-                userState.data?.let { user ->
+                userState.data?.let { _ ->
                     val address = Address(province, district, municipality, detail)
                     val request = UpdateUserRequest(name, phone, avatarUrl, address)
                     lastAction = "update"
