@@ -89,10 +89,10 @@ fun TopBar(
         Screen.Detail.route -> {
             actionIcon = {
                 SurfaceIcon(
-                    icon = Icons.Outlined.FavoriteBorder,
-                    contentDescription = "Yêu thích",
+                    icon = Icons.Outlined.ShoppingCart,
+                    contentDescription = "cart",
                     onClick = {
-                        navController.navigate(Screen.Wishlist.route)
+                        navController.navigate(Screen.Cart.route)
                     }
                 )
             }

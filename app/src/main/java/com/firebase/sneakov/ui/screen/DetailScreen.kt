@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import com.firebase.sneakov.ui.compose.ProductDetailContent
 import com.firebase.sneakov.ui.compose.RefreshableLayout
+import com.firebase.sneakov.viewmodel.CartViewModel
 import com.firebase.sneakov.viewmodel.DetailViewModel
 import com.firebase.sneakov.viewmodel.HelperViewModel
 import com.firebase.sneakov.viewmodel.WishlistViewModel
@@ -28,6 +29,7 @@ fun DetailScreen(
     viewModel: DetailViewModel = koinViewModel(),
     helperViewModel: HelperViewModel = koinViewModel(),
     wishlistViewModel: WishlistViewModel = koinViewModel(),
+    cartViewModel: CartViewModel = koinViewModel(),
     view3DModel: (String) -> Unit,
     id: String
 ) {
@@ -35,9 +37,14 @@ fun DetailScreen(
     val uiState by viewModel.uiState.collectAsState()
     val helperState by helperViewModel.uiState.collectAsState()
 
+    val product = uiState.data
+    val isLoading = uiState.isLoading
+    val error = uiState.error
+
     LaunchedEffect(id) {
         viewModel.fetchProduct(id)
     }
+
 
 //    LaunchedEffect(Unit) {
 //        helperViewModel.fetchWishlistIds()
@@ -68,6 +75,9 @@ fun DetailScreen(
                             if (isFavorite) wishlistViewModel.addToWishlist(uiState.data!!.id) else wishlistViewModel.removeFromWishlist(
                                 uiState.data!!.id
                             )
+                        },
+                        onAddToCartClick = { productId, variantId, quantity ->
+                            cartViewModel.addToCart(productId, variantId, quantity)
                         },
                         view3DModel = view3DModel
                     )
