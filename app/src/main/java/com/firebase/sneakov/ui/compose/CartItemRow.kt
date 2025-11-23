@@ -51,6 +51,12 @@ fun CartItemRow(
     val maxReveal = 140f
     val threshold = maxReveal * 0.15f
 
+    val variant = product?.variants?.find { it.id == cart.variantId }
+    val productColor = product?.colors?.find { it.name == variant?.color }
+
+    // Lấy URL ảnh đầu tiên từ ProductColor tìm được.
+    // Nếu không tìm thấy, quay về dùng thumbnail của sản phẩm làm ảnh dự phòng.
+    val imageUrl = productColor?.images?.firstOrNull() ?: product?.thumbnail
 
     Surface(
         modifier = Modifier
@@ -185,12 +191,12 @@ fun CartItemRow(
                     onCheckedChange = onItemSelected
                 )
                 AsyncImage(
-                    model = product?.thumbnail,
+                    model = imageUrl,
                     contentDescription = null,
                     modifier = Modifier
                         .size(80.dp)
                         .clip(RoundedCornerShape(8.dp)),
-                    contentScale = ContentScale.Crop
+                    contentScale = ContentScale.Fit
                 )
                 Spacer(modifier = Modifier.width(12.dp))
                 Column(modifier = Modifier.weight(1f)) {
@@ -199,8 +205,16 @@ fun CartItemRow(
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.onSurface
                     )
+                    // Hiển thị thêm thông tin phân loại để dễ nhìn
+                    if (variant != null) {
+                        Text(
+                            text = "Loại: ${variant.color.replaceFirstChar { it.uppercase() }}, Size ${variant.size}",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
                     Text(
-                        text = "${product?.variants?.find { it.id == cart.variantId }?.price?.formatMoney() ?: 0}",
+                        text = "${variant?.price?.formatMoney() ?: 0}",
                         color = Color(0xFF2E7D32),
                         fontWeight = FontWeight.SemiBold
                     )

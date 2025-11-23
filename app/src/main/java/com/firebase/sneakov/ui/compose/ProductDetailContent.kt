@@ -65,7 +65,7 @@ import compose.icons.fontawesomeicons.solid.Cube
 import compose.icons.fontawesomeicons.solid.Heart
 
 @Composable
-fun ProductDetailContent(product: Product, isFavorite: Boolean = false, onFavoriteClick: () -> Unit, view3DModel: (String) -> Unit) {
+fun ProductDetailContent(product: Product, isFavorite: Boolean = false, onFavoriteClick: () -> Unit, onAddToCartClick: (productId: String, variantId: String, quantity: Int) -> Unit,view3DModel: (String) -> Unit) {
     var selectedColor by remember { mutableStateOf(product.colors.firstOrNull()) }
     var selectedSize by remember {
         mutableStateOf(
@@ -339,7 +339,11 @@ fun ProductDetailContent(product: Product, isFavorite: Boolean = false, onFavori
             }
 
             OutlinedButton(
-                onClick = { /* TODO: Giỏ hàng */ },
+                onClick = {
+                    selectedVariant?.let { variant ->
+                        onAddToCartClick(product.id, variant.id, 1)
+                    }
+                },
                 modifier = Modifier.weight(1f),
                 border = BorderStroke(
                     width = 1.dp,
