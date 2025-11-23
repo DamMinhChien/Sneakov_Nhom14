@@ -26,16 +26,15 @@ import com.firebase.sneakov.ui.compose.ProductCard
 import com.firebase.sneakov.ui.compose.RefreshableLayout
 import com.firebase.sneakov.viewmodel.WishlistViewModel
 import org.koin.androidx.compose.koinViewModel
-import kotlin.math.log
 
 @Composable
 fun WishlistScreen(wishlistViewModel: WishlistViewModel = koinViewModel(), onProductClick: (Product) -> Unit) {
     val context = LocalContext.current
     val wishlistUiState by wishlistViewModel.uiState.collectAsState()
 
-    LaunchedEffect(Unit) {
-        wishlistViewModel.fetchWishlistWithProducts()
-    }
+//    LaunchedEffect(true) {
+//        wishlistViewModel.fetchWishlistWithProducts()
+//    }
 
     RefreshableLayout(
         modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background),

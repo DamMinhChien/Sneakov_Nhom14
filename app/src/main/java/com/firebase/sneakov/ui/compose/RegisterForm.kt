@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -51,6 +52,7 @@ fun RegisterForm(
 ) {
     val state by viewModel.uiState.collectAsState()
     val context = LocalContext.current
+    var loading by remember { mutableStateOf(false) }
 
     var email by remember { mutableStateOf("") }
     var name by remember { mutableStateOf("") }
@@ -79,7 +81,7 @@ fun RegisterForm(
         modifier = Modifier.fillMaxWidth()
     ) {
         Text(
-            "Đăng ký tài khoản",
+            "Bắt đầu nào!",
             style = MaterialTheme.typography.headlineMedium,
             fontWeight = FontWeight.Bold
         )
@@ -89,6 +91,7 @@ fun RegisterForm(
         OutlinedTextField(
             value = email,
             onValueChange = { email = it },
+            singleLine = true,
             label = { Text("Email") },
             isError = email.isNotEmpty() && !isEmailValid,
             supportingText = {
@@ -111,6 +114,7 @@ fun RegisterForm(
             value = name,
             onValueChange = { name = it },
             label = { Text("Họ tên") },
+            singleLine = true,
             isError = name.isNotEmpty() && !isNameValid,
             supportingText = {
                 if (name.isNotEmpty() && !isNameValid) {
@@ -132,6 +136,7 @@ fun RegisterForm(
             value = password,
             onValueChange = { password = it },
             label = { Text("Mật khẩu") },
+            singleLine = true,
             isError = password.isNotEmpty() && !isPasswordValid,
             supportingText = {
                 if (password.isNotEmpty() && !isPasswordValid) {
@@ -163,6 +168,7 @@ fun RegisterForm(
             value = confirmPassword,
             onValueChange = { confirmPassword = it },
             label = { Text("Xác nhận mật khẩu") },
+            singleLine = true,
             isError = confirmPassword.isNotEmpty() && !isConfirmPasswordValid,
             supportingText = {
                 if (confirmPassword.isNotEmpty() && !isConfirmPasswordValid) {
@@ -204,6 +210,10 @@ fun RegisterForm(
                 disabledContentColor = Color.White.copy(alpha = 0.6f)
             )
         ) {
+            if (loading){
+                CircularProgressIndicator(modifier = Modifier.size(24.dp), color = MaterialTheme.colorScheme.secondary)
+                Spacer(Modifier.width(6.dp))
+            }
             Text("Đăng ký")
         }
 
@@ -225,13 +235,18 @@ fun RegisterForm(
     }
 
     when {
-        state.isLoading -> CircularProgressIndicator()
+        state.isLoading -> loading = true
         state.error != null -> {
             Toast.makeText(context, state.error, Toast.LENGTH_LONG).show()
+            loading = false
             viewModel.dismissError()
         }
 
-        state.data != null -> onSuccessRegister()
+        state.data != null -> {
+            Toast.makeText(context, "Đăng ký thành công!", Toast.LENGTH_LONG).show()
+            loading = false
+            onSuccessRegister()
+        }
     }
 }
 

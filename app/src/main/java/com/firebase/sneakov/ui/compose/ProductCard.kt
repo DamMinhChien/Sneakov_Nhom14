@@ -3,6 +3,7 @@ package com.firebase.sneakov.ui.compose
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -37,6 +39,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.firebase.sneakov.data.model.Product
+import com.firebase.sneakov.utils.capitalizeWords
 import com.firebase.sneakov.utils.formatMoney
 import com.firebase.sneakov.utils.fromHex
 import compose.icons.FontAwesomeIcons
@@ -57,7 +60,7 @@ fun ProductCard(
     val min = product.variants.minOfOrNull { it.price } ?: 0
     val max = product.variants.maxOfOrNull { it.price } ?: 0
     val range: String =
-        if (min == max) min.formatMoney() else "${min.formatMoney().replace("₫", "").trim()} - ${max.formatMoney()}"
+        if (min == max) min.formatMoney() else "${min.formatMoney().replace("₫", "").trim()}-${max.formatMoney()}"
     val colors = product.colors.map { it.hex }
 
     Card(
@@ -128,7 +131,7 @@ fun ProductCard(
 
                     Spacer(modifier = Modifier.height(6.dp))
 
-                    Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                    Row(horizontalArrangement = Arrangement.spacedBy(6.dp), modifier = Modifier.horizontalScroll(rememberScrollState())) {
                         colors.distinct().take(6).forEach { colorHex ->
                             Box(
                                 modifier = Modifier
@@ -167,7 +170,7 @@ fun ProductCard(
             Spacer(modifier = Modifier.height(4.dp))
 
             Text(
-                text = product.name,
+                text = product.name.capitalizeWords(),
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onSurface,

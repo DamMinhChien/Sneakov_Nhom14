@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -58,6 +59,7 @@ fun LoginForm(
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val context = LocalContext.current
+    var loading by remember { mutableStateOf(false) }
 
     LaunchedEffect(uiState.data) {
         if (uiState.data != null) {
@@ -93,6 +95,7 @@ fun LoginForm(
                     else -> null
                 }
             },
+            singleLine = true,
             isError = emailError != null,
             supportingText = {
                 if (emailError != null) {
@@ -122,6 +125,7 @@ fun LoginForm(
                     else -> null
                 }
             },
+            singleLine = true,
             isError = passwordError != null,
             supportingText = {
                 if (passwordError != null) {
@@ -154,13 +158,13 @@ fun LoginForm(
 
         Row(
             Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
+            horizontalArrangement = Arrangement.End,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Checkbox(checked = rememberMe, onCheckedChange = { rememberMe = it })
-                Text("Nhớ mật khẩu")
-            }
+//            Row(verticalAlignment = Alignment.CenterVertically) {
+//                Checkbox(checked = rememberMe, onCheckedChange = { rememberMe = it })
+//                Text("Nhớ mật khẩu")
+//            }
             TextButton(
                 onClick = {
                     goToResetPasswordScreen()
@@ -171,7 +175,6 @@ fun LoginForm(
 
         }
 
-        Spacer(Modifier.height(24.dp))
         Button(
             onClick = {
                 viewModel.login(email = email, password = password)
@@ -190,6 +193,10 @@ fun LoginForm(
                 contentColor = MaterialTheme.colorScheme.surface
             )
         ) {
+            if (loading){
+                CircularProgressIndicator(modifier = Modifier.size(24.dp), color = MaterialTheme.colorScheme.secondary)
+                Spacer(Modifier.width(6.dp))
+            }
             Text(text = "Đăng nhập")
         }
 
@@ -212,11 +219,16 @@ fun LoginForm(
         }
 
         when {
-            uiState.isLoading -> CircularProgressIndicator()
+            uiState.isLoading -> loading = true
             //uiState.token != null -> Text("Token: ${uiState.token}")
-            uiState.error != null -> Text("Error: ${uiState.error}")
-            uiState.data != null -> Toast.makeText(context, "Đăng nhập thành công!", Toast.LENGTH_LONG)
-                .show()
+            uiState.error != null -> {
+                Toast.makeText(context, "${uiState.error}", Toast.LENGTH_LONG).show()
+                loading = false
+            }
+            uiState.data != null -> {
+                Toast.makeText(context, "Đăng nhập thành công!", Toast.LENGTH_LONG).show()
+                loading = false
+            }
         }
     }
 }

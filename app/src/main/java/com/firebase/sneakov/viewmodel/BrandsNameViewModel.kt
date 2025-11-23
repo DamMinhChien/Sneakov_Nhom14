@@ -9,7 +9,9 @@ import kotlinx.coroutines.launch
 class BrandsNameViewModel(
     private val brandRepository: BrandRepository
 ) : BaseViewModel<List<String>>() {
-
+    init {
+        getBrandsName()
+    }
     fun getBrandsName() {
         viewModelScope.launch {
             setLoading(true)

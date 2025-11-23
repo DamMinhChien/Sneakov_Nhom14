@@ -8,6 +8,9 @@ import kotlinx.coroutines.launch
 import com.firebase.sneakov.utils.Result
 
 class UserViewModel(private val repo: AuthRepository): BaseViewModel<User>(){
+    init {
+        fetchCurrentUser()
+    }
     fun fetchCurrentUser() {
         viewModelScope.launch{
             setLoading(true)
