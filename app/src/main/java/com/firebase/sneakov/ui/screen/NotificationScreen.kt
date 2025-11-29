@@ -2,6 +2,7 @@ package com.firebase.sneakov.ui.screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -32,9 +33,9 @@ import java.util.Date
 import java.util.Locale
 
 @Composable
-fun NotificationScreen(viewModel: NotificationViewModel = koinViewModel()) {
+fun NotificationScreen(viewModel: NotificationViewModel) {
     val list by viewModel.state.collectAsState()
-    val (recent, yesterday) = splitNotifications(list)
+
     val isLoading by viewModel.isLoading.collectAsState()
 
 //    LaunchedEffect(Unit) {
@@ -51,47 +52,53 @@ fun NotificationScreen(viewModel: NotificationViewModel = koinViewModel()) {
             onRefresh = { viewModel.loadNotifications()},
             modifier = Modifier.fillMaxSize()
         ){
-            if (recent.isEmpty() && yesterday.isEmpty() && !isLoading) {
-                Text("Không có thông báo nào",
-                    modifier = Modifier.align(Alignment.CenterHorizontally).padding(top = 26.dp),
-                    textAlign = TextAlign.Center
-                )
-            }else {
-                LazyColumn(
-                    modifier = Modifier.fillMaxSize(),
-                    contentPadding = PaddingValues(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(16.dp)
-                ) {
-                    if(recent.isNotEmpty()) {
-                        item {
-                            Text(
-                                text = "Recent",
-                                style = MaterialTheme.typography.titleMedium.copy(
-                                    fontWeight = FontWeight.Bold
-                                ),
-                                color = Color(0xFF1C1C1C),
-                                modifier = Modifier.padding(vertical = 8.dp)
-                            )
-                        }
-                        items(recent) {
-                            NotificationItemView(it, onMarkRead = {id -> viewModel.markRead(id)}, onDelete = { viewModel.delNotification(it)})
-                        }
+            if(!isLoading) {
+                val (recent, yesterday) = splitNotifications(list)
+                if (recent.isEmpty()) {
+                    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                        Text(
+                            text = "Không có thông báo nào",
+                            textAlign = TextAlign.Center
+                        )
                     }
-                    if (yesterday.isNotEmpty()) {
-                        item {
-                            Text(
-                                text = "Yesterday",
-                                style = MaterialTheme.typography.titleMedium.copy(
-                                    fontWeight = FontWeight.Bold
-                                ),
-                                color = Color(0xFF1C1C1C),
-                                modifier = Modifier.padding(top = 16.dp, bottom = 8.dp)
-                            )
+                }else {
+                    LazyColumn(
+                        modifier = Modifier.fillMaxSize(),
+                        contentPadding = PaddingValues(16.dp),
+                        verticalArrangement = Arrangement.spacedBy(16.dp)
+                    ) {
+                        if(recent.isNotEmpty()) {
+                            item {
+                                Text(
+                                    text = "Recent",
+                                    style = MaterialTheme.typography.titleMedium.copy(
+                                        fontWeight = FontWeight.Bold
+                                    ),
+                                    color = Color(0xFF1C1C1C),
+                                    modifier = Modifier.padding(vertical = 8.dp)
+                                )
+                            }
+                            items(recent) {
+                                NotificationItemView(it, onMarkRead = {id -> viewModel.markRead(id)}, onDelete = { viewModel.delNotification(it)})
+                            }
                         }
-                        items(yesterday) { NotificationItemView(it, onMarkRead = {id -> viewModel.markRead(id)}, onDelete = { viewModel.delNotification(it)}) }
+                        if (yesterday.isNotEmpty()) {
+                            item {
+                                Text(
+                                    text = "Yesterday",
+                                    style = MaterialTheme.typography.titleMedium.copy(
+                                        fontWeight = FontWeight.Bold
+                                    ),
+                                    color = Color(0xFF1C1C1C),
+                                    modifier = Modifier.padding(top = 16.dp, bottom = 8.dp)
+                                )
+                            }
+                            items(yesterday) { NotificationItemView(it, onMarkRead = {id -> viewModel.markRead(id)}, onDelete = { viewModel.delNotification(it)}) }
+                        }
                     }
                 }
             }
+
         }
 
 

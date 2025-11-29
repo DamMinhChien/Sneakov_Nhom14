@@ -24,11 +24,13 @@ import androidx.compose.ui.unit.dp
 import com.firebase.sneakov.data.model.Product
 import com.firebase.sneakov.ui.compose.ProductCard
 import com.firebase.sneakov.ui.compose.RefreshableLayout
+import com.firebase.sneakov.viewmodel.CartViewModel
 import com.firebase.sneakov.viewmodel.WishlistViewModel
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun WishlistScreen(wishlistViewModel: WishlistViewModel = koinViewModel(), onProductClick: (Product) -> Unit) {
+fun WishlistScreen(wishlistViewModel: WishlistViewModel = koinViewModel(), onProductClick: (Product) -> Unit,
+                   cartViewModel: CartViewModel = koinViewModel()) {
     val context = LocalContext.current
     val wishlistUiState by wishlistViewModel.uiState.collectAsState()
 
@@ -67,6 +69,14 @@ fun WishlistScreen(wishlistViewModel: WishlistViewModel = koinViewModel(), onPro
                                 onFavoriteClick = { product ->
                                     // Add to wishlist
                                     wishlistViewModel.removeFromWishlist(product.id)
+                                },
+                                onAddToCart = { product ->
+                                    val firstVariant = product.variants.firstOrNull()
+                                    if (firstVariant != null) {
+                                        cartViewModel.addToCart(product.id, firstVariant.id, 1)
+                                    } else {
+                                        Toast.makeText(context, "Sản phẩm không có biến thể", Toast.LENGTH_SHORT).show()
+                                    }
                                 },
                                 isFavorite = true
                             )

@@ -59,8 +59,8 @@ import com.firebase.sneakov.viewmodel.OrderViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CartScreen(
-    viewModel: CartViewModel = koinViewModel(),
-    orderViewModel: OrderViewModel = koinViewModel(),
+    viewModel: CartViewModel,
+    orderViewModel: OrderViewModel,
     onCheckout: () -> Unit = {},
     onBack: () -> Unit = {}
 ) {
@@ -236,10 +236,3 @@ fun CostRow(label: String, amount: Long) {
     }
 }
 
-@Preview()
-@Composable
-fun CartPreview() {
-    SneakovTheme {
-        CartScreen()
-    }
-}

@@ -20,12 +20,15 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import com.firebase.sneakov.navigation.Screen
 import com.firebase.sneakov.ui.compose.SurfaceIcon
 import com.firebase.sneakov.viewmodel.HelperViewModel
+import com.firebase.sneakov.viewmodel.NotificationViewModel
 import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(
-    navController: NavController,onMenuClick: () -> Unit) {
+    navController: NavController, onMenuClick: () -> Unit,
+    notificationViewModel: NotificationViewModel = koinViewModel(),
+) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route ?: ""
 
@@ -104,6 +107,7 @@ fun TopBar(
                     icon = Icons.Outlined.Delete,
                     contentDescription = "Xoá thông báo",
                     onClick = {
+                        notificationViewModel.delAll()
 
                     }
                 )
@@ -119,7 +123,7 @@ fun TopBar(
             Text(
                 text = title,
                 color = MaterialTheme.colorScheme.onBackground,
-                style = if(currentRoute == Screen.Home.route) MaterialTheme.typography.headlineSmall else MaterialTheme.typography.titleLarge,
+                style = if (currentRoute == Screen.Home.route) MaterialTheme.typography.headlineSmall else MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold
             )
         },

@@ -37,9 +37,6 @@ fun DetailScreen(
     val uiState by viewModel.uiState.collectAsState()
     val helperState by helperViewModel.uiState.collectAsState()
 
-    val product = uiState.data
-    val isLoading = uiState.isLoading
-    val error = uiState.error
 
     LaunchedEffect(id) {
         viewModel.fetchProduct(id)

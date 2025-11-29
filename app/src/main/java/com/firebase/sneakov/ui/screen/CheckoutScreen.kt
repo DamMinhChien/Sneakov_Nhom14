@@ -26,6 +26,7 @@ import com.firebase.sneakov.data.model.Product
 import com.firebase.sneakov.data.model.ShippingAddress
 import com.firebase.sneakov.utils.formatMoney
 import com.firebase.sneakov.viewmodel.CheckoutResultState // Sửa import
+import com.firebase.sneakov.viewmodel.NotificationViewModel
 import com.firebase.sneakov.viewmodel.OrderViewModel
 import com.firebase.sneakov.viewmodel.UserViewModel
 import kotlinx.coroutines.delay
@@ -36,7 +37,8 @@ import org.koin.androidx.compose.koinViewModel
 fun CheckoutScreen(
     onBack: () -> Unit = {},
     onCheckoutSuccess: (String) -> Unit = {},
-    orderViewModel: OrderViewModel, // ViewModel được inject từ NavGraph
+    orderViewModel: OrderViewModel, // ViewModel được inject từ NavGraph,
+    notificationViewModel: NotificationViewModel,
     userViewModel: UserViewModel = koinViewModel()
 ) {
     // BƯỚC 1: LẤY CÁC STATE MỚI TỪ VIEWMODEL
