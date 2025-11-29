@@ -32,6 +32,7 @@ import com.firebase.sneakov.ui.screen.SearchScreen
 import com.firebase.sneakov.ui.screen.WishlistScreen
 import com.firebase.sneakov.utils.isOnboardingSeen
 import com.firebase.sneakov.utils.setOnboardingSeen
+import com.firebase.sneakov.viewmodel.CartViewModel
 import com.firebase.sneakov.viewmodel.NotificationViewModel
 import com.firebase.sneakov.viewmodel.OrderViewModel
 import com.google.firebase.auth.FirebaseAuth
@@ -42,7 +43,7 @@ object Graph {
 }
 
 @Composable
-fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
+fun SneakovNavGraph(navController: NavHostController, modifier: Modifier, notificationViewModel: NotificationViewModel, cartViewModel: CartViewModel) {
     val durationTime = 350
     val fadeTime = 300
     val context = LocalContext.current
@@ -102,6 +103,7 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
 
         composable(Screen.Home.route, enterTransition = { fadeIn(tween(durationTime)) }) {
             HomeScreen(
+                cartViewModel = cartViewModel,
                 onProductClick = { product ->
                     navController.navigate(Screen.Detail.createRoute(product.id))
                 },
@@ -161,7 +163,8 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
             WishlistScreen(
                 onProductClick = { product ->
                     navController.navigate(Screen.Detail.createRoute(product.id))
-                }
+                },
+                cartViewModel = cartViewModel
             )
         }
 
@@ -223,7 +226,9 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
                     viewModelStoreOwner = parentEntry
                 )
                 CartScreen(
+                    viewModel = cartViewModel,
                     orderViewModel = orderViewModel,
+
                     onCheckout = { navController.navigate(Screen.Order.route) },
                     onBack = { navController.popBackStack() }
                 )
@@ -236,9 +241,9 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
                 val orderViewModel: OrderViewModel = koinViewModel(
                     viewModelStoreOwner = parentEntry
                 )
-                val notificationViewModel: NotificationViewModel = koinViewModel()
                 CheckoutScreen(
                     orderViewModel = orderViewModel,
+                    notificationViewModel = notificationViewModel,
                     onBack = { navController.popBackStack() },
                     onCheckoutSuccess = { orderId ->
                         notificationViewModel.createOrderNotification(orderId)
@@ -256,8 +261,7 @@ fun SneakovNavGraph(navController: NavHostController, modifier: Modifier) {
 
         }
         composable(Screen.Notification.route) {
-            val viewModel: NotificationViewModel = koinViewModel()
-            NotificationScreen(viewModel = viewModel)
+            NotificationScreen(viewModel = notificationViewModel)
         }
         composable(Screen.OrderHistory.route) {
             OrderScreen(navController = navController)

@@ -2,6 +2,9 @@ package com.firebase.sneakov.viewmodel
 
 import android.app.Application
 import android.widget.Toast
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.firebase.sneakov.data.model.Cart
@@ -36,6 +39,8 @@ class CartViewModel(
     init {
         loadCart()
     }
+
+
     fun toggleSelection(cartId: String) {
         _selectedItems.update { currentSelection ->
             if (currentSelection.contains(cartId)) {

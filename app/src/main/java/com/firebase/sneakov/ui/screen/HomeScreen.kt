@@ -61,7 +61,7 @@ fun HomeScreen(
     goToSearchScreenWithBrand: (brand: Brand) -> Unit,
     goToSearchScreenWithLatest: () -> Unit,
     productViewModel: ProductViewModel = koinViewModel(),
-    cartViewModel: CartViewModel = koinViewModel(),
+    cartViewModel: CartViewModel,
     onProductClick: (Product) -> Unit,
     helperViewModel: HelperViewModel = koinViewModel(),
     wishlistViewModel: WishlistViewModel = koinViewModel()
@@ -84,8 +84,9 @@ fun HomeScreen(
 //    LaunchedEffect(Unit) {
 //        productViewModel.fetch10NewestProducts()
 //    }
-    LaunchedEffect(wishlistState) {
+    LaunchedEffect(Unit) {
         helperViewModel.fetchWishlistIds()
+        cartViewModel.loadCart()
     }
 
     RefreshableLayout(

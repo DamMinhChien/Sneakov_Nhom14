@@ -27,22 +27,30 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.firebase.sneakov.navigation.Screen
 import com.firebase.sneakov.utils.BottomNavItem
 import com.firebase.sneakov.utils.Prefs
 import com.firebase.sneakov.utils.loadPrefsInteger
+import com.firebase.sneakov.viewmodel.CartViewModel
 import com.firebase.sneakov.viewmodel.HelperViewModel
+import com.firebase.sneakov.viewmodel.NotificationViewModel
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun BottomBar(navController: NavHostController, helperViewModel: HelperViewModel = koinViewModel()) {
-    val helperState by helperViewModel.uiState.collectAsState()
+fun BottomBar(navController: NavHostController, notificationViewModel: NotificationViewModel, cartViewModel: CartViewModel, helperViewModel: HelperViewModel = koinViewModel()) {
+    val helperState by helperViewModel.uiState.collectAsStateWithLifecycle()
     val wishListCount = helperState.data?.size ?: 0
+    val unreadNotificationCount by notificationViewModel.unreadCount.collectAsStateWithLifecycle()
+    val cartItems by cartViewModel.cartItems.collectAsStateWithLifecycle()
+    val cartItemCount = cartItems.size
 
-    LaunchedEffect(wishListCount) {
+    LaunchedEffect(Unit) {
         helperViewModel.fetchWishlistIds()
+        cartViewModel.loadCart()
+        notificationViewModel.loadNotifications()
     }
 
     val items = listOf(
@@ -68,17 +76,23 @@ fun BottomBar(navController: NavHostController, helperViewModel: HelperViewModel
             items.forEach { item ->
                 val selected = currentRoute == item.route
                 val scale by animateFloatAsState(if (selected) 1.2f else 1f, label = "")
+                val badgeCount = when(item.route) {
+                    Screen.Wishlist.route -> wishListCount
+                    Screen.Cart.route -> cartItemCount
+                    Screen.Notification.route -> unreadNotificationCount
+                    else -> 0
+                }
 
                 NavigationBarItem(
                     icon = {
                         // Có badge ví dụ cho tab Wishlist
-                        if (item.route == Screen.Wishlist.route) {
+                        if (badgeCount > 0) {
                             BadgedBox(
                                 badge = {
                                     if (!selected) {
                                         Badge(
                                             containerColor = MaterialTheme.colorScheme.primary
-                                        ) { Text("$wishListCount") }
+                                        ) { Text("$badgeCount") }
                                     }
                                 }
                             ) {

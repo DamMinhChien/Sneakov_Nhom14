@@ -23,11 +23,16 @@ import com.firebase.sneakov.ui.theme.SneakovTheme
 import com.firebase.sneakov.utils.Prefs
 import com.firebase.sneakov.utils.loadPrefsBoolean
 import com.firebase.sneakov.utils.savePrefsBoolean
+import com.firebase.sneakov.viewmodel.CartViewModel
+import com.firebase.sneakov.viewmodel.NotificationViewModel
 import kotlinx.coroutines.launch
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun SneakovApp() {
     val navController = rememberNavController()
+    val notificationViewModel: NotificationViewModel = koinViewModel()
+    val cartViewModel: CartViewModel = koinViewModel()
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
 
@@ -90,12 +95,19 @@ fun SneakovApp() {
                                 scope.launch {
                                     drawerState.open()
                                 }
-                            })
+                            },
+                            notificationViewModel = notificationViewModel
+                        )
                     }
                 },
                 bottomBar = {
                     if (currentRoute !in noBottomBarScreens) {
-                        BottomBar(navController)
+                        BottomBar(
+                            navController,
+                            cartViewModel = cartViewModel,
+                            notificationViewModel = notificationViewModel,
+                            helperViewModel = koinViewModel()
+                            )
                     }
                 }
             ) { innerPadding ->
@@ -103,7 +115,9 @@ fun SneakovApp() {
                     navController = navController,
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(innerPadding)
+                        .padding(innerPadding),
+                    notificationViewModel = notificationViewModel,
+                    cartViewModel = cartViewModel
                 )
             }
         }
