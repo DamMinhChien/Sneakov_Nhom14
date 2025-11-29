@@ -1,6 +1,7 @@
 package com.firebase.sneakov.ui.app
 
 import android.annotation.SuppressLint
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -33,6 +34,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -66,6 +68,7 @@ fun DrawerContent(
     authViewModel: AuthViewModel = koinViewModel(),
 
     ) {
+    val context = LocalContext.current
     val configuration = LocalConfiguration.current
     val screenWidthDp = configuration.screenWidthDp.dp
     val drawerWidth = screenWidthDp * 4 / 5
@@ -95,6 +98,10 @@ fun DrawerContent(
                             showConfirmLogout = false
                             closeDrawer()
                             authViewModel.logout()
+                            navController.navigate(Screen.Auth.route) {
+                                popUpTo(navController.graph.startDestinationId)
+                            }
+                            Toast.makeText(context, "Đăng xuất thành công", Toast.LENGTH_LONG).show()
                         },
                         confirmLabel = "Đăng xuất",
                     ) {

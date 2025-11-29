@@ -71,6 +71,7 @@ import com.firebase.sneakov.data.model.District
 import com.firebase.sneakov.data.model.Province
 import com.firebase.sneakov.data.model.Ward
 import com.firebase.sneakov.data.request.UpdateUserRequest
+import com.firebase.sneakov.navigation.Screen
 import com.firebase.sneakov.ui.compose.Dialog
 import com.firebase.sneakov.ui.compose.RefreshableLayout
 import com.firebase.sneakov.viewmodel.AuthViewModel
@@ -142,6 +143,8 @@ fun ProfileScreen(
     val user = userState.data
 
     // --- State ---
+    var showConfirmLogout by remember { mutableStateOf(false) }
+
     var name by remember(user) { mutableStateOf(user?.name.orEmpty()) }
     var phone by remember(user) { mutableStateOf(user?.phone.orEmpty()) }
     var avatarUrl by remember(user) { mutableStateOf(user?.avatar_url.orEmpty()) }
@@ -231,6 +234,24 @@ fun ProfileScreen(
             if (user == null) {
                 Text("Không có dữ liệu người dùng", modifier = Modifier.align(Alignment.Center))
                 return@Box
+            }
+
+            if(showConfirmLogout){
+                Dialog(
+                    showDialog = showConfirmLogout,
+                    title = "Xác nhận",
+                    onDismiss = {
+                        showConfirmLogout = false
+                    },
+                    onConfirm = {
+                        showConfirmLogout = false
+                        lastAction = "logout"
+                        authViewModel.logout()
+                    },
+                    confirmLabel = "Đăng xuất",
+                ) {
+                    Text("Bạn có chắc chắn muốn đăng xuất không?")
+                }
             }
 
             Column(
@@ -587,8 +608,7 @@ fun ProfileScreen(
                 // --- Đăng xuất ---
                 OutlinedButton(
                     onClick = {
-                        lastAction = "logout"
-                        authViewModel.logout()
+                        showConfirmLogout = true
                     },
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(12.dp),
